@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "910614264123",
+    "project_id": "ddwa-c76bf",
+    "storage_bucket": "ddwa-c76bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910614264123:android:383f753899d85610991f1e",
+        "android_client_info": {
+          "package_name": "com.example.dwa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxOixvh_NW1y1OC_03O9OWMg_Pf4eEKvA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

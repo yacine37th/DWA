@@ -1,6 +1,18 @@
+import 'package:dwa/firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+User? currentUser = FirebaseAuth.instance.currentUser;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  currentUser = FirebaseAuth.instance.currentUser;
+  if (currentUser != null) {
+    // await MainFunctions.getcurrentUserInfos();
+  }
+  // sharedPreferences = await SharedPreferences.getInstance();
   runApp(const MyApp());
 }
 
