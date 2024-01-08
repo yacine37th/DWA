@@ -1,11 +1,11 @@
-
-import 'package:dwa/theme/main_colors.dart';
+import 'package:dwa/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
+import '../animation/fade_animation.dart';
 import '../controller/singin_controller.dart';
 import '../theme/assets.dart';
+import '../theme/main_colors.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
@@ -23,9 +23,9 @@ class SignIn extends StatelessWidget {
             SingleChildScrollView(
               padding: const EdgeInsets.all(20),
               child: Form(
-                // key: signInController.formKey,
-                // child: FadeAnimation(
-                  // delay: 2,
+                key: signInController.formKey,
+                child: FadeAnimation(
+                  delay: 2,
                   child: Column(
                     children: [
                       const SizedBox(height: 60),
@@ -33,96 +33,19 @@ class SignIn extends StatelessWidget {
                       const SizedBox(height: 30),
                       const Text('Sign In',
                           style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black)),
-                      const SizedBox(height: 24),
-                      Row(
-                        children: [
-                      //     Expanded(
-                      //       child: GestureDetector(
-                      //         onTap: () {
-                      //           // signInController.signInWithGoogle();
-                      //         },
-                      //         child: Card(
-                      //           elevation: 0,
-                      //           color: Colors.transparent,
-                      //           child: Container(
-                      //             height: 50,
-                      //             width: 50,
-                      //             alignment: Alignment.center,
-                      //             decoration: BoxDecoration(
-                      //               color: AppColors.kOrange,
-                      //               border: Border.all(color: AppColors.kLine),
-                      //               borderRadius: BorderRadius.circular(10),
-                      //             ),
-                      //             child: Row(
-                      //               mainAxisAlignment: MainAxisAlignment.center,
-                      //               children: [
-                      //                 Image.asset(AppAssets.kGoogle),
-                      //                 const SizedBox(width: 14),
-                      //                 const Text(
-                      //                   'with Google',
-                      //                   style: TextStyle(
-                      //                       fontSize: 14,
-                      //                       fontWeight: FontWeight.w300),
-                      //                 )
-                      //               ],
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ),
-                      // //     GestureDetector(
-                      //       onTap: () {
-                      //         // signInController.signInWithFacebook();
-                      //       },
-                      //       child: Card(
-                      //         elevation: 0,
-                      //         color: Colors.transparent,
-                      //         child: Container(
-                      //           height: 50,
-                      //           width: 50,
-                      //           alignment: Alignment.center,
-                      //           decoration: BoxDecoration(
-                      //             color: null,
-                      //             border: Border.all(color: AppColors.kLine),
-                      //             borderRadius: BorderRadius.circular(10),
-                      //           ),
-                      //           child: Image.asset(AppAssets.kFacebook),
-                      //         ),
-                      //       ),
-                      //     ),
-                      //     GestureDetector(
-                      //       onTap: () {},
-                      //       child: Card(
-                      //         elevation: 0,
-                      //         color: Colors.transparent,
-                      //         child: Container(
-                      //           height: 50,
-                      //           width: 50,
-                      //           alignment: Alignment.center,
-                      //           decoration: BoxDecoration(
-                      //             color: null,
-                      //             border: Border.all(color: AppColors.kLine),
-                      //             borderRadius: BorderRadius.circular(10),
-                      //           ),
-                      //           child: Image.asset(AppAssets.kTwitter),
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          )),
                       const SizedBox(height: 30),
 
-                      const SizedBox(
-                        height: 30,
-                        child: Text(
-                          "Or with Email",
-                          style: TextStyle(fontSize: 17),
-                        ),
-                      ),
-                      const SizedBox(height: 30),
+                      // const SizedBox(
+                      //   height: 30,
+                      //   child: Text(
+                      //     "Or with Email",
+                      //     style: TextStyle(fontSize: 17),
+                      //   ),
+                      // ),
+                      // const SizedBox(height: 30),
                       TextFormField(
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.emailAddress,
@@ -214,7 +137,7 @@ class SignIn extends StatelessWidget {
                                 icon: contx.showPassword
                                     ? const Icon(Icons.visibility)
                                     : const Icon(Icons.visibility_off)),
-                            suffixIconColor: AppColors.kPrimary,
+                            suffixIconColor: AppColors.kPrimary2,
                             contentPadding: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 16),
                             enabledBorder: OutlineInputBorder(
@@ -256,31 +179,41 @@ class SignIn extends StatelessWidget {
                             child: Text(
                               "Forgot Password ?",
                               style: TextStyle(
-                                  color: AppColors.kPrimary, fontSize: 14),
+                                  color: AppColors.kPrimary2, fontSize: 14),
                             ),
                           )
                         ],
                       ),
                       // const SizedBox(height: 30),
-                      GestureDetector(
-                        onTap: () {
-                          if (signInController.formKey.currentState!
-                              .validate()) {
-                            signInController.formKey.currentState!.save();
-                            signInController.signInAUser();
-                          }
-                        },
+                      TextButton(
+                        onPressed: () {},
+                        style: ButtonStyle(
+                            foregroundColor: MaterialStateProperty.all(
+                              AppColors.kPrimary,
+                            ),
+                            backgroundColor: MaterialStateProperty.all(
+                              AppColors.kPrimary,
+                            ),
+                            overlayColor: MaterialStateColor.resolveWith(
+                                (states) => orangeColor.withOpacity(0.1)),
+                            shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(100),
+                                    side: BorderSide(
+                                      color: AppColors.kPrimary2,
+                                    )))),
                         child: Card(
                           elevation: 0,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100),
                           ),
+                          color: Colors.transparent,
                           child: Container(
-                            height: 55,
+                            height: 35,
                             alignment: Alignment.center,
                             width: double.maxFinite,
                             decoration: BoxDecoration(
-                              color: AppColors.kPrimary,
+                              // color: AppColors.kPrimary,
                               borderRadius: BorderRadius.circular(30),
                             ),
                             child: Text(
@@ -293,6 +226,38 @@ class SignIn extends StatelessWidget {
                           ),
                         ),
                       ),
+                      // GestureDetector(
+                      //   onTap: () {
+                      //     if (signInController.formKey.currentState!
+                      //         .validate()) {
+                      //       signInController.formKey.currentState!.save();
+                      //       signInController.signInAUser();
+                      //     }
+                      //   },
+                      //   child: Card(
+                      //     elevation: 0,
+                      //     shape: RoundedRectangleBorder(
+                      //       borderRadius: BorderRadius.circular(100),
+                      //     ),
+                      //     child: Container(
+                      //       height: 55,
+                      //       alignment: Alignment.center,
+                      //       width: double.maxFinite,
+                      //       decoration: BoxDecoration(
+                      //         color: AppColors.kPrimary,
+                      //         borderRadius: BorderRadius.circular(30),
+                      //       ),
+                      //       child: Text(
+                      //         "Sign In",
+                      //         style: TextStyle(
+                      //           color: Colors.white,
+                      //           fontSize: 15,
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
+                    
                       const SizedBox(height: 30),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -300,7 +265,7 @@ class SignIn extends StatelessWidget {
                           const Text('Already a member?',
                               style: TextStyle(
                                 fontSize: 14,
-                                color: AppColors.kPrimary,
+                                color: AppColors.kPrimary2,
                               )),
                           TextButton(
                             onPressed: () {
@@ -311,7 +276,7 @@ class SignIn extends StatelessWidget {
                             child: Text(
                               "Sign Up",
                               style: TextStyle(
-                                  color: AppColors.kPrimary, fontSize: 14),
+                                  color: AppColors.kPrimary2, fontSize: 14),
                             ),
                           ),
 
@@ -330,11 +295,11 @@ class SignIn extends StatelessWidget {
                         ],
                       )
                     ],
-                  ),]
+                  ),
                 ),
               ),
-            // ),
-            ),]
+            ),
+          ],
         ),
       ),
     );

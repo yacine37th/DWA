@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'FOOCHI',
+      title: 'DWA',
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.cupertino,
       // theme: Themes.customLightTheme,
