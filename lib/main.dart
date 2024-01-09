@@ -1,4 +1,5 @@
 import 'package:dwa/firebase_options.dart';
+import 'package:dwa/view/home.dart';
 import 'package:dwa/view/singin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -62,6 +63,11 @@ class MyApp extends StatelessWidget {
           name: "/ForgotPassword",
           page: () => const ForgotPassword(),
           binding: ForgotPasswordBinding(),
+        ),
+         GetPage(
+          name: "/",
+          page: () => const Home(),
+          // binding: HomeScreenBindings(),
         ),
         // GetPage(
         //     name: "/OnboardingView",

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../functions/functions.dart';
 import '../main.dart';
+import '../theme/main_colors.dart';
 
 class SignInController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -24,7 +25,9 @@ class SignInController extends GetxController {
         },
         barrierDismissible: false,
         title: "Please wait",
-        content: const CircularProgressIndicator());
+        content: const CircularProgressIndicator(
+          color: AppColors.kPrimary2,
+        ));
     try {
       print(userEmailAddress);
       print(userPassword);

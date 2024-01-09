@@ -157,11 +157,11 @@ class ForgotPassword extends StatelessWidget {
                               // color: AppColors.kPrimary,
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            child: Text(
+                            child: const Text(
                               "Send link",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 15,
+                                fontSize: 19,
                               ),
                             ),
                           ),

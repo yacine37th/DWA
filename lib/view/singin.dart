@@ -189,7 +189,13 @@ class SignIn extends StatelessWidget {
                       ),
                       const SizedBox(height: 5),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                           if (signInController.formKey.currentState!
+                              .validate()) {
+                            signInController.formKey.currentState!.save();
+                            signInController.signInAUser();
+                          }
+                        },
                         style: ButtonStyle(
                             foregroundColor: MaterialStateProperty.all(
                               AppColors.kPrimary2,
@@ -220,11 +226,11 @@ class SignIn extends StatelessWidget {
                               // color: AppColors.kPrimary,
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            child: Text(
+                            child: const Text(
                               "Sign In",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 15,
+                                fontSize: 19,
                               ),
                             ),
                           ),
@@ -259,7 +265,7 @@ class SignIn extends StatelessWidget {
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(100),
-                                    side: BorderSide(
+                                    side: const BorderSide(
                                       color: AppColors.kPrimary2,
                                     )))),
                         child: Card(
@@ -282,7 +288,7 @@ class SignIn extends StatelessWidget {
                               "Sign Up",
                               style: TextStyle(
                                   color: AppColors.kPrimary2,
-                                  fontSize: 15,
+                                  fontSize: 19,
                                   fontWeight: FontWeight.w500),
                             ),
                           ),

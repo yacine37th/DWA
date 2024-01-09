@@ -14,7 +14,7 @@ class EmailVerification extends StatelessWidget {
     return Scaffold(
       // backgroundColor: AppColors.kpr,
       appBar: AppBar(
-        backgroundColor: AppColors.transparentColor,
+        backgroundColor: Colors.white,
         elevation: 1,
         leading: IconButton(
             onPressed: () {
@@ -36,7 +36,10 @@ class EmailVerification extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               //  Center(child:
-              Image.asset(AppAssets.kAppLogo),
+              Container(
+                height: 180,
+                child: Image.asset(AppAssets.kAppLogo),
+              ),
               //  ),
               // const SizedBox(height: 20),
               const Text(
@@ -84,7 +87,7 @@ class EmailVerification extends StatelessWidget {
                       "Resend",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 15,
+                        fontSize: 19,
                       ),
                     ),
                   ),
