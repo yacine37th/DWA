@@ -38,7 +38,7 @@ class EmailVerification extends StatelessWidget {
               //  Center(child:
               Image.asset(AppAssets.kAppLogo),
               //  ),
-              const SizedBox(height: 20),
+              // const SizedBox(height: 20),
               const Text(
                   "A verification email has been sent to your email address",
                   style: TextStyle(

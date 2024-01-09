@@ -57,7 +57,7 @@ class SignUp extends StatelessWidget {
                     children: [
                       // const SizedBox(height: 10),
                       Center(child: Image.asset(AppAssets.kAppLogo)),
-                      const SizedBox(height: 30),
+                      // const SizedBox(height: 30),
                       const Text('Sign Up',
                           style: TextStyle(
                               fontSize: 30,

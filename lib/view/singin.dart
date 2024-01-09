@@ -30,7 +30,7 @@ class SignIn extends StatelessWidget {
                     children: [
                       const SizedBox(height: 60),
                       Center(child: Image.asset(AppAssets.kAppLogo)),
-                      const SizedBox(height: 30),
+                      // const SizedBox(height: 30),
                       const Text('Sign In',
                           style: TextStyle(
                             fontSize: 30,

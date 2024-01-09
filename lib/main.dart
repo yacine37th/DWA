@@ -8,9 +8,11 @@ import 'package:get/get.dart';
 import 'functions/functions.dart';
 import 'middleware/auth_middleware.dart';
 import 'model/user_model.dart';
+import 'utils/forgot_password_bindings.dart';
 import 'utils/signup_bindings.dart';
 import 'utils/singin_bindings.dart';
 import 'utils/verify_email_bindings.dart';
+import 'view/forgot_password.dart';
 import 'view/signup.dart';
 import 'view/verify_email.dart';
 
@@ -56,11 +58,11 @@ class MyApp extends StatelessWidget {
             name: "/EmailVerification",
             page: () => const EmailVerification(),
             binding: EmailVerificationBinding()),
-        // GetPage(
-        //   name: "/ForgotPassword",
-        //   page: () => const ForgotPassword(),
-        //   binding: ForgotPasswordBinding(),
-        // ),
+        GetPage(
+          name: "/ForgotPassword",
+          page: () => const ForgotPassword(),
+          binding: ForgotPasswordBinding(),
+        ),
         // GetPage(
         //     name: "/OnboardingView",
         //     page: () => const FoochiOnboardingView(),
