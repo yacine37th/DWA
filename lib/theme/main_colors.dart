@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const Color kPrimary = Color.fromARGB(255,240, 76, 75);
+  static const Color kPrimary3 =Color.fromARGB(255, 233, 3, 3);
   static const Color kPrimary2 = Color(0xFF84BD93);
+  static const Color kPrimary2Onpress = Color.fromARGB(255, 56, 151, 81);
 
   static const Color kSecondary = Color(0xFF3F2D20);
   // static const Color kBackground = Color(0xFFFFF5E0);
