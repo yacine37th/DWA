@@ -6,8 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'functions/functions.dart';
+import 'middleware/auth_middleware.dart';
 import 'model/user_model.dart';
+import 'utils/signup_bindings.dart';
 import 'utils/singin_bindings.dart';
+import 'view/signup.dart';
 
 User? currentUser = FirebaseAuth.instance.currentUser;
 UserModel currentUserInfos = UserModel(uID: "", email: "", name: "");
@@ -37,15 +40,16 @@ class MyApp extends StatelessWidget {
       // textDirection: MainFunctions.textDirection,
       getPages: [
         GetPage(
-          name: "/SignIn",
-          page: () => const SignIn(),
-          binding: SignInBinding(),
+          name: "/SignUp",
+          page: () => const SignUp(),
+          binding: SignUpBinding(),
         ),
-        // GetPage(
-        //     name: "/SignIn",
-        //     page: () => const SignIn(),
-        //     binding: SignInBinding(),
-        //     middlewares: [AuthMiddleware()]),
+        GetPage(
+            name: "/SignIn",
+            page: () => const SignIn(),
+            binding: SignInBinding(),
+            // middlewares: [AuthMiddleware()]
+            ),
         // GetPage(
         //     name: "/EmailVerification",
         //     page: () => const EmailVerification(),

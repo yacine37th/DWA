@@ -265,7 +265,9 @@ class SignIn extends StatelessWidget {
                       const SizedBox(height: 15),
 
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed("/SignUp"); 
+                        },
                         style: ButtonStyle(
                             foregroundColor: MaterialStateProperty.all(
                               AppColors.kPrimary2,
