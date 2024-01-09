@@ -7,17 +7,6 @@ import '../theme/main_colors.dart';
 
 class SignUpController extends GetxController {
   final formKey = GlobalKey<FormState>();
-  // late AnimationController animationController;
-  // final Tween<double> tween = Tween<double>(begin: 1.0, end: 0.95);
-  // final Duration animationDuration = const Duration(milliseconds: 300);
-  // RxDouble containerWidth = 100.0.obs;
-  // RxDouble containerHeight = 100.0.obs;
-
-  // void animateContainer() {
-  //   containerWidth.value = containerWidth.value == 100.0 ? 200.0 : 100.0;
-  //   containerHeight.value = containerHeight.value == 100.0 ? 200.0 : 100.0;
-  // }
-
   bool showPassword = true;
 
   String? userName;

@@ -10,7 +10,9 @@ import 'middleware/auth_middleware.dart';
 import 'model/user_model.dart';
 import 'utils/signup_bindings.dart';
 import 'utils/singin_bindings.dart';
+import 'utils/verify_email_bindings.dart';
 import 'view/signup.dart';
+import 'view/verify_email.dart';
 
 User? currentUser = FirebaseAuth.instance.currentUser;
 UserModel currentUserInfos = UserModel(uID: "", email: "", name: "");
@@ -50,10 +52,10 @@ class MyApp extends StatelessWidget {
             binding: SignInBinding(),
             // middlewares: [AuthMiddleware()]
             ),
-        // GetPage(
-        //     name: "/EmailVerification",
-        //     page: () => const EmailVerification(),
-        //     binding: EmailVerificationBinding()),
+        GetPage(
+            name: "/EmailVerification",
+            page: () => const EmailVerification(),
+            binding: EmailVerificationBinding()),
         // GetPage(
         //   name: "/ForgotPassword",
         //   page: () => const ForgotPassword(),

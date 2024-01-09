@@ -81,7 +81,7 @@ class SignIn extends StatelessWidget {
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide:
-                                const BorderSide(color: AppColors.kOrange),
+                                const BorderSide(color: AppColors.kPrimary2),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           border: OutlineInputBorder(
@@ -147,7 +147,7 @@ class SignIn extends StatelessWidget {
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                                  const BorderSide(color: AppColors.kOrange),
+                                  const BorderSide(color: AppColors.kPrimary2),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             border: OutlineInputBorder(
@@ -230,43 +230,12 @@ class SignIn extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // GestureDetector(
-                      //   onTap: () {
-                      //     if (signInController.formKey.currentState!
-                      //         .validate()) {
-                      //       signInController.formKey.currentState!.save();
-                      //       signInController.signInAUser();
-                      //     }
-                      //   },
-                      //   child: Card(
-                      //     elevation: 0,
-                      //     shape: RoundedRectangleBorder(
-                      //       borderRadius: BorderRadius.circular(100),
-                      //     ),
-                      //     child: Container(
-                      //       height: 55,
-                      //       alignment: Alignment.center,
-                      //       width: double.maxFinite,
-                      //       decoration: BoxDecoration(
-                      //         color: AppColors.kPrimary,
-                      //         borderRadius: BorderRadius.circular(30),
-                      //       ),
-                      //       child: Text(
-                      //         "Sign In",
-                      //         style: TextStyle(
-                      //           color: Colors.white,
-                      //           fontSize: 15,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
 
                       const SizedBox(height: 15),
 
                       TextButton(
                         onPressed: () {
-                          Get.toNamed("/SignUp"); 
+                          Get.toNamed("/SignUp");
                         },
                         style: ButtonStyle(
                             foregroundColor: MaterialStateProperty.all(

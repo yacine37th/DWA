@@ -15,6 +15,12 @@ class SignUp extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+            //   bottom: PreferredSize(
+            // preferredSize: Size(0, 0),
+            // child: Container(
+            //   color: AppColors.kPrimary2,
+            //   height: 1,
+            // )),
         backgroundColor: AppColors.transparentColor,
         elevation: 0,
         leading: IconButton(
