@@ -22,6 +22,8 @@ class Languages implements Translations {
 
           "english": "English",
           "francais": "French",
+          "arab": "Arabic",
+
           "continue": "Continue",
           "noConnection": "There is no internet Connection",
           "login": "Login",
@@ -305,6 +307,7 @@ class Languages implements Translations {
 
           "english": "Anglais",
           "francais": "Français",
+          "arab": "Arabe",
           "continue": "Continuez",
           "noConnection": "Il n'y a pas de connexion Internet",
           "login": "Connexion",
@@ -612,6 +615,7 @@ class Languages implements Translations {
 
           "english": "الإنجليزية",
           "francais": "الفرنسية",
+          "arab": "العربية",
           "continue": "متابعة",
           "noConnection": "لا يوجد اتصال بالإنترنت",
           "login": "تسجيل الدخول",

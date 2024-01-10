@@ -43,7 +43,8 @@ class HomeScreenController extends GetxController {
                   // Get.toNamed("/SignUp");
                   localeValue = "fr";
                   Get.updateLocale(const Locale("fr"));
-                  MainFunctions.sharredPrefs!.setString("codeLang", localeValue);
+                  MainFunctions.sharredPrefs!
+                      .setString("codeLang", localeValue);
                   Get.back();
                 },
                 style: ButtonStyle(
@@ -105,14 +106,14 @@ class HomeScreenController extends GetxController {
             //     },
             //     child: Text("francais".tr)),
             const SizedBox(
-              height: 10,
+              height: 5,
             ),
- Padding(
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: TextButton(
                 onPressed: () {
                   // Get.toNamed("/SignUp");
-                    localeValue = "en";
+                  localeValue = "en";
                   Get.updateLocale(const Locale("en"));
                   MainFunctions.sharredPrefs!
                       .setString("codeLang", localeValue);
@@ -166,7 +167,69 @@ class HomeScreenController extends GetxController {
                 ),
               ),
             ),
+const SizedBox(
+              height: 5,
+            ),
 
+ Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: TextButton(
+                onPressed: () {
+                  // Get.toNamed("/SignUp");
+                  localeValue = "ar";
+                  Get.updateLocale(const Locale("ar"));
+                  MainFunctions.sharredPrefs!
+                      .setString("codeLang", localeValue);
+                  Get.back();
+                },
+                style: ButtonStyle(
+                    foregroundColor: MaterialStateProperty.all(
+                      AppColors.kPrimary2,
+                    ),
+                    // backgroundColor: MaterialStateProperty.all(
+                    //   AppColors.kPrimary2,
+                    // ),
+                    // textStyle: MaterialStatePropertyAll(),
+                    textStyle: MaterialStateProperty.resolveWith((states) {
+                      Color textColor = states.contains(MaterialState.disabled)
+                          ? AppColors.kPrimary2
+                          : AppColors.kLine;
+                      return TextStyle(fontSize: 18, color: textColor);
+                    }),
+                    overlayColor: MaterialStateColor.resolveWith(
+                        (states) => AppColors.kPrimary2.withOpacity(0.2)),
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(100),
+                        side: const BorderSide(
+                          color: AppColors.kPrimary2,
+                        )))),
+                child: Card(
+                  elevation: 0,
+                  color: Colors.transparent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(100),
+                  ),
+                  child: Container(
+                    height: 35,
+                    alignment: Alignment.center,
+                    width: double.maxFinite,
+                    decoration: BoxDecoration(
+                      // border: Border.all(color: AppColors.kPrimary),
+                      borderRadius: BorderRadius.circular(
+                        20,
+                      ),
+                    ),
+                    child: Text(
+                      "arab".tr,
+                      style: const TextStyle(
+                          color: AppColors.kPrimary2,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                ),
+              ),
+            ),
 
             // TextButton(
             //     onPressed: () {
