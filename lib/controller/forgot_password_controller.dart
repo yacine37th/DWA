@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../main.dart';
+import '../theme/main_colors.dart';
 
 class ForgotPasswordController extends GetxController {
   final emailFormKey = GlobalKey<FormState>();
@@ -35,8 +36,11 @@ class ForgotPasswordController extends GetxController {
   sendEmail() async {
     Get.defaultDialog(
         barrierDismissible: false,
-        title: "يرجى الانتظار",
-        content: const CircularProgressIndicator());
+        title: "Please wait",
+        content: const CircularProgressIndicator(
+                    color: AppColors.kPrimary2,
+
+        ));
 
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: fgpEmail!);

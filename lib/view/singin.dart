@@ -14,6 +14,13 @@ class SignIn extends StatelessWidget {
   Widget build(BuildContext context) {
     SignInController signInController = Get.find();
     return Scaffold(
+      appBar: AppBar(
+        leading: Row(
+          children: [
+            
+          ],
+        ),
+      ),
       // backgroundColor: AppColors.kBackground,
       body: SafeArea(
         child: ListView(
@@ -180,7 +187,8 @@ class SignIn extends StatelessWidget {
                                       .withOpacity(0.2)),
                             ),
                             child: Text(
-                              "Forgot Password ?",
+                              // "Forgot Password ?"
+                              "forgotYourPassword?".tr,
                               style: TextStyle(
                                   color: AppColors.kPrimary2, fontSize: 14),
                             ),
@@ -190,7 +198,7 @@ class SignIn extends StatelessWidget {
                       const SizedBox(height: 5),
                       TextButton(
                         onPressed: () {
-                           if (signInController.formKey.currentState!
+                          if (signInController.formKey.currentState!
                               .validate()) {
                             signInController.formKey.currentState!.save();
                             signInController.signInAUser();

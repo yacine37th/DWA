@@ -5,10 +5,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
 
 import 'functions/functions.dart';
 import 'middleware/auth_middleware.dart';
 import 'model/user_model.dart';
+import 'services/Languages .dart';
 import 'utils/forgot_password_bindings.dart';
 import 'utils/signup_bindings.dart';
 import 'utils/singin_bindings.dart';
@@ -23,6 +27,7 @@ UserModel currentUserInfos = UserModel(uID: "", email: "", name: "");
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  MainFunctions.sharredPrefs = await SharedPreferences.getInstance();
   currentUser = FirebaseAuth.instance.currentUser;
   if (currentUser != null) {
     await MainFunctions.getcurrentUserInfos();
@@ -38,9 +43,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       title: 'DWA',
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.cupertino,
+      translations: Languages(),
+      supportedLocales: const [Locale('en'), Locale('fr')],
+      locale: Languages.initLang(),
+
       // theme: Themes.customLightTheme,
       // textDirection: MainFunctions.textDirection,
       getPages: [
@@ -50,11 +64,11 @@ class MyApp extends StatelessWidget {
           binding: SignUpBinding(),
         ),
         GetPage(
-            name: "/SignIn",
-            page: () => const SignIn(),
-            binding: SignInBinding(),
-            // middlewares: [AuthMiddleware()]
-            ),
+          name: "/SignIn",
+          page: () => const SignIn(),
+          binding: SignInBinding(),
+          // middlewares: [AuthMiddleware()]
+        ),
         GetPage(
             name: "/EmailVerification",
             page: () => const EmailVerification(),
@@ -64,7 +78,7 @@ class MyApp extends StatelessWidget {
           page: () => const ForgotPassword(),
           binding: ForgotPasswordBinding(),
         ),
-         GetPage(
+        GetPage(
           name: "/",
           page: () => const Home(),
           // binding: HomeScreenBindings(),

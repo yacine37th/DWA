@@ -179,4 +179,44 @@ class SignInController extends GetxController {
       );
     }
   }
+
+
+
+
+
+  String localeValue = MainFunctions.sharredPrefs!.getString("codeLang") ??
+      Get.deviceLocale!.languageCode;
+
+       setLanguage() {
+    Get.defaultDialog(
+        title: "language".tr,
+        content: Column(
+          children: [
+            TextButton(
+                onPressed: () {
+                  localeValue = "fr";
+                  Get.updateLocale(const Locale("fr"));
+                  MainFunctions.sharredPrefs!
+                      .setString("codeLang", localeValue);
+                  Get.back();
+                },
+                child: Text("francais".tr)),
+            const SizedBox(
+              height: 10,
+            ),
+            TextButton(
+                onPressed: () {
+                  localeValue = "en";
+                  Get.updateLocale(const Locale("en"));
+                  MainFunctions.sharredPrefs!
+                      .setString("codeLang", localeValue);
+                  Get.back();
+                },
+                child: Text("english".tr)),
+          ],
+        ));
+
+    update();
+  }
+
 }
