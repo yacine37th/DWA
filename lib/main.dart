@@ -1,5 +1,6 @@
 import 'package:dwa/firebase_options.dart';
 import 'package:dwa/view/home.dart';
+import 'package:dwa/view/home_screen.dart';
 import 'package:dwa/view/singin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,6 +15,7 @@ import 'middleware/auth_middleware.dart';
 import 'model/user_model.dart';
 import 'services/Languages .dart';
 import 'utils/forgot_password_bindings.dart';
+import 'utils/home_screen_bindings.dart';
 import 'utils/signup_bindings.dart';
 import 'utils/singin_bindings.dart';
 import 'utils/verify_email_bindings.dart';
@@ -80,8 +82,8 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: "/",
-          page: () => const Home(),
-          // binding: HomeScreenBindings(),
+          page: () => const HomeScreen(),
+          binding: HomeScreenBindings(),
         ),
         // GetPage(
         //     name: "/OnboardingView",
