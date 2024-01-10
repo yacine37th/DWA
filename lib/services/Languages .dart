@@ -323,7 +323,7 @@ class Languages implements Translations {
           "passwordsNoMatch": "Les mots de passe ne correspondent pas",
           "enterAnEmail": "Entrez un e-mail",
           "enterValidEmail": "entrez une adresse e-mail valide",
-          "enterPassword": "s'il vous plait entrez votre mot de passe",
+          "enterPassword": "S'il vous plait entrez votre mot de passe",
           "password<8":
               "le mot de passe ne peut pas être inférieur à 8 lettres",
           "password>20": "le mot de passe ne peut pas dépasser 20 lettres",
@@ -413,12 +413,6 @@ class Languages implements Translations {
           "roleUsed":
               "Impossible de supprimer un rôle attribué à un utilisateur",
 
-          //CREATE NEW ROLE///////////////
-
-          //ROLE MANAGEMENT/////////////////
-          "roleManagement": "Gestion des rôles",
-          "roles": "Les rôles",
-          "permissionsManagement": "Gestion des autorisations",
           //ROLE MANAGEMENT/////////////////
           "users": "Utilisateurs",
           "delete": "Supprimer",

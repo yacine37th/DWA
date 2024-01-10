@@ -32,7 +32,7 @@ class SignIn extends StatelessWidget {
                       const SizedBox(height: 60),
                       Center(child: Image.asset(AppAssets.kAppLogo)),
                       // const SizedBox(height: 30),
-                      const Text('Sign In',
+                       Text('login'.tr,
                           style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
@@ -59,18 +59,18 @@ class SignIn extends StatelessWidget {
                         },
                         validator: (val) {
                           if (val!.isEmpty) {
-                            return "Please fill Your Email ";
+                            return "enterAnEmail".tr;
                           }
                           if (!RegExp(
                                   r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
                               .hasMatch(val)) {
-                            return "Please fill With a valid Email Address";
+                            return "enterValidEmail".tr;
                           }
                           return null;
                         },
                         initialValue: signInController.userEmailAddress,
                         decoration: InputDecoration(
-                          hintText: 'Your Email',
+                          hintText: 'email'.tr,
                           errorMaxLines: 2,
                           prefixIcon: Icon(Icons.email, color: AppColors.kLine),
                           contentPadding: const EdgeInsets.symmetric(
@@ -115,19 +115,19 @@ class SignIn extends StatelessWidget {
                           },
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return "Please fill in the password";
+                              return "enterPassword".tr;
                             }
                             if (value.length > 20) {
-                              return "The password cannot exceed 20 characters";
+                              return "password>20".tr;
                             }
                             if (value.length < 8) {
-                              return "The password cannot contain less than 8 characters";
+                              return "password<8".tr;
                             }
                             return null;
                           },
                           initialValue: signInController.userPassword,
                           decoration: InputDecoration(
-                            hintText: 'Your Password',
+                            hintText: 'password'.tr,
                             errorMaxLines: 2,
                             prefixIcon:
                                 Icon(Icons.lock, color: AppColors.kLine),
@@ -228,9 +228,9 @@ class SignIn extends StatelessWidget {
                               // color: AppColors.kPrimary,
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            child: const Text(
-                              "Sign In",
-                              style: TextStyle(
+                            child:  Text(
+                              "login".tr,
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 19,
                               ),
@@ -286,9 +286,9 @@ class SignIn extends StatelessWidget {
                                 20,
                               ),
                             ),
-                            child: const Text(
-                              "Sign Up",
-                              style: TextStyle(
+                            child:  Text(
+                              "createAccount".tr,
+                              style: const TextStyle(
                                   color: AppColors.kPrimary2,
                                   fontSize: 19,
                                   fontWeight: FontWeight.w500),
