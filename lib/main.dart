@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.cupertino,
       translations: Languages(),
-      supportedLocales: const [Locale('en'), Locale('fr')],
+      supportedLocales: const [Locale('en'), Locale('fr') , Locale('ar')],
       locale: Languages.initLang(),
 
       // theme: Themes.customLightTheme,
