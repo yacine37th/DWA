@@ -138,8 +138,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 const EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
             horizontalTitleGap: 1,
             dense: true,
-            title: const Text(
-              "Change Language",
+            title:  Text(
+              "language".tr,
               style: TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.w300,
@@ -171,14 +171,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 const EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
             horizontalTitleGap: 1,
             dense: true,
-            title: const Text(
-              "Sign Out",
-              style: TextStyle(
+            title:  Text(
+              "signOut".tr,
+              style:const TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.w300,
                   fontFamily: 'Cairo'),
             ),
-            leading: Icon(Icons.logout),
+            leading:const Icon(Icons.logout),
             onTap: () {
               homeController.signOutOfAnExistingAccount();
             },
@@ -247,7 +247,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: LineIcons.home,
                     iconActiveColor: Colors.white,
                     active: true,
-                    text: 'Home',
+                    text: 'Home'.tr,
                   ),
                   GButton(
                     icon: LineIcons.heart,

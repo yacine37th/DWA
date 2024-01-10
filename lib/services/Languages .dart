@@ -17,7 +17,7 @@ class Languages implements Translations {
           "darkTheme": "Dark Theme",
 
 ////////////
-
+"Home" : "Home",
           "language": "Language",
 
           "english": "English",
@@ -317,6 +317,7 @@ class Languages implements Translations {
           "plzTheme": "Veuillez choisir un thème",
           "lightTheme": "Thème clair",
           "darkTheme": "Thème sombre",
+"Home" : "Home",
 
 ////////////
           "language": "Langue",
@@ -637,6 +638,7 @@ class Languages implements Translations {
           "darkTheme": "سمة داكنة",
 
           ////////////
+"Home" : "الرئيسية",
 
           "language": "اللغة",
 

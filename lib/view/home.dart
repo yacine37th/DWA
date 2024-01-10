@@ -62,7 +62,7 @@ class Home extends StatelessWidget {
             )),
       ),
       body: Center(
-        child: Text("enterSMS".tr),
+        child: Text("Home".tr),
       ),
     );
   }
