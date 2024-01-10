@@ -15,12 +15,12 @@ class SignUp extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-            //   bottom: PreferredSize(
-            // preferredSize: Size(0, 0),
-            // child: Container(
-            //   color: AppColors.kPrimary2,
-            //   height: 1,
-            // )),
+        //   bottom: PreferredSize(
+        // preferredSize: Size(0, 0),
+        // child: Container(
+        //   color: AppColors.kPrimary2,
+        //   height: 1,
+        // )),
         backgroundColor: AppColors.transparentColor,
         elevation: 0,
         leading: IconButton(
@@ -58,8 +58,8 @@ class SignUp extends StatelessWidget {
                       // const SizedBox(height: 10),
                       Center(child: Image.asset(AppAssets.kAppLogo)),
                       // const SizedBox(height: 30),
-                      const Text('Sign Up',
-                          style: TextStyle(
+                      Text("createAccount".tr,
+                          style: const TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
                               color: Colors.black)),
@@ -77,16 +77,17 @@ class SignUp extends StatelessWidget {
                         },
                         validator: (val) {
                           if (val!.isEmpty) {
-                            return "Please fill Your Username";
+                            return "fillYourUserName".tr;
                           }
                           if (!RegExp(r'^[a-zA-Z]+$').hasMatch(val)) {
-                            return "Please fill With a valid Username";
+                            return "usernameValidator".tr;
                           }
+                          // usernameValidator
                           return null;
                         },
                         initialValue: signUpController.userName,
                         decoration: InputDecoration(
-                          hintText: 'Your Username',
+                          hintText: 'userName'.tr,
                           errorMaxLines: 2,
                           prefixIcon:
                               Icon(Icons.person, color: AppColors.kLine),
@@ -131,18 +132,18 @@ class SignUp extends StatelessWidget {
                         },
                         validator: (val) {
                           if (val!.isEmpty) {
-                            return "Please fill Your Email ";
+                            return "enterAnEmail".tr;
                           }
                           if (!RegExp(
                                   r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
                               .hasMatch(val)) {
-                            return "Please fill With a valid Email Address";
+                            return "enterValidEmail".tr;
                           }
                           return null;
                         },
                         initialValue: signUpController.userEmailAddress,
                         decoration: InputDecoration(
-                          hintText: 'Your Email',
+                          hintText: 'email'.tr,
                           errorMaxLines: 2,
                           prefixIcon: Icon(Icons.email, color: AppColors.kLine),
                           contentPadding: const EdgeInsets.symmetric(
@@ -187,19 +188,19 @@ class SignUp extends StatelessWidget {
                           },
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return "Please fill in the password";
+                              return "enterNewPassword".tr;
                             }
                             if (value.length > 20) {
-                              return "The password cannot exceed 20 characters";
+                              return "password>20".tr;
                             }
                             if (value.length < 8) {
-                              return "The password cannot contain less than 8 characters";
+                              return "password<8".tr;
                             }
                             return null;
                           },
                           initialValue: signUpController.userPassword,
                           decoration: InputDecoration(
-                            hintText: 'Your Password',
+                            hintText: 'password'.tr,
                             errorMaxLines: 2,
                             prefixIcon:
                                 Icon(Icons.lock, color: AppColors.kLine),
@@ -243,7 +244,11 @@ class SignUp extends StatelessWidget {
                       const SizedBox(height: 30),
                       TextButton(
                         onPressed: () {
-                          signUpController.createNewUser();
+                          if (signUpController.formKey.currentState!
+                              .validate()) {
+                            signUpController.formKey.currentState!.save();
+                            signUpController.createNewUser();
+                          }
                         },
                         style: ButtonStyle(
                             foregroundColor: MaterialStateProperty.all(
@@ -276,8 +281,8 @@ class SignUp extends StatelessWidget {
                               borderRadius: BorderRadius.circular(30),
                             ),
                             child: Text(
-                              "Sign Up",
-                              style: TextStyle(
+                              "createAccount".tr,
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 19,
                               ),

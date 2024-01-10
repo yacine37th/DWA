@@ -23,16 +23,26 @@ class Languages implements Translations {
           "english": "English",
           "francais": "French",
           "arab": "Arabic",
-
+          "sendingEmailMessage":
+              "An email has been sent to change the password to your account: ",
+            "DONE" : "DONE",
           "continue": "Continue",
           "noConnection": "There is no internet Connection",
           "login": "Login",
           "forgotYourPassword?": "Forgot your password ?",
+          "forgotPasswordMessage":
+              "Enter your email, and we will send you a link to enter a new password.",
           "password": "Password",
           "resetPassword": "Reset password",
           "weWillSendUReset": "No worries we will send you reset instructions.",
           "send": "Send",
           "sendEmail": "Send email",
+          "SendLink": "Send link",
+          "EmailVerification": "Email Verification",
+          "EmailVerificationMessage":
+              "A verification email has been sent to your email address",
+          "ResendEmail": "Resend",
+
           "sendSMSVerification": "Send SMS Verification",
           "enterNewPassword": "Please enter your new password",
           "passwordsNoMatch": "Passwords do not match",
@@ -63,6 +73,7 @@ class Languages implements Translations {
           "usernameValidator":
               "The username field must be at least 3 characters.",
           "usernameUpdated": "Username updated successfully",
+          "fillYourUserName": "Please fill Your Username",
           "usernameTaken": "The username has already been taken.",
           "ownUsername": "You didn't change your information",
           'weakPassword': "The password provided is too weak.",
@@ -308,16 +319,29 @@ class Languages implements Translations {
           "english": "Anglais",
           "francais": "Français",
           "arab": "Arabe",
+          "sendingEmailMessage":
+              "Un email a été envoyé pour changer le mot de passe de votre compte :",
+
           "continue": "Continuez",
           "noConnection": "Il n'y a pas de connexion Internet",
           "login": "Connexion",
           "forgotYourPassword?": "Mot de passe oublié ?",
+          "forgotPasswordMessage":
+              "Entrez votre email et nous vous enverrons un lien pour saisir un nouveau mot de passe.",
+
           "password": "Mot de passe",
           "resetPassword": "Réinitialiser le mot de passe",
           "weWillSendUReset":
               "Pas de soucis, nous vous enverrons des instructions de réinitialisation.",
           "send": "Envoyer",
           "sendEmail": "Envoyer un e-mail",
+          "EmailVerification": "Vérification de l'E-mail",
+          "EmailVerificationMessage":
+              "Un e-mail de vérification a été envoyé à votre adresse e-mail",
+          "ResendEmail": "Renvoyer",
+          "SendLink": "Envoyer un lien",
+
+          "userName": "Nom d'utilisateur",
           "sendSMSVerification": "Envoyer la vérification par SMS",
           "enterNewPassword": "Veuillez entrer votre nouveau mot de passe",
           "passwordsNoMatch": "Les mots de passe ne correspondent pas",
@@ -339,7 +363,6 @@ class Languages implements Translations {
           "phoneNumberUpdated": "Numéro de téléphone mis à jour avec succès",
 
           "enterValidPhoneNumber": "entrez un numero de téléphone valide", //
-          "userName": "Username",
           "firstName": "Prénom",
           "lastName": "Nom de famille",
           "birthday": "Date de naissance",
@@ -349,6 +372,7 @@ class Languages implements Translations {
 
           "usernameValidator":
               "Le champ du nom d'utilisateur doit contenir au moins 3 caractères.",
+          "fillYourUserName": "Veuillez remplir votre nom d'utilisateur",
           "usernameUpdated": "Nom d'utilisateur mis à jour avec succès",
           "usernameTaken": "Le nom d'utilisateur est déjà pris.",
           "ownUsername": "Vous n'avez pas changé votre informations",
@@ -610,16 +634,27 @@ class Languages implements Translations {
           "english": "الإنجليزية",
           "francais": "الفرنسية",
           "arab": "العربية",
+          "sendingEmailMessage":
+              "تم إرسال بريد إلكتروني لتغيير كلمة مرور حسابك:",
+
           "continue": "متابعة",
           "noConnection": "لا يوجد اتصال بالإنترنت",
           "login": "تسجيل الدخول",
           "forgotYourPassword?": "هل نسيت كلمة المرور؟",
+          "forgotPasswordMessage":
+              "أدخل بريدك الإلكتروني، وسنرسل لك رابطًا لإدخال كلمة المرور الجديدة.",
           "password": "كلمة المرور",
           "resetPassword": "إعادة تعيين كلمة المرور",
           "weWillSendUReset": "لا داعي للقلق، سنرسل لك تعليمات إعادة تعيين.",
           "send": "إرسال",
           "sendEmail": "إرسال بريد إلكتروني",
           "sendSMSVerification": "إرسال التحقق عبر الرسائل القصيرة",
+          "EmailVerification": "تأكيد البريد الالكتروني",
+          "EmailVerificationMessage":
+              "تم إرسال بريد إلكتروني للتحقق إلى عنوان بريدك الإلكتروني",
+          "ResendEmail": "إعادة إرسال",
+          "SendLink": "أرسل الرابط",
+
           "enterNewPassword": "الرجاء إدخال كلمة المرور الجديدة",
           "passwordsNoMatch": "كلمات المرور غير متطابقة",
           "enterAnEmail": "الرجاء إدخال عنوان البريد الإلكتروني",
@@ -649,6 +684,7 @@ class Languages implements Translations {
 
           "usernameValidator":
               "يجب أن يحتوي حقل اسم المستخدم على 3 أحرف على الأقل.",
+          "fillYourUserName": "يرجى ملء اسم المستخدم الخاص بك",
           "usernameUpdated": "تم تحديث اسم المستخدم بنجاح",
           "usernameTaken": "اسم المستخدم تم استخدامه بالفعل.",
           "ownUsername": "لم تقم بتغيير معلوماتك",

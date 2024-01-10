@@ -20,13 +20,13 @@ class EmailVerification extends StatelessWidget {
             onPressed: () {
               navigator!.pop();
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_outlined,
               color: AppColors.kPrimary2,
             )),
-        title: const Text(
-          "Email Verification",
-          style: TextStyle(color: AppColors.kPrimary2),
+        title:  Text(
+          "EmailVerification".tr,
+          style: const TextStyle(color: AppColors.kPrimary2),
         ),
       ),
       body: Padding(
@@ -42,9 +42,9 @@ class EmailVerification extends StatelessWidget {
               ),
               //  ),
               // const SizedBox(height: 20),
-              const Text(
-                  "A verification email has been sent to your email address",
-                  style: TextStyle(
+               Text(
+                  "EmailVerificationMessage".tr,
+                  style:const TextStyle(
                     fontSize: 20,
                   ),
                   textAlign: TextAlign.center),
@@ -66,7 +66,7 @@ class EmailVerification extends StatelessWidget {
                         AppColors.kPrimary2Onpress.withOpacity(0.2)),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(100),
-                        side: BorderSide(
+                        side:const BorderSide(
                           color: AppColors.kPrimary2,
                         )))),
                 child: Card(
@@ -84,8 +84,8 @@ class EmailVerification extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                     ),
                     child: Text(
-                      "Resend",
-                      style: TextStyle(
+                      "ResendEmail".tr,
+                      style:const TextStyle(
                         color: Colors.white,
                         fontSize: 19,
                       ),
