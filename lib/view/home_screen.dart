@@ -145,9 +145,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.w300,
                   fontFamily: 'Cairo'),
             ),
-            leading: Icon(Icons.language),
+            leading:const Icon(Icons.language),
             onTap: () {
-                                      homeScreenController.setLanguage();
+              homeScreenController.setLanguage();
 
               // Get.defaultDialog(
               //     title: "Languages".tr,
