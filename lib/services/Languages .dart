@@ -25,8 +25,13 @@ class Languages implements Translations {
           "arab": "Arabic",
           "sendingEmailMessage":
               "An email has been sent to change the password to your account: ",
-            "DONE" : "DONE",
+          "DONE": "DONE",
           "continue": "Continue",
+          "email-already-in-use": "Email Already used",
+          "user-not-found": "User Not Found",
+          "wrong-password": "Wrong Password please try again",
+          "AccountConfirmed": "Account confirmed, log in",
+
           "noConnection": "There is no internet Connection",
           "login": "Login",
           "forgotYourPassword?": "Forgot your password ?",
@@ -328,6 +333,10 @@ class Languages implements Translations {
           "forgotYourPassword?": "Mot de passe oublié ?",
           "forgotPasswordMessage":
               "Entrez votre email et nous vous enverrons un lien pour saisir un nouveau mot de passe.",
+          "email-already-in-use": "Adresse e-Mail déjà utilisée",
+          "user-not-found": "Utilisateur non trouvé",
+          "wrong-password": "Mot de passe incorrect, veuillez réessayer",
+          "AccountConfirmed": "Compte confirmé, connectez-vous",
 
           "password": "Mot de passe",
           "resetPassword": "Réinitialiser le mot de passe",
@@ -643,6 +652,11 @@ class Languages implements Translations {
           "forgotYourPassword?": "هل نسيت كلمة المرور؟",
           "forgotPasswordMessage":
               "أدخل بريدك الإلكتروني، وسنرسل لك رابطًا لإدخال كلمة المرور الجديدة.",
+          "email-already-in-use": "البريد الإلكتروني مستخدم بالفعل",
+          "user-not-found": "لم يتم العثور على المستعمل",
+          "wrong-password": "كلمة المرور غير صحيحة، يرجى إعادة كتابتها",
+          "AccountConfirmed": "تم تأكيد الحساب، قم بتسجيل الدخول",
+
           "password": "كلمة المرور",
           "resetPassword": "إعادة تعيين كلمة المرور",
           "weWillSendUReset": "لا داعي للقلق، سنرسل لك تعليمات إعادة تعيين.",

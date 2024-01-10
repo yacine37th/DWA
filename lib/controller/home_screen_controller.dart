@@ -167,11 +167,11 @@ class HomeScreenController extends GetxController {
                 ),
               ),
             ),
-const SizedBox(
+            const SizedBox(
               height: 5,
             ),
 
- Padding(
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: TextButton(
                 onPressed: () {

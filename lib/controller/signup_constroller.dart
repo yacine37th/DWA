@@ -20,7 +20,7 @@ class SignUpController extends GetxController {
 
   createNewUser() async {
     Get.defaultDialog(
-        title: "Please wait",
+        title: "pleaseWait".tr,
         content: const CircularProgressIndicator(
           color: AppColors.kPrimary2,
         ));
@@ -58,7 +58,7 @@ class SignUpController extends GetxController {
         );
       } else if (e.code == 'email-already-in-use') {
         Get.defaultDialog(
-          title: "There is an account using this email address",
+          title: "email-already-in-use".tr,
           content: const Icon(
             Icons.report_problem,
             color: Colors.red,

@@ -24,7 +24,7 @@ class SignInController extends GetxController {
           return Future.value();
         },
         barrierDismissible: false,
-        title: "Please wait",
+        title: "pleaseWait".tr,
         content: const CircularProgressIndicator(
           color: AppColors.kPrimary2,
         ));
@@ -107,7 +107,7 @@ class SignInController extends GetxController {
       print(e);
       if (e.code == 'user-not-found') {
         Get.defaultDialog(
-          title: "Account not found",
+          title: "user-not-found".tr,
           content: const Icon(
             Icons.report_problem,
             color: Colors.red,
@@ -118,7 +118,7 @@ class SignInController extends GetxController {
         );
       } else if (e.code == 'wrong-password') {
         Get.defaultDialog(
-          title: "Invalid Password please try again",
+          title: "wrong-password".tr,
           content: const Icon(
             Icons.report_problem,
             color: Colors.red,
