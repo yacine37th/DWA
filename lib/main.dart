@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
           name: "/SignIn",
           page: () => const SignIn(),
           binding: SignInBinding(),
-          // middlewares: [AuthMiddleware()]
+          middlewares: [AuthMiddleware()]
         ),
         GetPage(
             name: "/EmailVerification",

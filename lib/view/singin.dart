@@ -14,13 +14,7 @@ class SignIn extends StatelessWidget {
   Widget build(BuildContext context) {
     SignInController signInController = Get.find();
     return Scaffold(
-      appBar: AppBar(
-        leading: Row(
-          children: [
-            
-          ],
-        ),
-      ),
+  
       // backgroundColor: AppColors.kBackground,
       body: SafeArea(
         child: ListView(
