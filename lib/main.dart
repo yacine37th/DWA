@@ -5,6 +5,7 @@ import 'package:dwa/view/singin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -157,8 +158,8 @@ class MyApp extends StatelessWidget {
         //   binding: OrderBookBinding(),
         // ),
       ],
-      initialRoute: "/SignIn",
-      // home: CheckoutPageView()
+      initialRoute: "/",
+      // home: FabAnimation()
       // home:GoogleMAPVIEW():
       //   food: Food(
       //       foodImageName:
@@ -171,3 +172,82 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+
+
+// class FabAnimation extends StatefulWidget {
+//   const FabAnimation({Key? key}) : super(key: key);
+
+//   @override
+//   State<FabAnimation> createState() => _FabAnimationState();
+// }
+
+// class _FabAnimationState extends State<FabAnimation>
+//     with SingleTickerProviderStateMixin {
+//   late ScrollController _hideButtonController;
+
+//   late final AnimationController _controller = AnimationController(
+//     duration: const Duration(milliseconds: 10),
+//     vsync: this,
+//   )
+//     ..addListener(() {
+//       setState(() {});
+//     })
+//     ..forward();//first time load
+//   late final Animation<Offset> _offsetAnimation = Tween<Offset>(
+//     end: Offset.zero,
+//     begin: const Offset(0, 5.0),
+//   ).animate(CurvedAnimation(
+//     parent: _controller,
+//     curve: Curves.linear,
+//   ));
+
+//   @override
+//   void dispose() {
+//     _controller.dispose();
+//     super.dispose();
+//   }
+
+//   @override
+//   initState() {
+//     super.initState();
+//     _hideButtonController = ScrollController();
+//     _hideButtonController.addListener(() {
+//       //add more logic for your case
+//       if (_hideButtonController.position.userScrollDirection ==
+//           ScrollDirection.reverse) {
+//         if (_offsetAnimation.isCompleted) _controller.reverse();
+//       }
+//       if (_hideButtonController.position.userScrollDirection ==
+//           ScrollDirection.forward) {
+//         _controller.forward();
+//       }
+//     });
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       floatingActionButton: SlideTransition(
+//           position: _offsetAnimation,
+//           child: FloatingActionButton(
+//             backgroundColor: Colors.blue,
+//             onPressed: () {},
+//             child: Icon(Icons.arrow_upward),
+//           )),
+//       body: SingleChildScrollView(
+//         physics: BouncingScrollPhysics(),
+//         controller: _hideButtonController,
+//         child: Column(
+//           children: List.generate(
+//             33,
+//             (index) => ListTile(
+//               tileColor: index.isEven ? Colors.deepPurple : Colors.blue,
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

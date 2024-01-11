@@ -53,7 +53,7 @@ class Home extends StatelessWidget {
         //       ],
         //   ),
         // ],
-     
+
         bottom: PreferredSize(
             preferredSize: Size(0, 0),
             child: Container(
@@ -63,6 +63,16 @@ class Home extends StatelessWidget {
       ),
       body: Center(
         child: Text("Home".tr),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColors.kPrimary2,
+        // foregroundColor: ,
+        // mini: true,
+        onPressed: () {
+          // Respond to button press
+          Get.toNamed("/SignIn");
+        },
+        child: Icon(Icons.add),
       ),
     );
   }

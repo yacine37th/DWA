@@ -44,16 +44,21 @@ class ProfilePicture extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
         child: ClipOval(
-      child: Container(
-        alignment: Alignment.center,
-        color:
-            MainFunctions.generatePresizedColor(currentUserInfos.name!.length),
-        child: Text(
-          currentUserInfos.name![0].toUpperCase(),
-          style: const TextStyle(fontSize: 27),
-        ),
-      ),
-    ));
+            child: currentUser != null
+                ? Container(
+                    alignment: Alignment.center,
+                    color: MainFunctions.generatePresizedColor(
+                        currentUserInfos.name!.length),
+                    child: Text(
+                      currentUserInfos.name![0].toUpperCase(),
+                      style: const TextStyle(fontSize: 27),
+                    ),
+                  )
+                : Container(
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      "assets/images/login_profil_picture.png",
+                    ),
+                  )));
   }
 }
-

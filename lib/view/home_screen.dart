@@ -62,18 +62,22 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(height: 20),
           Padding(
             padding: EdgeInsets.fromLTRB(5, 20, 5, 5),
-            child: Row(children: [
-              Container(
-                width: 50,
-                height: 50,
-                child: ProfilePicture(),
-              ),
-              const SizedBox(width: 5),
-              Text(
-                "${currentUserInfos.name!} ",
-                style: TextStyle(color: Colors.white),
-              ),
-            ]),
+            child: Row(
+                mainAxisAlignment: currentUser != null
+                    ? MainAxisAlignment.start
+                    : MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 50,
+                    height: 50,
+                    child: ProfilePicture(),
+                  ),
+                  const SizedBox(width: 5),
+                 currentUser != null? Text(
+                    "${currentUserInfos.name!} ",
+                    style: TextStyle(color: Colors.white),
+                  ):const Text("") ,
+                ]),
           ),
           const Divider(
             color: Colors.white,
@@ -162,7 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 15,
           ),
 
-          ListTile(
+      currentUser!=null ?     ListTile(
             tileColor: AppColors.transparentColor,
             textColor: AppColors.whiteColor,
             iconColor: AppColors.whiteColor,
@@ -172,7 +176,7 @@ class _HomeScreenState extends State<HomeScreen> {
             horizontalTitleGap: 1,
             dense: true,
             title: Text(
-              "signOut".tr,
+              "signOut".tr, 
               style: const TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.w300,
@@ -182,7 +186,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onTap: () {
               homeController.signOutOfAnExistingAccount();
             },
-          ),
+          ) : const Text(""),
           const Spacer(),
         ]),
       ),
