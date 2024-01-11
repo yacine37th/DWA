@@ -61,24 +61,29 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(children: [
           const SizedBox(height: 20),
           Padding(
-            padding: EdgeInsets.fromLTRB(5, 20, 5, 5),
-            child: Row(
-                mainAxisAlignment: currentUser != null
-                    ? MainAxisAlignment.start
-                    : MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 50,
-                    height: 50,
-                    child: ProfilePicture(),
-                  ),
-                  const SizedBox(width: 5),
-                 currentUser != null? Text(
-                    "${currentUserInfos.name!} ",
-                    style: TextStyle(color: Colors.white),
-                  ):const Text("") ,
-                ]),
-          ),
+              padding: EdgeInsets.fromLTRB(5, 20, 5, 5),
+              child: GetBuilder<HomeScreenController>(
+                builder: (contx) => Row(
+                    mainAxisAlignment: currentUser != null
+                        ? MainAxisAlignment.start
+                        : MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 50,
+                        height: 50,
+                        child: ProfilePicture(),
+                      ),
+                      const SizedBox(width: 5),
+                      GetBuilder<HomeScreenController>(
+                        builder: (contx) => currentUser != null
+                            ? Text(
+                                "${currentUserInfos.name!} ",
+                                style: TextStyle(color: Colors.white),
+                              )
+                            : const Text(""),
+                      )
+                    ]),
+              )),
           const Divider(
             color: Colors.white,
           ),
@@ -166,27 +171,32 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 15,
           ),
 
-      currentUser!=null ?     ListTile(
-            tileColor: AppColors.transparentColor,
-            textColor: AppColors.whiteColor,
-            iconColor: AppColors.whiteColor,
-            visualDensity: VisualDensity(horizontal: -4, vertical: -4),
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
-            horizontalTitleGap: 1,
-            dense: true,
-            title: Text(
-              "signOut".tr, 
-              style: const TextStyle(
-                  fontSize: 19,
-                  fontWeight: FontWeight.w300,
-                  fontFamily: 'Cairo'),
-            ),
-            leading: const Icon(Icons.logout),
-            onTap: () {
-              homeController.signOutOfAnExistingAccount();
-            },
-          ) : const Text(""),
+          GetBuilder<HomeScreenController>(
+            builder: (contx) => currentUser != null
+                ? ListTile(
+                    tileColor: AppColors.transparentColor,
+                    textColor: AppColors.whiteColor,
+                    iconColor: AppColors.whiteColor,
+                    visualDensity: VisualDensity(horizontal: -4, vertical: -4),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 0.0, horizontal: 16.0),
+                    horizontalTitleGap: 1,
+                    dense: true,
+                    title: Text(
+                      "signOut".tr,
+                      style: const TextStyle(
+                          fontSize: 19,
+                          fontWeight: FontWeight.w300,
+                          fontFamily: 'Cairo'),
+                    ),
+                    leading: const Icon(Icons.logout),
+                    onTap: () {
+                      homeController.signOutOfAnExistingAccount();
+                      Navigator.pop(context);
+                    },
+                  )
+                : const Text(""),
+          ),
           const Spacer(),
         ]),
       ),

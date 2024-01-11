@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../main.dart';
+import '../model/user_model.dart';
 
 class HomeController extends GetxController {
   
@@ -46,7 +47,9 @@ class HomeController extends GetxController {
   signOutOfAnExistingAccount() async {
     await FirebaseAuth.instance.signOut().then((value) {
       currentUser = null;
-      Get.offAllNamed("/SignIn");
+      currentUserInfos = UserModel(uID: "", email: "", name: "");
+      update();
+      // Get.offAllNamed("/SignIn");
     });
   }
 }
