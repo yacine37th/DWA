@@ -213,10 +213,10 @@ class AddMedecine extends StatelessWidget {
 
                     const SizedBox(height: 20),
 
-                     TextButton(
+                    TextButton(
                       onPressed: () {
                         // Get.toNamed("/SignUp");
-                       addMedecineController.pickimage();
+                        addMedecineController.pickimage();
                       },
                       style: ButtonStyle(
                           foregroundColor: MaterialStateProperty.all(
@@ -235,10 +235,9 @@ class AddMedecine extends StatelessWidget {
                             return TextStyle(fontSize: 18, color: textColor);
                           }),
                           overlayColor: MaterialStateColor.resolveWith(
-                              (states) =>
-                                  AppColors.kPrimary2.withOpacity(0.2)),
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
+                              (states) => AppColors.kPrimary2.withOpacity(0.2)),
+                          shape:
+                              MaterialStateProperty.all(RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(100),
                                   side: const BorderSide(
                                     color: AppColors.kPrimary2,
@@ -259,7 +258,7 @@ class AddMedecine extends StatelessWidget {
                               20,
                             ),
                           ),
-                          child:  const Text(
+                          child: const Text(
                             "Pick image",
                             style: TextStyle(
                                 color: AppColors.kPrimary2,
@@ -269,7 +268,37 @@ class AddMedecine extends StatelessWidget {
                         ),
                       ),
                     ),
-   const SizedBox(height: 20),
+
+                    const SizedBox(height: 20),
+                    GetBuilder(
+                      builder: (contx) => Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 30),
+                          child: DropdownButtonFormField(
+                              value: addMedecineController.selectedValue,
+                              hint: Text('choose the Category of the book'),
+                              isExpanded: true,
+                              onChanged: (value) {
+                                // setState(() {
+                                addMedecineController.selectedValue = value;
+                                // });
+                              },
+                              onSaved: (value) {
+                                // setState(() {
+                                addMedecineController.selectedValue = value;
+                                // });
+                              },
+                              validator: (value) => value == null
+                                  ? 'Select the Category of the book'
+                                  : null,
+                              items: addMedecineController.categorieList
+                                  .map((category) {
+                                return DropdownMenuItem(
+                                  child: Text(category["name"]),
+                                  value: category,
+                                );
+                              }).toList())),
+                    ),
 
                     // GetBuilder<AddMedecineController>(
                     //   builder: (contx) => TextFormField(

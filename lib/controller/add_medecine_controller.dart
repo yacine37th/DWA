@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -47,6 +48,24 @@ class AddMedecineController extends GetxController {
     } on PlatformException catch (e) {
       print(e);
     }
+  }
+
+  var selectedValue;
+
+  List categorieList = [];
+  Future getCate() async {
+    await FirebaseFirestore.instance
+        .collection("categories")
+        .get()
+        .then((value) async {
+      for (int index = 0; index < value.docs.length; index++) {
+        categorieList.add({
+          "name": value.docs[index]["categoryName"],
+          "id": value.docs[index].id,
+        });
+      }
+    });
+    update();
   }
   // DateTime? medecineDateExpir;
   // TextEditingController? medecineDateExpir2;
@@ -113,6 +132,7 @@ class AddMedecineController extends GetxController {
   @override
   void onInit() {
     dateinput.text = ""; //set the initial value of text field
+    getCate();
     super.onInit();
   }
 }
