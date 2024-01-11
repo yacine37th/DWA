@@ -17,7 +17,7 @@ class Languages implements Translations {
           "darkTheme": "Dark Theme",
 
 ////////////
-"Home" : "Home",
+          "Home": "Home",
           "language": "Language",
 
           "english": "English",
@@ -33,7 +33,7 @@ class Languages implements Translations {
           "AccountConfirmed": "Account confirmed, log in",
 
           "noConnection": "There is no internet Connection",
-          "login": "Login",
+          "login": "Sign In",
           "forgotYourPassword?": "Forgot your password ?",
           "forgotPasswordMessage":
               "Enter your email, and we will send you a link to enter a new password.",
@@ -154,7 +154,7 @@ class Languages implements Translations {
           "permissionNameTaken": "This name has already been taken",
 
           ///usersManagement ////////
-          "createAccount": "Create an account",
+          "createAccount": "Sign Up",
           "studentOrTeacher":
               "Please choose below what type of user you want to create",
           "student": "Student",
@@ -317,7 +317,7 @@ class Languages implements Translations {
           "plzTheme": "Veuillez choisir un thème",
           "lightTheme": "Thème clair",
           "darkTheme": "Thème sombre",
-"Home" : "Home",
+          "Home": "Home",
 
 ////////////
           "language": "Langue",
@@ -638,7 +638,7 @@ class Languages implements Translations {
           "darkTheme": "سمة داكنة",
 
           ////////////
-"Home" : "الرئيسية",
+          "Home": "الرئيسية",
 
           "language": "اللغة",
 
@@ -646,11 +646,13 @@ class Languages implements Translations {
           "francais": "الفرنسية",
           "arab": "العربية",
           "sendingEmailMessage":
-              "تم إرسال بريد إلكتروني لتغيير كلمة مرور حسابك:",
+              " تم إرسال بريد إلكتروني لتغيير كلمة مرور حسابك: ",
 
           "continue": "متابعة",
           "noConnection": "لا يوجد اتصال بالإنترنت",
           "login": "تسجيل الدخول",
+          "createAccount": "تسجيل حساب جديد",
+
           "forgotYourPassword?": "هل نسيت كلمة المرور؟",
           "forgotPasswordMessage":
               "أدخل بريدك الإلكتروني، وسنرسل لك رابطًا لإدخال كلمة المرور الجديدة.",
@@ -667,7 +669,7 @@ class Languages implements Translations {
           "sendSMSVerification": "إرسال التحقق عبر الرسائل القصيرة",
           "EmailVerification": "تأكيد البريد الالكتروني",
           "EmailVerificationMessage":
-              "تم إرسال بريد إلكتروني للتحقق إلى عنوان بريدك الإلكتروني",
+              "تم إرسال بريد إلكتروني للتحقق من عنوان بريدك الإلكتروني",
           "ResendEmail": "إعادة إرسال",
           "SendLink": "أرسل الرابط",
 

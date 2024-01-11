@@ -250,7 +250,7 @@ class HomeScreenController extends GetxController {
     Home(),
     Home(),
     Home(),
-    Home(),
+    // Home(),
     // FavorisPage(),
     // CartePage(),
     // Profil(),

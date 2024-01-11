@@ -157,9 +157,9 @@ class ForgotPassword extends StatelessWidget {
                               // color: AppColors.kPrimary,
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            child:  Text(
+                            child: Text(
                               "SendLink".tr,
-                              style:const TextStyle(
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 19,
                               ),
@@ -208,11 +208,9 @@ class ForgotPassword extends StatelessWidget {
               Column(
                 children: [
                   Text.rich(TextSpan(
-                      style: const TextStyle(fontFamily: 'Cairo', fontSize: 17),
+                      style: const TextStyle(fontFamily: 'Cairo', fontSize: 19),
                       children: [
-                         TextSpan(
-                            text:
-                                "sendingEmailMessage".tr),
+                        TextSpan(text: "sendingEmailMessage".tr),
                         TextSpan(
                             text: forgotPasswordController.fgpEmail.toString())
                       ])),
@@ -249,11 +247,11 @@ class ForgotPassword extends StatelessWidget {
                           // color: AppColors.kPrimary,
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        child:  Text(
+                        child: Text(
                           "continue".tr,
                           style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 15,
+                            fontSize: 19,
                           ),
                         ),
                       ),

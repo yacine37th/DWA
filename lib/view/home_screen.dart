@@ -138,14 +138,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 const EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
             horizontalTitleGap: 1,
             dense: true,
-            title:  Text(
+            title: Text(
               "language".tr,
               style: TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.w300,
                   fontFamily: 'Cairo'),
             ),
-            leading:const Icon(Icons.language),
+            leading: const Icon(Icons.language),
             onTap: () {
               homeScreenController.setLanguage();
 
@@ -171,14 +171,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 const EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
             horizontalTitleGap: 1,
             dense: true,
-            title:  Text(
+            title: Text(
               "signOut".tr,
-              style:const TextStyle(
+              style: const TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.w300,
                   fontFamily: 'Cairo'),
             ),
-            leading:const Icon(Icons.logout),
+            leading: const Icon(Icons.logout),
             onTap: () {
               homeController.signOutOfAnExistingAccount();
             },
@@ -220,11 +220,11 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: GetBuilder<HomeScreenController>(
         builder: (contx) => Container(
           decoration: BoxDecoration(
-            // color: AppColors.kBackground,
+            color: AppColors.whiteColor,
             boxShadow: [
               BoxShadow(
                 blurRadius: 20,
-                color: Colors.black.withOpacity(.1),
+                color: Colors.black.withOpacity(.02),
               )
             ],
           ),
@@ -235,10 +235,11 @@ class _HomeScreenState extends State<HomeScreen> {
               child: GNav(
                 rippleColor: AppColors.kPrimary2,
                 hoverColor: AppColors.kPrimary2,
-                gap: 8,
+                gap: 10,
                 activeColor: AppColors.whiteColor,
                 iconSize: 24,
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                 duration: Duration(milliseconds: 400),
                 tabBackgroundColor: const Color.fromRGBO(132, 189, 147, 1),
                 color: AppColors.kSecondary,
@@ -246,16 +247,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   GButton(
                     icon: LineIcons.home,
                     iconActiveColor: Colors.white,
+                    // iconColor: Colors.red,
                     active: true,
                     text: 'Home'.tr,
                   ),
+                  // GButton(
+                  //   icon: LineIcons.heart,
+                  //   text: 'Likes',
+                  // ),
                   GButton(
-                    icon: LineIcons.heart,
-                    text: 'Likes',
-                  ),
-                  GButton(
-                    icon: LineIcons.shoppingCart,
-                    text: 'Cart',
+                    icon: LineIcons.penFancy,
+                    text: 'Posts',
                   ),
                   GButton(
                     icon: LineIcons.user,
