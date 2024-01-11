@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dwa/main.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,10 +11,13 @@ import 'package:intl/intl.dart';
 
 class AddMedecineController extends GetxController {
   final formKey = GlobalKey<FormState>();
+  TextEditingController dateinput = TextEditingController();
 
   String? medecineName;
+  String? medecineAbout;
   File? bookImage;
   UploadTask? uploadTask;
+  DateTime? pickedDate2;
 
   Future pickimage() async {
     try {
@@ -26,16 +30,20 @@ class AddMedecineController extends GetxController {
 
       print("//////////////////image/////////////////");
       print(bookImage.name);
-      uploadImage();
+      // uploadImage();
     } on PlatformException catch (e) {
       print(e);
     }
   }
 
-  Future uploadImage() async {
+  Future submit() async {
     try {
       var doc = FirebaseFirestore.instance.collection("medecines").doc();
-
+      var userDoc =
+          FirebaseFirestore.instance.collection("users").doc(currentUser!.uid);
+      userDoc.update({
+        "userPosts": FieldValue.arrayUnion([doc.id]),
+      });
       final path2 = 'medecines/${doc.id}';
       final file2 = File(bookImage!.path);
 
@@ -51,6 +59,12 @@ class AddMedecineController extends GetxController {
       doc.set({
         "medecineID": doc.id,
         "medecinePic": bookThumnail,
+        "medecineDateExpir": pickedDate2,
+        "medecineDateAdded": FieldValue.serverTimestamp(),
+        "medecineCategoryID": selectedValue['id'],
+        "medecineUserID": currentUserInfos.uID,
+        "medecineCategory": selectedValue['name'],
+        "medecineKeyWords": keyWordsMaker(medecineName!),
       }).onError((e, _) => print(
           "Error writing document /////////////////////////////////////////////: $e"));
 
@@ -69,6 +83,12 @@ class AddMedecineController extends GetxController {
     } on PlatformException catch (e) {
       print(e);
     }
+  }
+
+  Future<void> submit2() async {
+    // DateFormat time= dateinput.;
+    print(pickedDate2);
+    // print(time);
   }
 
   var selectedValue;
@@ -145,7 +165,7 @@ class AddMedecineController extends GetxController {
   //                         lastDate: DateTime(2100))
 
   Future<void> pickedDate(BuildContext context) async {
-    DateTime? pickedDate = await showDatePicker(
+    pickedDate2 = await showDatePicker(
         context: context, //context of current state
         initialDate: DateTime.now(),
         firstDate: DateTime(
@@ -154,7 +174,7 @@ class AddMedecineController extends GetxController {
 
     if (pickedDate != null) {
       print(pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
-      String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
+      String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate2!);
       print(
           formattedDate); //formatted date output using intl package =>  2021-03-16
       dateinput.text = formattedDate;
@@ -163,7 +183,6 @@ class AddMedecineController extends GetxController {
     }
   }
 
-  TextEditingController dateinput = TextEditingController();
   @override
   void onInit() {
     dateinput.text = ""; //set the initial value of text field

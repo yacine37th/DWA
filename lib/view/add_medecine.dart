@@ -57,11 +57,13 @@ class AddMedecine extends StatelessWidget {
                     // const SizedBox(height: 10),
                     TextFormField(
                       textInputAction: TextInputAction.next,
-                      keyboardType: TextInputType.emailAddress,
-                      onSaved: (userEmailAddress) {
-                        // signInController.userEmailAddress = userEmailAddress;
+                      keyboardType: TextInputType.text,
+                      onSaved: (name) {
+                        addMedecineController.medecineName = name;
                       },
-                      onChanged: (userEmailAddress) {
+                      onChanged: (name) {
+                        addMedecineController.medecineName = name;
+
                         // signInController.userEmailAddress =
                         //     userEmailAddress.trim();
                       },
@@ -294,12 +296,42 @@ class AddMedecine extends StatelessWidget {
                           }).toList()),
                     ),
                     const SizedBox(height: 20),
+                    TextFormField(
+                      minLines: 3,
+                      maxLines: 8,
+                      keyboardType: TextInputType.multiline,
+                      // controller:addMedecineController.medecineAbout,
+                      onSaved: (about) {
+                        // signInController.userEmailAddress = userEmailAddress;
+                        addMedecineController.medecineAbout = about;
+                      },
+                      onChanged: (about) {
+                        addMedecineController.medecineAbout = about;
+                        // signInController.userEmailAddress =
+                        //     userEmailAddress.trim();
+                      },
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter the Descrption of the Book';
+                        }
+                        return null;
+                      },
+                      decoration: const InputDecoration(
+                        alignLabelWithHint: true,
+                        border: OutlineInputBorder(),
+                        hintText: "Enter the Descrption of the Book",
+                        // labelText: 'Enter text',
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+
                     TextButton(
                       onPressed: () {
                         if (addMedecineController.formKey.currentState!
                             .validate()) {
                           addMedecineController.formKey.currentState!.save();
                           // signInController.signInAUser();
+                         addMedecineController.submit();
                         }
                       },
                       style: ButtonStyle(
