@@ -1,4 +1,6 @@
 import 'package:dwa/firebase_options.dart';
+import 'package:dwa/utils/add_medecine_bindings.dart';
+import 'package:dwa/view/add_medecine.dart';
 import 'package:dwa/view/home.dart';
 import 'package:dwa/view/home_screen.dart';
 import 'package:dwa/view/singin.dart';
@@ -91,11 +93,11 @@ class MyApp extends StatelessWidget {
         //     page: () => const FoochiOnboardingView(),
         //     binding: OnboardingBindings(),
         //     middlewares: [AppIsOppen()]),
-        // GetPage(
-        //   name: "/",
-        //   page: () => const HomeScreen(),
-        //   binding: HomeScreenBindings(),
-        // ),
+        GetPage(
+          name: "/AddMedecine",
+          page: () => const AddMedecine(),
+          binding: AddMedecineBindings(),
+        ),
         // GetPage(
         //   name: "/PhoneSignup",
         //   page: () => const PhoneSignUp(),

@@ -98,7 +98,7 @@ class SignInController extends GetxController {
       await MainFunctions.getcurrentUserInfos();
       Get.back();
       if (credential.user!.emailVerified) {
-        Get.offAndToNamed("/");
+        Get.offAndToNamed("/AddMedecine");
       } else {
         Get.toNamed("/EmailVerification");
       }

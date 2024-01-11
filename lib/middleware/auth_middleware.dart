@@ -11,7 +11,7 @@ class AuthMiddleware extends GetMiddleware {
     if (currentUser != null && currentUser!.emailVerified) {
       //  MainFunctions.getcurrentUserInfos();
       // MainFunctions.loadTripsDriversData();
-      return const RouteSettings(name: "/");
+      return const RouteSettings(name: "/AddMedecine");
     } else {
       return null;
     }
