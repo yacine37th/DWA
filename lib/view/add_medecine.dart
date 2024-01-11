@@ -125,7 +125,6 @@ class AddMedecine extends StatelessWidget {
                       ),
                     ),
 
-
                     // Row(
                     //   children: [
                     //     GetBuilder<AddMedecineController>(
@@ -143,26 +142,56 @@ class AddMedecine extends StatelessWidget {
                     //     ),
                     //   ],
                     // ),
-
+                    const SizedBox(
+                      height: 20.0,
+                    ),
                     GetBuilder<AddMedecineController>(
-                      builder:(contx)=> TextField(
+                      builder: (contx) => TextFormField(
                         controller: addMedecineController
                             .dateinput, //editing controller of this TextField
                         decoration: InputDecoration(
-                            icon: Icon(Icons.calendar_today), //icon of text field
-                            labelText: "Enter Date" //label text of field
-                            ),
+                          hintText: "Date",
+                          errorMaxLines: 2,
+                          prefixIcon: Icon(Icons.calendar_month,
+                              color: AppColors.kLine),
+                          contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 16),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                const BorderSide(color: AppColors.kLine),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                const BorderSide(color: AppColors.kPrimary2),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          border: OutlineInputBorder(
+                            borderSide:
+                                const BorderSide(color: AppColors.kLine),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide:
+                                const BorderSide(color: AppColors.KError),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          hintStyle: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.grey),
+                        ),
                         readOnly:
                             true, //set it true, so that user will not able to edit text
                         onTap: () async {
-                         addMedecineController.pickedDate(context);
+                          addMedecineController.pickedDate(context);
                           // DateTime? pickedDate = await showDatePicker(
                           //     context: context,
                           //     initialDate: DateTime.now(),
                           //     firstDate: DateTime(
                           //         2000), //DateTime.now() - not to allow to choose before today.
                           //     lastDate: DateTime(2101));
-                    
+
                           // if (pickedDate != null) {
                           //   print(
                           //       pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
@@ -171,7 +200,7 @@ class AddMedecine extends StatelessWidget {
                           //   print(
                           //       formattedDate); //formatted date output using intl package =>  2021-03-16
                           //   //you can implement different kind of Date Format here according to your requirement
-                    
+
                           //   // setState(() {
                           //   //    dateinput.text = formattedDate; //set output date to TextField value.
                           //   // });
