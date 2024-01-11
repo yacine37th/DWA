@@ -26,6 +26,7 @@ class AddMedecineController extends GetxController {
 
       print("//////////////////image/////////////////");
       print(bookImage.name);
+      uploadImage();
     } on PlatformException catch (e) {
       print(e);
     }
@@ -33,18 +34,38 @@ class AddMedecineController extends GetxController {
 
   Future uploadImage() async {
     try {
-      final path = 'test/BookPicture';
-      final file = File(bookImage!.path);
+      var doc = FirebaseFirestore.instance.collection("medecines").doc();
 
-      final ref = FirebaseStorage.instance.ref().child(path);
-      uploadTask = ref.putFile(file);
+      final path2 = 'medecines/${doc.id}';
+      final file2 = File(bookImage!.path);
 
-      final snapshot = await uploadTask!.whenComplete(() => {});
+      final ref2 = FirebaseStorage.instance.ref().child(path2);
+      uploadTask = ref2.putFile(file2);
 
-      final bookThumnail = await snapshot.ref.getDownloadURL();
+      final snapshot2 = await uploadTask!.whenComplete(() => {});
+
+      final bookThumnail = await snapshot2.ref.getDownloadURL();
       print(
           "bookThumnail /////////////////////////////////////////////////////////////////////");
       print(bookThumnail);
+      doc.set({
+        "medecineID": doc.id,
+        "medecinePic": bookThumnail,
+      }).onError((e, _) => print(
+          "Error writing document /////////////////////////////////////////////: $e"));
+
+      // final path = 'test/${bookImage!.path}';
+      // final file = File(bookImage!.path);
+
+      // final ref = FirebaseStorage.instance.ref().child(path);
+      // uploadTask = ref.putFile(file);
+
+      // final snapshot = await uploadTask!.whenComplete(() => {});
+
+      // final bookThumnail = await snapshot.ref.getDownloadURL();
+      // print(
+      //     "bookThumnail /////////////////////////////////////////////////////////////////////");
+      // print(bookThumnail);
     } on PlatformException catch (e) {
       print(e);
     }
