@@ -212,6 +212,65 @@ class AddMedecine extends StatelessWidget {
                     ),
 
                     const SizedBox(height: 20),
+
+                     TextButton(
+                      onPressed: () {
+                        // Get.toNamed("/SignUp");
+                       addMedecineController.pickimage();
+                      },
+                      style: ButtonStyle(
+                          foregroundColor: MaterialStateProperty.all(
+                            AppColors.kPrimary2,
+                          ),
+                          // backgroundColor: MaterialStateProperty.all(
+                          //   AppColors.kPrimary2,
+                          // ),
+                          // textStyle: MaterialStatePropertyAll(),
+                          textStyle:
+                              MaterialStateProperty.resolveWith((states) {
+                            Color textColor =
+                                states.contains(MaterialState.disabled)
+                                    ? AppColors.kPrimary2
+                                    : AppColors.kLine;
+                            return TextStyle(fontSize: 18, color: textColor);
+                          }),
+                          overlayColor: MaterialStateColor.resolveWith(
+                              (states) =>
+                                  AppColors.kPrimary2.withOpacity(0.2)),
+                          shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(100),
+                                  side: const BorderSide(
+                                    color: AppColors.kPrimary2,
+                                  )))),
+                      child: Card(
+                        elevation: 0,
+                        color: Colors.transparent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                        child: Container(
+                          height: 35,
+                          alignment: Alignment.center,
+                          width: double.maxFinite,
+                          decoration: BoxDecoration(
+                            // border: Border.all(color: AppColors.kPrimary),
+                            borderRadius: BorderRadius.circular(
+                              20,
+                            ),
+                          ),
+                          child:  const Text(
+                            "Pick image",
+                            style: TextStyle(
+                                color: AppColors.kPrimary2,
+                                fontSize: 19,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                      ),
+                    ),
+   const SizedBox(height: 20),
+
                     // GetBuilder<AddMedecineController>(
                     //   builder: (contx) => TextFormField(
                     //     textInputAction: TextInputAction.next,

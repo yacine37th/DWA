@@ -1,11 +1,53 @@
+import 'dart:io';
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 class AddMedecineController extends GetxController {
   final formKey = GlobalKey<FormState>();
 
   String? medecineName;
+  File? bookImage;
+  UploadTask? uploadTask;
+
+  Future pickimage() async {
+    try {
+      final bookImage = await ImagePicker()
+          .pickImage(source: ImageSource.gallery, imageQuality: 85);
+      if (bookImage == null) return;
+      final imageTemp = File(bookImage.path);
+
+      this.bookImage = imageTemp;
+
+      print("//////////////////image/////////////////");
+      print(bookImage.name);
+    } on PlatformException catch (e) {
+      print(e);
+    }
+  }
+
+  Future uploadImage() async {
+    try {
+      final path = 'test/BookPicture';
+      final file = File(bookImage!.path);
+
+      final ref = FirebaseStorage.instance.ref().child(path);
+      uploadTask = ref.putFile(file);
+
+      final snapshot = await uploadTask!.whenComplete(() => {});
+
+      final bookThumnail = await snapshot.ref.getDownloadURL();
+      print(
+          "bookThumnail /////////////////////////////////////////////////////////////////////");
+      print(bookThumnail);
+    } on PlatformException catch (e) {
+      print(e);
+    }
+  }
   // DateTime? medecineDateExpir;
   // TextEditingController? medecineDateExpir2;
 
@@ -49,7 +91,7 @@ class AddMedecineController extends GetxController {
   //                         lastDate: DateTime(2100))
 
   Future<void> pickedDate(BuildContext context) async {
-    DateTime? pickedDate =  await showDatePicker(
+    DateTime? pickedDate = await showDatePicker(
         context: context, //context of current state
         initialDate: DateTime.now(),
         firstDate: DateTime(
@@ -61,13 +103,14 @@ class AddMedecineController extends GetxController {
       String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate);
       print(
           formattedDate); //formatted date output using intl package =>  2021-03-16
-                 dateinput.text = formattedDate;
+      dateinput.text = formattedDate;
     } else {
       print("Date is not selected");
     }
   }
-    TextEditingController dateinput = TextEditingController(); 
-@override
+
+  TextEditingController dateinput = TextEditingController();
+  @override
   void onInit() {
     dateinput.text = ""; //set the initial value of text field
     super.onInit();
