@@ -147,6 +147,19 @@ class AddMedecine extends StatelessWidget {
                     ),
                     GetBuilder<AddMedecineController>(
                       builder: (contx) => TextFormField(
+                        validator: (val) {
+                          if (val!.isEmpty) {
+                            return "enterMedicineName".tr;
+                          } else if (val.length < 2) {
+                            return "medicineName>2".tr;
+                          }
+                          // if (!RegExp(
+                          //         r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
+                          //     .hasMatch(val)) {
+                          //   return "enterValidEmail".tr;
+                          // }
+                          return null;
+                        },
                         controller: addMedecineController
                             .dateinput, //editing controller of this TextField
                         decoration: InputDecoration(
@@ -270,35 +283,70 @@ class AddMedecine extends StatelessWidget {
                     ),
 
                     const SizedBox(height: 20),
-                    GetBuilder(
-                      builder: (contx) => Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 30),
-                          child: DropdownButtonFormField(
-                              value: addMedecineController.selectedValue,
-                              hint: Text('choose the Category of the book'),
-                              isExpanded: true,
-                              onChanged: (value) {
-                                // setState(() {
-                                addMedecineController.selectedValue = value;
-                                // });
-                              },
-                              onSaved: (value) {
-                                // setState(() {
-                                addMedecineController.selectedValue = value;
-                                // });
-                              },
-                              validator: (value) => value == null
-                                  ? 'Select the Category of the book'
-                                  : null,
-                              items: addMedecineController.categorieList
-                                  .map((category) {
-                                return DropdownMenuItem(
-                                  child: Text(category["name"]),
-                                  value: category,
-                                );
-                              }).toList())),
+                    GetBuilder<AddMedecineController>(
+                      builder: (contx) => DropdownButtonFormField(
+                          value: addMedecineController.selectedValue,
+                          hint: const Text('choose the Category of the book'),
+                          focusColor: AppColors.kPrimary2,
+                          decoration: InputDecoration(
+                            hintText: 'medicineName'.tr,
+                            errorMaxLines: 2,
+                            prefixIcon:
+                                Icon(Icons.category, color: AppColors.kLine),
+                            contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 16),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide:
+                                  const BorderSide(color: AppColors.kLine),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  const BorderSide(color: AppColors.kPrimary2),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            border: OutlineInputBorder(
+                              borderSide:
+                                  const BorderSide(color: AppColors.kLine),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide:
+                                  const BorderSide(color: AppColors.KError),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            hintStyle: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.grey),
+                          ),
+
+                          // iconDisabledColor: Colors.red,
+                          // dropdownColor: Colors.red,
+                          // iconEnabledColor: Colors.red,
+                          isExpanded: true,
+                          onChanged: (value) {
+                            // setState(() {
+                            addMedecineController.selectedValue = value;
+                            // });
+                          },
+                          onSaved: (value) {
+                            // setState(() {
+                            addMedecineController.selectedValue = value;
+                            // });
+                          },
+                          validator: (value) => value == null
+                              ? 'Select the Category of the book'
+                              : null,
+                          items: addMedecineController.categorieList
+                              .map((category) {
+                            return DropdownMenuItem(
+                              child: Text(category["name"]),
+                              value: category,
+                            );
+                          }).toList()),
                     ),
+                    const SizedBox(height: 20),
 
                     // GetBuilder<AddMedecineController>(
                     //   builder: (contx) => TextFormField(
@@ -441,7 +489,7 @@ class AddMedecine extends StatelessWidget {
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: Text(
-                            "login".tr,
+                            "Publier".tr,
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 19,

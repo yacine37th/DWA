@@ -67,6 +67,20 @@ class AddMedecineController extends GetxController {
     });
     update();
   }
+
+  List keyWordsMaker(String text) {
+    List<String> keyWordsList = [];
+    String temp = "";
+    for (var i = 0; i < text.length; i++) {
+      if (text[i] == " ") {
+        temp = "";
+      } else {
+        temp = temp + text[i];
+        keyWordsList.add(temp);
+      }
+    }
+    return keyWordsList;
+  }
   // DateTime? medecineDateExpir;
   // TextEditingController? medecineDateExpir2;
 
