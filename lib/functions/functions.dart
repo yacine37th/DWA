@@ -7,9 +7,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../main.dart';
 import '../model/user_model.dart';
 import '../theme/main_colors.dart';
+import 'package:intl/intl.dart' as intl;
+
 
 class MainFunctions {
     static SharedPreferences? sharredPrefs;
+  static intl.DateFormat dateFormat = intl.DateFormat('yyyy-MM-dd');
 
   static Color generatePresizedColor(int namelength) {
     return profilColors[((namelength - 3) % 8).floor()];

@@ -16,6 +16,11 @@ class Languages implements Translations {
           "lightTheme": "Light Theme",
           "darkTheme": "Dark Theme",
 
+          "medicineName": "Medicine name",
+          "enterMedicineName": "Please enter Medicine name",
+          "medicineName>2":
+              "The name of the medicine must have more than two letters",
+
 ////////////
           "Home": "Home",
           "language": "Language",
@@ -318,6 +323,10 @@ class Languages implements Translations {
           "lightTheme": "Thème clair",
           "darkTheme": "Thème sombre",
           "Home": "Home",
+          "medicineName": "Nom du médicament",
+          "enterMedicineName": "Veuillez entrer le nom du médicament",
+          "medicineName>2":
+              "Le nom du médicament doit comporter plus de deux lettres",
 
 ////////////
           "language": "Langue",
@@ -636,7 +645,9 @@ class Languages implements Translations {
           "plzTheme": "يرجى اختيار سمة",
           "lightTheme": "سمة فاتحة",
           "darkTheme": "سمة داكنة",
-
+          "medicineName": "اسم الدواء",
+          "enterMedicineName": "الرجاء إدخال اسم الدواء",
+          "medicineName>2": "يجب ان يكون اسم الدواء أكثر من حرفين",
           ////////////
           "Home": "الرئيسية",
 
