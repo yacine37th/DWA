@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dwa/functions/functions.dart';
 import 'package:dwa/main.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+
+import '../theme/main_colors.dart';
 
 class AddMedecineController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -37,6 +40,15 @@ class AddMedecineController extends GetxController {
   }
 
   Future submit() async {
+    Get.defaultDialog(
+        onWillPop: () {
+          return Future.value();
+        },
+        barrierDismissible: false,
+        title: "pleaseWait".tr,
+        content: const CircularProgressIndicator(
+          color: AppColors.kPrimary2,
+        ));
     try {
       var doc = FirebaseFirestore.instance.collection("medecines").doc();
       var userDoc =
@@ -80,6 +92,9 @@ class AddMedecineController extends GetxController {
       // print(
       //     "bookThumnail /////////////////////////////////////////////////////////////////////");
       // print(bookThumnail);
+      Get.back();
+      Get.offAndToNamed("/");
+     MainFunctions.successSnackBar("Your post has been ");
     } on PlatformException catch (e) {
       print(e);
     }
