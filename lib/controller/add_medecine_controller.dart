@@ -71,6 +71,7 @@ class AddMedecineController extends GetxController {
       doc.set({
         "medecineID": doc.id,
         "medecinePic": bookThumnail,
+        "medecineType": "Post",
         "medecineDateExpir": pickedDate2,
         "medecineDateAdded": FieldValue.serverTimestamp(),
         "medecineCategoryID": selectedValue['id'],
@@ -94,7 +95,7 @@ class AddMedecineController extends GetxController {
       // print(bookThumnail);
       Get.back();
       Get.offAndToNamed("/");
-     MainFunctions.successSnackBar("Your post has been ");
+      MainFunctions.successSnackBar("Your post has been ");
     } on PlatformException catch (e) {
       print(e);
     }
@@ -198,8 +199,37 @@ class AddMedecineController extends GetxController {
     }
   }
 
+  List categ = [
+    "Antibiotiques et Antibactériens",
+    "Antituberculeux et Antilépreux",
+    "Antimycosiques",
+    "Antiviraux",
+    "Cardiologie",
+    "Dermatologie",
+    "Diététique et Nutrition",
+    "Endocrinologie",
+    "Gastro-entérologie et hépatologie",
+    "Gynécologie",
+    "Hématologie",
+    "Immunologie Allergologie",
+    "Neurologie",
+    "Ophtalmologie",
+    "Oto-rhino-laryngologie",
+    "Parasitologie",
+    "Pneumologie",
+    "Psychiatrie",
+    "Rhumatologie",
+    "Urologie",
+    "Vaccins",
+    "Cancérologie",
+  ];
+
   @override
   void onInit() {
+    // categ.forEach((element) {
+    //   var doc = FirebaseFirestore.instance.collection("categories").doc();
+    //   doc.set({"categoryName": element, "categoryID": doc.id});
+    // });
     dateinput.text = ""; //set the initial value of text field
     getCate();
     super.onInit();
