@@ -4,7 +4,9 @@ class MedecineModel {
   late String? description;
   late String? image;
   late DateTime? expiredDate;
+  late DateTime? postDate;
   late String? category;
+  // late String? phone;
   MedecineModel({
     required this.id,
     required this.name,
@@ -12,5 +14,6 @@ class MedecineModel {
     required this.image,
     required this.expiredDate,
     required this.category,
+    required this.postDate,
   });
 }

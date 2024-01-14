@@ -78,6 +78,7 @@ class AddMedecineController extends GetxController {
         "medecineUserID": currentUserInfos.uID,
         "medecineCategory": selectedValue['name'],
         "medecineKeyWords": keyWordsMaker(medecineName!),
+        "medecineName" : medecineName,
       }).onError((e, _) => print(
           "Error writing document /////////////////////////////////////////////: $e"));
 

@@ -175,117 +175,96 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-class ProductCard extends StatefulWidget {
-  const ProductCard({ Key? key }) : super(key: key);
+// class ProductCardView extends StatelessWidget {
+//   const ProductCardView(
+//       {Key? key,
+//       required this.product,
+//       this.imageAlignment = Alignment.bottomCenter,
+//       this.onTap})
+//       : super(key: key);
 
-  @override
-  _ProductCardState createState() => _ProductCardState();
-}
+//   final Product product;
+//   final Alignment imageAlignment;
+//   final Function(String)? onTap;
 
-class _ProductCardState extends State<ProductCard> {
-  int _current = 0;
-  dynamic _selectedIndex = {};
-
-  CarouselController _carouselController = new CarouselController();
-
-  List<dynamic> _products =const [
-    {
-      'title': 'Adidas Originals \nby Alexander Wang',
-      'image': 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGFkaWRhc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60',
-      'description': 'Limited collection'
-    },
-    {
-      'title': 'Adidas Originals \nby Alexander Wang',
-      'image': 'https://images.unsplash.com/photo-1582588678413-dbf45f4823e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2265&q=80',
-      'description': 'Limited collection'
-    },
-    {
-      'title': 'Adidas Originals \nby Alexander Wang',
-      'image': 'https://images.unsplash.com/photo-1589188056053-28910dc61d38?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2264&q=80',
-      'description': 'Limited collection'
-    }
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      // floatingActionButton: _selectedIndex.length > 0 ? FloatingActionButton(
-      //   onPressed: () {},
-      //   child: Icon(Icons.arrow_forward_ios),
-      // ) : null,
-      // appBar: AppBar(
-      //   elevation: 0,
-      //   backgroundColor: Colors.transparent,
-      //   title: Text('@theflutterlover', style: TextStyle(
-      //     color: Colors.black,
-      //   ),),
-      // ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        child: CarouselSlider(
-          carouselController: _carouselController,
-          options: CarouselOptions(
-            height: 450.0,
-            aspectRatio: 16/9,
-            viewportFraction: 0.70,
-            enlargeCenterPage: true,
-            pageSnapping: true,
-            onPageChanged: (index, reason) {
-              setState(() {
-                _current = index;
-              });
-            }
-          ),
-          items: _products.map((movie) {
-            return Builder(
-              builder: (BuildContext context) {
-                return GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      if (_selectedIndex == movie) {
-                        _selectedIndex = {};
-                      } else {
-                        _selectedIndex = movie;
-                      }
-                    });
-                  },
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 320,
-                          margin: EdgeInsets.only(top: 10),
-                          clipBehavior: Clip.hardEdge,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Image.network(movie['image'], fit: BoxFit.cover),
-                        ),
-                        SizedBox(height: 20,),
-                        Text(movie['title'], style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold
-                        ),),
-                        SizedBox(height: 20,),
-                        Text(movie['description'], style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey.shade600
-                        ),),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            );
-          }).toList()
-        ),
-      ),
-    );
-  }
-}
-
-
+//   @override
+//   Widget build(BuildContext context) {
+//     final priceValue = (product.price?.onSales ?? false)
+//         ? product.price?.discountedValue
+//         : product.price?.value;
+//     final crossedValue =
+//         (product.price?.onSales ?? false) ? product.price?.value : null;
+//     return GestureDetector(
+//       onTap: () => onTap?.call(product.objectID!),
+//       child: SizedBox(
+//         width: 150,
+//         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+//           Stack(
+//             alignment: AlignmentDirectional.bottomStart,
+//             children: [
+//               SizedBox(
+//                   height: 100,
+//                   width: MediaQuery.of(context).size.width,
+//                   child: Image.network('${product.image}',
+//                       alignment: imageAlignment, fit: BoxFit.cover)),
+//               if (product.price?.onSales == true)
+//                 Padding(
+//                   padding: const EdgeInsets.all(4.0),
+//                   child: Text(" ON SALE ${product.price?.discountLevel}% ",
+//                       style: Theme.of(context).textTheme.caption?.copyWith(
+//                           color: Colors.white,
+//                          )),
+//                 )
+//             ],
+//           ),
+//           const SizedBox(height: 8),
+//           SizedBox(
+//               child: Text('${product.brand}',
+//                   maxLines: 1,
+//                   overflow: TextOverflow.ellipsis,
+//                   softWrap: false,
+//                   style: Theme.of(context).textTheme.caption)),
+//           SizedBox(
+//               child: Text('${product.name}',
+//                   maxLines: 1,
+//                   overflow: TextOverflow.ellipsis,
+//                   softWrap: false,
+//                   style: Theme.of(context).textTheme.bodyText2)),
+//           Padding(
+//             padding: const EdgeInsets.symmetric(vertical: 2.0),
+//             child: ColorIndicatorView(product: product),
+//           ),
+//           Row(
+//             children: [
+//               Text('$priceValue €',
+//                   maxLines: 1,
+//                   overflow: TextOverflow.clip,
+//                   softWrap: false,
+//                   style: Theme.of(context).textTheme.bodyText2?.copyWith(
+//                       fontWeight: FontWeight.bold,
+//                       color: AppTheme.vividOrange)),
+//               if (crossedValue != null)
+//                 Padding(
+//                   padding: const EdgeInsets.only(left: 8.0),
+//                   child: Text('$crossedValue €',
+//                       maxLines: 1,
+//                       overflow: TextOverflow.clip,
+//                       softWrap: false,
+//                       style: Theme.of(context)
+//                           .textTheme
+//                           .caption
+//                           ?.copyWith(decoration: TextDecoration.lineThrough)),
+//                 ),
+//             ],
+//           ),
+//           // RatingView(
+//           //     value: product.reviews?.rating?.toInt() ?? 0,
+//           //     reviewsCount: product.reviews?.count?.toInt() ?? 0),
+//         ]),
+//       ),
+//     );
+//   }
+// }
 
 
 // class FabAnimation extends StatefulWidget {
