@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dwa/firebase_options.dart';
 import 'package:dwa/utils/add_medecine_bindings.dart';
 import 'package:dwa/view/add_medecine.dart';
@@ -161,7 +162,7 @@ class MyApp extends StatelessWidget {
         // ),
       ],
       initialRoute: "/",
-      // home: FabAnimation()
+      // home: ProductCard()
       // home:GoogleMAPVIEW():
       //   food: Food(
       //       foodImageName:
@@ -174,8 +175,115 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+class ProductCard extends StatefulWidget {
+  const ProductCard({ Key? key }) : super(key: key);
 
+  @override
+  _ProductCardState createState() => _ProductCardState();
+}
 
+class _ProductCardState extends State<ProductCard> {
+  int _current = 0;
+  dynamic _selectedIndex = {};
+
+  CarouselController _carouselController = new CarouselController();
+
+  List<dynamic> _products =const [
+    {
+      'title': 'Adidas Originals \nby Alexander Wang',
+      'image': 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGFkaWRhc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60',
+      'description': 'Limited collection'
+    },
+    {
+      'title': 'Adidas Originals \nby Alexander Wang',
+      'image': 'https://images.unsplash.com/photo-1582588678413-dbf45f4823e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2265&q=80',
+      'description': 'Limited collection'
+    },
+    {
+      'title': 'Adidas Originals \nby Alexander Wang',
+      'image': 'https://images.unsplash.com/photo-1589188056053-28910dc61d38?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2264&q=80',
+      'description': 'Limited collection'
+    }
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // floatingActionButton: _selectedIndex.length > 0 ? FloatingActionButton(
+      //   onPressed: () {},
+      //   child: Icon(Icons.arrow_forward_ios),
+      // ) : null,
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   backgroundColor: Colors.transparent,
+      //   title: Text('@theflutterlover', style: TextStyle(
+      //     color: Colors.black,
+      //   ),),
+      // ),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: CarouselSlider(
+          carouselController: _carouselController,
+          options: CarouselOptions(
+            height: 450.0,
+            aspectRatio: 16/9,
+            viewportFraction: 0.70,
+            enlargeCenterPage: true,
+            pageSnapping: true,
+            onPageChanged: (index, reason) {
+              setState(() {
+                _current = index;
+              });
+            }
+          ),
+          items: _products.map((movie) {
+            return Builder(
+              builder: (BuildContext context) {
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      if (_selectedIndex == movie) {
+                        _selectedIndex = {};
+                      } else {
+                        _selectedIndex = movie;
+                      }
+                    });
+                  },
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 320,
+                          margin: EdgeInsets.only(top: 10),
+                          clipBehavior: Clip.hardEdge,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Image.network(movie['image'], fit: BoxFit.cover),
+                        ),
+                        SizedBox(height: 20,),
+                        Text(movie['title'], style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold
+                        ),),
+                        SizedBox(height: 20,),
+                        Text(movie['description'], style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey.shade600
+                        ),),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          }).toList()
+        ),
+      ),
+    );
+  }
+}
 
 
 
