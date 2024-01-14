@@ -18,6 +18,7 @@ class AddMedecineController extends GetxController {
 
   String? medecineName;
   String? medecineAbout;
+  String? phoneNumber;
   File? bookImage;
   UploadTask? uploadTask;
   DateTime? pickedDate2;
@@ -78,7 +79,8 @@ class AddMedecineController extends GetxController {
         "medecineUserID": currentUserInfos.uID,
         "medecineCategory": selectedValue['name'],
         "medecineKeyWords": keyWordsMaker(medecineName!),
-        "medecineName" : medecineName,
+        "medecineName": medecineName,
+        "medecinePhoneNumber": phoneNumber,
       }).onError((e, _) => print(
           "Error writing document /////////////////////////////////////////////: $e"));
 
@@ -100,12 +102,6 @@ class AddMedecineController extends GetxController {
     } on PlatformException catch (e) {
       print(e);
     }
-  }
-
-  Future<void> submit2() async {
-    // DateFormat time= dateinput.;
-    print(pickedDate2);
-    // print(time);
   }
 
   var selectedValue;
@@ -189,8 +185,8 @@ class AddMedecineController extends GetxController {
             2000), //DateTime.now() - not to allow to choose before today.
         lastDate: DateTime(2101));
 
-    if (pickedDate != null) {
-      print(pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
+    if (pickedDate2 != null) {
+      // print(pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
       String formattedDate = DateFormat('yyyy-MM-dd').format(pickedDate2!);
       print(
           formattedDate); //formatted date output using intl package =>  2021-03-16

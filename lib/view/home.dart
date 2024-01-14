@@ -71,43 +71,100 @@ class Home extends StatelessWidget {
       body: Column(
         children: [
           // Text("data"),
-          SizedBox(
-            height: 5,
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(5, 10, 5, 0),
-            child: InkWell(
-              onTap: () {
-                Get.toNamed(
-                  "/SearchScreen",
-                );
-              },
-              child: TextField(
-                style: const TextStyle(color: Colors.black),
-                decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.search_outlined),
-                    prefixIconColor: AppColors.kPrimary2,
-                    contentPadding:
-                        const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                    focusColor: AppColors.kPrimary2,
-                    fillColor: AppColors.kPrimary2,
-                    disabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: AppColors.kPrimary2)),
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: AppColors.kPrimary2)),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: AppColors.kPrimary2)),
-                    errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: AppColors.kPrimary2)),
-                    hintStyle: TextStyle(
-                        color: AppColors.kPrimary2,
-                        fontFamily: 'Cairo',
-                        fontSize: 15),
-                    hintText: "ابحث عن كتاب أو مؤلف"),
-                enabled: false,
-              ),
-            ),
-          ),
+          // SizedBox(
+          //   height: 5,
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.fromLTRB(5, 10, 5, 0),
+          //   child: InkWell(
+          //     onTap: () {
+          //       Get.toNamed(
+          //         "/SearchScreen",
+          //       );
+          //     },
+          //     child:
+          //           //    TextFormField(
+          //           //   textInputAction: TextInputAction.next,
+          //           //   keyboardType: TextInputType.emailAddress,
+          //           //   onSaved: (username) {
+          //           //     // signUpController.userName = username;
+          //           //   },
+          //           //   onChanged: (username) {
+          //           //     // signUpController.userName = username.trim();
+          //           //   },
+          //           //   validator: (val) {
+          //           //     if (val!.isEmpty) {
+          //           //       return "fillYourUserName".tr;
+          //           //     }
+          //           //     if (!RegExp(r'^[a-zA-Z]+$').hasMatch(val)) {
+          //           //       return "usernameValidator".tr;
+          //           //     }
+          //           //     // usernameValidator
+          //           //     return null;
+          //           //   },
+          //           //   // initialValue: signUpController.userName,
+          //           //   decoration: InputDecoration(
+          //           //     hintText: 'userName'.tr,
+          //           //     errorMaxLines: 2,
+          //           //     prefixIcon:
+          //           //         Icon(Icons.person, color: AppColors.kLine),
+          //           //     contentPadding: const EdgeInsets.symmetric(
+          //           //         horizontal: 20, vertical: 16),
+          //           //     enabledBorder: OutlineInputBorder(
+          //           //       borderSide:
+          //           //           const BorderSide(color: AppColors.kLine),
+          //           //       borderRadius: BorderRadius.circular(10),
+          //           //     ),
+          //           //     focusedBorder: OutlineInputBorder(
+          //           //       borderSide:
+          //           //           const BorderSide(color: AppColors.kPrimary2),
+          //           //       borderRadius: BorderRadius.circular(10),
+          //           //     ),
+          //           //     border: OutlineInputBorder(
+          //           //       borderSide:
+          //           //           const BorderSide(color: AppColors.kLine),
+          //           //       borderRadius: BorderRadius.circular(10),
+          //           //     ),
+          //           //     errorBorder: OutlineInputBorder(
+          //           //       borderSide:
+          //           //           const BorderSide(color: AppColors.KError),
+          //           //       borderRadius: BorderRadius.circular(10),
+          //           //     ),
+          //           //     hintStyle: const TextStyle(
+          //           //         fontSize: 14,
+          //           //         fontWeight: FontWeight.w300,
+          //           //         color: Colors.grey),
+          //           //   ),
+          //           // ),
+
+          //      const TextField(
+          //       style: TextStyle(color: Colors.black),
+          //       decoration: InputDecoration(
+          //           prefixIcon: Icon(Icons.search_outlined),
+          //           prefixIconColor: AppColors.kPrimary2,
+          //           contentPadding:
+          //               EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+          //           focusColor: AppColors.kPrimary2,
+          //           fillColor: AppColors.kPrimary2,
+          //           disabledBorder: OutlineInputBorder(
+          //               borderSide: BorderSide(color: AppColors.kPrimary2)),
+          //           enabledBorder: OutlineInputBorder(
+          //               borderSide: BorderSide(color: AppColors.kPrimary2)),
+          //           focusedBorder: OutlineInputBorder(
+          //               borderSide: BorderSide(color: AppColors.kPrimary2)),
+          //           errorBorder: OutlineInputBorder(
+          //               borderSide: BorderSide(color: AppColors.kPrimary2)),
+          //           hintStyle: TextStyle(
+          //               color: AppColors.kPrimary2,
+          //               fontFamily: 'Cairo',
+          //               fontSize: 15),
+          //           hintText: "Chercher..."),
+          //       enabled: false,
+          //     ),
+
+          //   ),
+          // ),
+
           Expanded(
             child: Container(
               padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
@@ -153,9 +210,9 @@ class Home extends StatelessWidget {
                                       (context, child, loadingProgress) {
                                     return Center(
                                       child: CircularProgressIndicator(
-                                          value: loadingProgress.progress
-                                          ,color: AppColors.kPrimary2,
-                                          ),
+                                        value: loadingProgress.progress,
+                                        color: AppColors.kPrimary2,
+                                      ),
                                     );
                                   },
                                 ),

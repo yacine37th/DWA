@@ -52,8 +52,8 @@ class HomeController extends GetxController {
         .then((value) async {
       for (int index = 0; index < value.docs.length; index++) {
         // if (value.docs[index]["medecineDateExpir"] < DateTime.now()) {
-          medecines.addAll({
-            value.docs[index].id: MedecineModel(
+        medecines.addAll({
+          value.docs[index].id: MedecineModel(
               id: value.docs[index].id,
               name: value.docs[index]["medecineName"],
               description: value.docs[index]["medecineCategory"],
@@ -61,8 +61,8 @@ class HomeController extends GetxController {
               expiredDate: value.docs[index]["medecineDateExpir"],
               category: value.docs[index]["medecineCategory"],
               postDate: value.docs[index]["medecineDateAdded"],
-            )
-          });
+              phone: value.docs[index]["medecinePhoneNumber"])
+        });
         // }
       }
     });

@@ -149,7 +149,7 @@ class AddMedecine extends StatelessWidget {
                         controller: addMedecineController
                             .dateinput, //editing controller of this TextField
                         decoration: InputDecoration(
-                          hintText: "Date",
+                          hintText: "YYYY-XX-XX",
                           errorMaxLines: 2,
                           prefixIcon: const Icon(Icons.calendar_month,
                               color: AppColors.kLine),
@@ -187,6 +187,64 @@ class AddMedecine extends StatelessWidget {
                         },
                       ),
                     ),
+                    const SizedBox(height: 20),
+                    TextFormField(
+                      textInputAction: TextInputAction.next,
+                      keyboardType: TextInputType.phone,
+                      onSaved: (phoneNumber) {
+                        addMedecineController.phoneNumber = phoneNumber;
+                      },
+                      onChanged: (phoneNumber) {
+                        addMedecineController.phoneNumber = phoneNumber;
+                        // signInController.userEmailAddress =
+                        //     userEmailAddress.trim();
+                      },
+                      validator: (val) {
+                        if (val!.isEmpty) {
+                          return "enterMedicineName".tr;
+                        } else if (val.length < 2) {
+                          return "medicineName>2".tr;
+                        }
+                        // if (!RegExp(
+                        //         r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
+                        //     .hasMatch(val)) {
+                        //   return "enterValidEmail".tr;
+                        // }
+                        return null;
+                      },
+                      // initialValue: signInController.userEmailAddress,
+                      maxLength: 10,
+                      decoration: InputDecoration(
+                        hintText: 'Numero de telephone'.tr,
+                        errorMaxLines: 2,
+                        prefixIcon: const Icon(Icons.phone_outlined,
+                            color: AppColors.kLine),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 16),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: AppColors.kLine),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: AppColors.kPrimary2),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        border: OutlineInputBorder(
+                          borderSide: const BorderSide(color: AppColors.kLine),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: AppColors.KError),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        hintStyle: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.grey),
+                      ),
+                    ),
+
                     const SizedBox(height: 20),
                     TextButton(
                       onPressed: () {
@@ -243,7 +301,11 @@ class AddMedecine extends StatelessWidget {
                     GetBuilder<AddMedecineController>(
                       builder: (contx) => DropdownButtonFormField(
                           value: addMedecineController.selectedValue,
-                          hint: const Text('choose the Category of the book'),
+                          hint: const Text('choose the Category of the book',
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.grey)),
                           focusColor: AppColors.kPrimary2,
                           decoration: InputDecoration(
                             hintText: 'medicineName'.tr,
