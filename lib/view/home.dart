@@ -128,16 +128,16 @@ class Home extends StatelessWidget {
                                 children: [
                                   Text(
                                     "${contx.medecines.values.elementAt(index).name}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 18.0),
                                   ),
-                                  SizedBox(height: 8.0),
+                                  const SizedBox(height: 8.0),
                                   Text(
                                     "${contx.medecines.values.elementAt(index).description}",
-                                    style: TextStyle(color: Colors.grey),
+                                    style: const TextStyle(color: Colors.grey),
                                   ),
-                                  SizedBox(height: 8.0),
+                                  const SizedBox(height: 8.0),
                                   // Text(
                                   //   '\$${product.price.toString()}',
                                   //   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),

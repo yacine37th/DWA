@@ -65,12 +65,11 @@ class HomeController extends GetxController {
                 .compareTo(now.toString()) ==
             1) {
           print("inside2");
-
           medecines.addAll({
             value.docs[index].id: MedecineModel(
                 id: value.docs[index].id,
                 name: value.docs[index]["medecineName"],
-                description: value.docs[index]["medecineCategory"],
+                description: value.docs[index]["medecineDescription"],
                 image: value.docs[index]["medecinePic"],
                 expiredDate: MainFunctions.dateFormat.format(DateTime.parse(
                     value.docs[index]["medecineDateExpir"]

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dwa/controller/home_controller.dart';
 import 'package:dwa/functions/functions.dart';
 import 'package:dwa/main.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -10,12 +11,13 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
+import '../model/medecine_model.dart';
 import '../theme/main_colors.dart';
 
 class AddMedecineController extends GetxController {
   final formKey = GlobalKey<FormState>();
   TextEditingController dateinput = TextEditingController();
-
+  HomeController homeController = Get.find();
   String? medecineName;
   String? medecineAbout;
   String? phoneNumber;
@@ -81,8 +83,23 @@ class AddMedecineController extends GetxController {
         "medecineKeyWords": keyWordsMaker(medecineName!),
         "medecineName": medecineName,
         "medecinePhoneNumber": phoneNumber,
+        "medecineDescription": medecineAbout,
       }).onError((e, _) => print(
           "Error writing document /////////////////////////////////////////////: $e"));
+
+      homeController.medecines.addAll({
+        doc.id: MedecineModel(
+            id: doc.id,
+            name: medecineName,
+            description: medecineAbout,
+            image: bookThumnail,
+            expiredDate: MainFunctions.dateFormat
+                .format(DateTime.parse(pickedDate2.toString())),
+            category: selectedValue['name'],
+            postDate: MainFunctions.dateFormat
+                .format(DateTime.parse(DateTime.now.toString())),
+            phone: phoneNumber)
+      });
 
       // final path = 'test/${bookImage!.path}';
       // final file = File(bookImage!.path);
