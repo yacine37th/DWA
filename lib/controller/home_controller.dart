@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../functions/functions.dart';
 import '../main.dart';
 import '../model/user_model.dart';
 
@@ -46,26 +47,48 @@ class HomeController extends GetxController {
   // ];
 
   Future getMedecines() async {
+    medecines.clear();
+
     await FirebaseFirestore.instance
         .collection("medecines")
+        .orderBy("medecineDateAdded", descending: true)
+        .limit(9)
         .get()
         .then((value) async {
+      DateTime now = DateTime.now();
       for (int index = 0; index < value.docs.length; index++) {
-        // if (value.docs[index]["medecineDateExpir"] < DateTime.now()) {
-        medecines.addAll({
-          value.docs[index].id: MedecineModel(
-              id: value.docs[index].id,
-              name: value.docs[index]["medecineName"],
-              description: value.docs[index]["medecineCategory"],
-              image: value.docs[index]["medecinePic"],
-              expiredDate: value.docs[index]["medecineDateExpir"],
-              category: value.docs[index]["medecineCategory"],
-              postDate: value.docs[index]["medecineDateAdded"],
-              phone: value.docs[index]["medecinePhoneNumber"])
-        });
-        // }
+        ////////get only the medecine which didn't expired his date
+        print("inside");
+        if (MainFunctions.dateFormat
+                .format(DateTime.parse(
+                    value.docs[index]["medecineDateExpir"].toDate().toString()))
+                .compareTo(now.toString()) ==
+            1) {
+          print("inside2");
+
+          medecines.addAll({
+            value.docs[index].id: MedecineModel(
+                id: value.docs[index].id,
+                name: value.docs[index]["medecineName"],
+                description: value.docs[index]["medecineCategory"],
+                image: value.docs[index]["medecinePic"],
+                expiredDate: MainFunctions.dateFormat.format(DateTime.parse(
+                    value.docs[index]["medecineDateExpir"]
+                        .toDate()
+                        .toString())),
+                category: value.docs[index]["medecineCategory"],
+                postDate: MainFunctions.dateFormat.format(DateTime.parse(value
+                    .docs[index]["medecineDateAdded"]
+                    .toDate()
+                    .toString())),
+                phone: value.docs[index]["medecinePhoneNumber"])
+          });
+        }
       }
     });
+    // for (var i = 0; i < medecines.length; i++) {
+    //   print(medecines[i]!.name);
+    // }
     update();
   }
   // late final AnimationController controller = AnimationController(

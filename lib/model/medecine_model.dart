@@ -3,8 +3,8 @@ class MedecineModel {
   late String? name;
   late String? description;
   late String? image;
-  late DateTime? expiredDate;
-  late DateTime? postDate;
+  late String? expiredDate;
+  late String? postDate;
   late String? category;
   late String? phone;
   MedecineModel({
