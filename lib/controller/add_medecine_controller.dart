@@ -96,8 +96,7 @@ class AddMedecineController extends GetxController {
             expiredDate: MainFunctions.dateFormat
                 .format(DateTime.parse(pickedDate2.toString())),
             category: selectedValue['name'],
-            postDate: MainFunctions.dateFormat
-                .format(DateTime.parse(DateTime.now.toString())),
+            postDate: DateTime.now.toString(),
             phone: phoneNumber)
       });
 
