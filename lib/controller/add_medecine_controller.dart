@@ -36,6 +36,7 @@ class AddMedecineController extends GetxController {
 
       print("//////////////////image/////////////////");
       print(bookImage.name);
+      update();
       // uploadImage();
     } on PlatformException catch (e) {
       print(e);

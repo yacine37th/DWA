@@ -15,12 +15,17 @@ class AddMedecine extends StatelessWidget {
     //  final double scaledFontSize = MediaQuery.textScalerOf(context).scale(fontSize);
     return Scaffold(
       appBar: AppBar(
-        //   bottom: PreferredSize(
-        // preferredSize: Size(0, 0),
-        // child: Container(
-        //   color: AppColors.kPrimary2,
-        //   height: 1,
-        // )),
+        bottom: PreferredSize(
+            preferredSize: Size(0, 0),
+            child: Container(
+              color: AppColors.kPrimary2,
+              height: 1,
+            )),
+        title: const Text(
+          "Ajouter un médicament",
+          style: TextStyle(color: AppColors.kPrimary2),
+        ),
+
         backgroundColor: AppColors.transparentColor,
         elevation: 0,
         leading: IconButton(
@@ -52,7 +57,7 @@ class AddMedecine extends StatelessWidget {
                 key: addMedecineController.formKey,
                 child: Column(
                   children: [
-                    const SizedBox(height: 60),
+                    // const SizedBox(height: 60),
                     Center(child: Image.asset(AppAssets.kAppLogo)),
                     // const SizedBox(height: 10),
                     TextFormField(
@@ -111,23 +116,6 @@ class AddMedecine extends StatelessWidget {
                             color: Colors.grey),
                       ),
                     ),
-                    // Row(
-                    //   children: [
-                    //     GetBuilder<AddMedecineController>(
-                    //       builder: (context) => Text(
-                    //           "${addMedecineController.selectedDate}"
-                    //               .split(' ')[0]),
-                    //     ),
-                    //     const SizedBox(
-                    //       height: 20.0,
-                    //     ),
-                    //     ElevatedButton(
-                    //       onPressed: () =>
-                    //           addMedecineController.selectDate(context),
-                    //       child: const Text('Select date'),
-                    //     ),
-                    //   ],
-                    // ),
                     const SizedBox(
                       height: 20.0,
                     ),
@@ -296,12 +284,38 @@ class AddMedecine extends StatelessWidget {
                         ),
                       ),
                     ),
-
+                    //  const SizedBox(width: 15,),
+                    GetBuilder<AddMedecineController>(
+                      builder: (contx) => contx.bookImage !=
+                              null
+                          ? Row(
+                              children: [
+                                Icon(
+                                  Icons.photo,
+                                  size: 18,
+                                ),
+                                // const SizedBox(
+                                //   width: 5,
+                                // ),
+                                // Text("${addMedecineController.bookImage.path.}")
+                                // Container(
+                                //   width: 15,
+                                //   // child: Image.file(
+                                //   //   File(addMedecineController.bookImage!.path),
+                                //   child: Text("${}"),
+                                //     // fit: BoxFit.contain,
+                                //   // ),
+                                // )
+                              ],
+                            )
+                          : Text(""),
+                    ),
+                 
                     const SizedBox(height: 20),
                     GetBuilder<AddMedecineController>(
                       builder: (contx) => DropdownButtonFormField(
                           value: addMedecineController.selectedValue,
-                          hint: const Text('choose the Category of the book',
+                          hint: const Text('Choissir la catégorie du medicament',
                               style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w300,
@@ -378,11 +392,34 @@ class AddMedecine extends StatelessWidget {
                         }
                         return null;
                       },
-                      decoration: const InputDecoration(
-                        alignLabelWithHint: true,
-                        border: OutlineInputBorder(),
-                        hintText: "Enter the Descrption of the Book",
-                        // labelText: 'Enter text',
+                      decoration: InputDecoration(
+                        hintText: "Description...",
+                        errorMaxLines: 2,
+                        prefixIcon: const Icon(Icons.description,
+                            color: AppColors.kLine),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 16),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: AppColors.kLine),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: AppColors.kPrimary2),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        border: OutlineInputBorder(
+                          borderSide: const BorderSide(color: AppColors.kLine),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: AppColors.KError),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        hintStyle: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.grey),
                       ),
                     ),
                     const SizedBox(height: 20),

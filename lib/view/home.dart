@@ -91,18 +91,26 @@ class Home extends StatelessWidget {
                       // },
 
                       child: Card(
+                        shape: RoundedRectangleBorder(
+                            side: const BorderSide(
+                                color: AppColors.kPrimary2, width: 0.5),
+                            borderRadius: BorderRadius.circular(15.0)),
+
+                        elevation: 5, // Change this
+                        shadowColor: Colors.black12,
                         margin: EdgeInsets.all(16.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
+                              decoration: BoxDecoration(),
                               height: 150,
                               width: double.infinity,
                               // alignment: Alignment.center,
                               child: CachedNetworkImage(
                                 imageUrl:
                                     "${contx.medecines.values.elementAt(index).image}",
-                                fit: BoxFit.cover,
+                                fit: BoxFit.contain,
                                 progressIndicatorBuilder:
                                     (context, child, loadingProgress) {
                                   return Center(
@@ -134,7 +142,7 @@ class Home extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 8.0),
                                   Text(
-                                    "${contx.medecines.values.elementAt(index).description}",
+                                    "${contx.medecines.values.elementAt(index).category}",
                                     style: const TextStyle(color: Colors.grey),
                                   ),
                                   const SizedBox(height: 8.0),
@@ -411,7 +419,7 @@ class Home extends StatelessWidget {
           // //  2024-01-15 07:18:24.556014
           // print(now);
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
