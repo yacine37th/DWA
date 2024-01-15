@@ -21,7 +21,7 @@ import '../theme/main_colors.dart';
 //           },
 //           icon: Icon(
 //             Icons.arrow_back_ios_outlined,
-//             color: AppColors.kPrimary,
+//             color: AppColors.kPrimary2,
 //             // size: 18,
 //           )),
 //       title: Text(text ?? null),
@@ -60,5 +60,102 @@ class ProfilePicture extends StatelessWidget {
                       "assets/images/login_profil_picture.png",
                     ),
                   )));
+  }
+}
+
+class MedecinePicture extends StatelessWidget {
+  final String foodPicUrl;
+  const MedecinePicture({super.key, required this.foodPicUrl});
+
+  @override
+  Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    return Column(
+      children: [
+        Container(
+          alignment: Alignment.topCenter,
+          height: 250,
+
+          width: double.infinity,
+          decoration: BoxDecoration(
+            // color: AppColors.kBackground,
+            borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(30.0),
+                bottomRight: Radius.circular(30.0)),
+            image: DecorationImage(
+                image: NetworkImage(foodPicUrl), fit: BoxFit.cover),
+          ),
+          child: const SafeArea(
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ArrowBack(),
+                ],
+              ),
+            ),
+          ),
+          //   Image.network(
+          //   "$foodPicUrl"
+          // ),
+          //
+        ),
+      ],
+    );
+  }
+}
+
+class ArrowBack extends StatelessWidget {
+  const ArrowBack({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+        backgroundColor: AppColors.kPrimary2,
+        child: Center(
+          child: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back_ios_new_rounded),
+            color: AppColors.whiteColor,
+          ),
+        ));
+  }
+}
+
+class FoodName extends StatelessWidget {
+  final String foodName;
+  final String cate;
+  final String date;
+  const FoodName(
+      {super.key,
+      required this.foodName,
+      required this.cate,
+      required this.date});
+
+  @override
+  Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    return SizedBox(
+      width: double.infinity,
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Text(foodName,
+            style: const TextStyle(
+                color: Colors.black, fontSize: 25, fontFamily: "Roboto")),
+        const SizedBox(
+          height: 5,
+        ),
+        Text(cate, style: const TextStyle(color: Colors.black45, fontSize: 18)),
+        const SizedBox(
+          height: 5,
+        ),
+        Text("Date Expiration : ${date}",
+            style: const TextStyle(color: Colors.black45, fontSize: 18)),
+      ]),
+    );
   }
 }

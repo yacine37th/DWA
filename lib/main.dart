@@ -1,9 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dwa/firebase_options.dart';
 import 'package:dwa/utils/add_medecine_bindings.dart';
+import 'package:dwa/utils/medecine_details_bindings.dart';
 import 'package:dwa/view/add_medecine.dart';
 import 'package:dwa/view/home.dart';
 import 'package:dwa/view/home_screen.dart';
+import 'package:dwa/view/medecine_details.dart';
 import 'package:dwa/view/singin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -109,11 +111,11 @@ class MyApp extends StatelessWidget {
         //   page: () => const MoreFood(),
         //   binding: MoreFoodBindings(),
         // ),
-        // GetPage(
-        //   name: "/FoodDetails",
-        //   page: () => const FoodDetailPage(),
-        //   binding: FoodDetailsBindings(),
-        // ),
+        GetPage(
+          name: "/MedecineDetails",
+          page: () => const MedecineDetails(),
+          binding: MedecineDetailsBindings(),
+        ),
         // GetPage(
         //   name: "/Checkout",
         //   page: () => const CheckOut(),

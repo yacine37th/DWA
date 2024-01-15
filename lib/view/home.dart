@@ -70,7 +70,7 @@ class Home extends StatelessWidget {
       ),
       body: GetBuilder<HomeController>(
           builder: (contx) => contx.medecines.isEmpty
-              ? Center(
+              ? const Center(
                   child: CircularProgressIndicator(
                   // backgroundColor: AppColors.kBackground,
                   color: AppColors.kPrimary2,
@@ -81,14 +81,15 @@ class Home extends StatelessWidget {
                   // gridDelegate:
                   //     SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
                   itemCount: homeController.medecines.length,
-                  padding: const EdgeInsets.all(2.0),
+                  // padding: const EdgeInsets.all(2.0),
                   itemBuilder: (BuildContext context, int index) {
-                    return InkWell(
-                      // onTap: () {
-                      //   Get.toNamed('/FoodDetails', arguments: {
-                      //     "0": contx.medecines.elementAt(index)
-                      //   });
-                      // },
+                    return GestureDetector(
+                      onTap: () {
+                        Get.toNamed('/MedecineDetails', arguments: {
+                          "0": contx.medecines.values.elementAt(index)
+                        });
+                        print("dede");
+                      },
 
                       child: Card(
                         shape: RoundedRectangleBorder(
@@ -98,7 +99,7 @@ class Home extends StatelessWidget {
 
                         elevation: 5, // Change this
                         shadowColor: Colors.black12,
-                        margin: EdgeInsets.all(16.0),
+                        margin: const EdgeInsets.all(15.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -135,7 +136,8 @@ class Home extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "${contx.medecines.values.elementAt(index).name}",
+                                    '''
+${contx.medecines.values.elementAt(index).name!.length > 15 ? contx.medecines.values.elementAt(index).name!.substring(0, 15) + "..." : contx.medecines.values.elementAt(index).name!}''',
                                     style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 18.0),
