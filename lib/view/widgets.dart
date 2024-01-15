@@ -159,3 +159,30 @@ class FoodName extends StatelessWidget {
     );
   }
 }
+
+class FoodDescription extends StatelessWidget {
+  String? about;
+  FoodDescription({super.key, required this.about});
+
+  @override
+  Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    return Container(
+      width: double.infinity,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: screenHeight! / 45.54),
+            child: Text(
+              about ?? "PAS DE DESCRIPTION",
+              style: TextStyle(color: Colors.black38, fontSize: 16),
+              textAlign: TextAlign.justify,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
