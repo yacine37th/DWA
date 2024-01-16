@@ -104,11 +104,11 @@ class MyApp extends StatelessWidget {
         // GetPage(
         //   name: "/PhoneSignup",
         //   page: () => const PhoneSignUp(),
-        //   binding: SignUpPhoneBindings(),
+        //   binding: SignUpPhoneBindNings(),
         // ),
         // GetPage(
         //   name: "/MoreFood",
-        //   page: () => const MoreFood(),
+        //   page: () => const MoreFood(),-
         //   binding: MoreFoodBindings(),
         // ),
         GetPage(

@@ -9,6 +9,7 @@ import '../theme/main_colors.dart';
 class SignInController extends GetxController {
   final formKey = GlobalKey<FormState>();
   bool showPassword = true;
+  final priviousPage = Get.arguments;
 
   String? userEmailAddress;
   String? userPassword;
@@ -98,7 +99,11 @@ class SignInController extends GetxController {
       await MainFunctions.getcurrentUserInfos();
       Get.back();
       if (credential.user!.emailVerified) {
-        Get.offAndToNamed("/AddMedecine");
+        if (priviousPage == "home") {
+          Get.offAndToNamed("/AddMedecine");
+        } else {
+          Get.offAndToNamed("/");
+        }
       } else {
         Get.toNamed("/EmailVerification");
       }
@@ -180,9 +185,11 @@ class SignInController extends GetxController {
     }
   }
 
-
-
-
+  @override
+  void onInit() {
+    print(priviousPage);
+    super.onInit();
+  }
 
   // String localeValue = MainFunctions.sharredPrefs!.getString("codeLang") ??
   //     Get.deviceLocale!.languageCode;
@@ -218,5 +225,4 @@ class SignInController extends GetxController {
 
   //   update();
   // }
-
 }

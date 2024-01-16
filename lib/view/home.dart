@@ -416,7 +416,7 @@ ${contx.medecines.values.elementAt(index).name!.length > 15 ? contx.medecines.va
         // mini: true,
         onPressed: () {
           // Respond to button press
-          Get.toNamed("/SignIn");
+          Get.toNamed("/SignIn" , arguments: "home");
           // final now = DateTime.now();
           // //  2024-01-15 07:18:24.556014
           // print(now);

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../functions/functions.dart';
 import '../theme/main_colors.dart';
 import '../view/home.dart';
+import '../view/profil.dart';
 import 'home_controller.dart';
 
 class HomeScreenController extends GetxController {
@@ -249,7 +250,8 @@ class HomeScreenController extends GetxController {
   List<Widget> bottomNavigationBarScreensList = [
     Home(),
     Home(),
-    Home(),
+    Profil(),
+
     // Home(),
     // FavorisPage(),
     // CartePage(),

@@ -3,12 +3,13 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart ' as UrlLauncher;
 
 class MedecineDetailsController extends GetxController {
-    late MedecineModel medecine = Get.arguments["0"];
+  late MedecineModel medecine = Get.arguments["0"];
   Future<void> launchPhoneDialer(String contactNumber) async {
-    final Uri _phoneUri = Uri(scheme: "tel", path: contactNumber);
+    final Uri phoneUri = Uri(scheme: "tel", path: contactNumber);
     try {
-      if (await UrlLauncher.canLaunchUrl(_phoneUri))
-        await UrlLauncher.launchUrl(_phoneUri);
+      if (await UrlLauncher.canLaunchUrl(phoneUri)) {
+        await UrlLauncher.launchUrl(phoneUri);
+      }
     } catch (error) {
       throw ("//////////////Cannot dial");
     }
