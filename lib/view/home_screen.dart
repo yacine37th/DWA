@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ? MainAxisAlignment.start
                         : MainAxisAlignment.center,
                     children: [
-                      Container(
+                      const SizedBox(
                         width: 50,
                         height: 50,
                         child: ProfilePicture(),
@@ -77,8 +77,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       GetBuilder<HomeScreenController>(
                         builder: (contx) => currentUser != null
                             ? Text(
-                                "${currentUserInfos.name!} ",
-                                style: TextStyle(color: Colors.white),
+                                "${currentUserInfos.name!.length > 25 ? currentUserInfos.name!.substring(0, 23) + "..." : currentUserInfos.name} ",
+                                style:const TextStyle(color: Colors.white),
                               )
                             : const Text(""),
                       )

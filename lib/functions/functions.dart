@@ -28,7 +28,7 @@ class MainFunctions {
         currentUserInfos = UserModel(
           uID: value["userID"],
           email: value["userEmail"],
-          name: value["userName"],
+          name: value["userName"], posts: value["userPosts"],
           // foodFavoris: value["userFavorisFood"],
           // latitude: value["userCurrentPositionLatitude"],
           // longitude: value["userCurrentPositionLongitude"],

@@ -1,3 +1,5 @@
+import 'package:dwa/controller/my_posts_controller.dart';
+import 'package:dwa/view/my_posts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -249,7 +251,7 @@ class HomeScreenController extends GetxController {
 
   List<Widget> bottomNavigationBarScreensList = [
     Home(),
-    Home(),
+    MyPosts(),
     Profil(),
 
     // Home(),
@@ -265,7 +267,7 @@ class HomeScreenController extends GetxController {
   onInit() async {
     update();
     Get.put(HomeController());
-    // Get.put(FavorisPageController());
+    Get.put(MyPostsController());
     // Get.put(CarteController());
 
     // Get.put(MaktabatiController()); //account controller

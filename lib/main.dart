@@ -30,7 +30,7 @@ import 'view/signup.dart';
 import 'view/verify_email.dart';
 
 User? currentUser = FirebaseAuth.instance.currentUser;
-UserModel currentUserInfos = UserModel(uID: "", email: "", name: "");
+UserModel currentUserInfos = UserModel(uID: "", email: "", name: "", posts: []);
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

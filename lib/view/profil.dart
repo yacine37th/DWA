@@ -61,7 +61,8 @@ class Profil extends StatelessWidget {
                                   const SizedBox(
                                     width: 10,
                                   ),
-                                  Text(currentUserInfos.name!,
+                                  Text(
+                                      "${currentUserInfos.name!.length > 18 ? currentUserInfos.name!.substring(0, 17) + "..." : currentUserInfos.name!}",
                                       style: const TextStyle(
                                           fontSize: 20,
                                           color: blackColor,
@@ -85,43 +86,42 @@ class Profil extends StatelessWidget {
                                             MaterialStateProperty.all(Colors
                                                 .purple
                                                 .withOpacity(0.5))),
-                                    icon: const Icon(
-                                        Icons.favorite_border_outlined),
+                                    icon: const Icon(Icons.post_add),
                                     onPressed: () {
                                       // Get.toNamed("/MyTrips");
                                       homeScreenController
                                           .switchBetweenScreens(1);
                                     },
-                                    label: const Text("My favorites",
+                                    label: const Text("My Posts",
                                         style: TextStyle(
                                           fontSize: 20,
                                         ))),
                               ),
                               // const SizedBox(height: 10),
-                              Container(
-                                width: double.infinity,
-                                child: TextButton.icon(
-                                    style: ButtonStyle(
-                                        foregroundColor:
-                                            MaterialStateProperty.all(
-                                                blackColor),
-                                        backgroundColor:
-                                            MaterialStateProperty.all(
-                                                Colors.cyan.withOpacity(0.5))),
-                                    icon: const Icon(Icons.pin_drop_outlined),
-                                    onPressed: () async {
-                                      // Get.toNamed("/MyTransmitterTrips");
-                                      // if (currentUserInfos.latitude != 0 &&
-                                      //     currentUserInfos.longitude != 0) {
+                              // Container(
+                              //   width: double.infinity,
+                              //   child: TextButton.icon(
+                              //       style: ButtonStyle(
+                              //           foregroundColor:
+                              //               MaterialStateProperty.all(
+                              //                   blackColor),
+                              //           backgroundColor:
+                              //               MaterialStateProperty.all(
+                              //                   Colors.cyan.withOpacity(0.5))),
+                              //       icon: const Icon(Icons.pin_drop_outlined),
+                              //       onPressed: () async {
+                              //         // Get.toNamed("/MyTransmitterTrips");
+                              //         // if (currentUserInfos.latitude != 0 &&
+                              //         //     currentUserInfos.longitude != 0) {
 
-                                      // }
-                                    },
-                                    label: const Text("My Position",
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                        ))),
-                              ),
-                              // const SizedBox(height: 10),
+                              //         // }
+                              //       },
+                              //       label: const Text("My Position",
+                              //           style: TextStyle(
+                              //             fontSize: 20,
+                              //           ))),
+                              // ),
+                              // // const SizedBox(height: 10),
                               Container(
                                 width: double.infinity,
                                 child: TextButton.icon(
@@ -163,7 +163,7 @@ class Profil extends StatelessWidget {
                                 //   signInController.formKey.currentState!.save();
                                 //   signInController.signInAUser();
                                 // }
-                                Get.toNamed("/SignIn" , arguments: "profil");
+                                Get.toNamed("/SignIn", arguments: "profil");
                               },
                               style: ButtonStyle(
                                   foregroundColor: MaterialStateProperty.all(
