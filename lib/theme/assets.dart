@@ -1,5 +1,5 @@
 class AppAssets {
-  static String kAppLogo = 'assets/images/logo.png';
+  static String kAppLogo = 'assets/images/logo.jpeg';
   // static String kGoogle = 'assets/images/icons-google.png';
   // static String kFacebook = 'assets/images/icons-facebook.png';
   // static String kTwitter = 'assets/images/icons-twitter.png';

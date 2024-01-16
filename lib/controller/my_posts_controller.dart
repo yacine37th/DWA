@@ -10,12 +10,32 @@ class MyPostsController extends GetxController {
 
   Map<String, MedecineModel> myPosts = {};
   getPosts() async {
+    myPosts.clear();
     for (var element in posts) {
-      var doc = await FirebaseFirestore.instance
+      await FirebaseFirestore.instance
           .collection("medecines")
           .doc(element)
-          .get();
-          print(doc);
+          .get()
+          .then((value) {
+        print(value.data()?["medecineName"]);
+        myPosts.addAll({
+          value.id: MedecineModel(
+              id: value.id,
+              name: value.data()?["medecineName"],
+              description: value.data()?["medecineDescription"],
+              image: value.data()?["medecinePic"],
+              expiredDate:""
+              //  MainFunctions.dateFormat.format(DateTime.parse(
+              //     value.data()["medecineDateExpir"].toDate().toString()))
+                  ,
+              category: value.data()?["medecineCategory"],
+              postDate: ""
+              // MainFunctions.dateFormat.format(DateTime.parse(
+              //     value.data()["medecineDateAdded"].toDate().toString()))
+                  ,
+              phone: value.data()?["medecinePhoneNumber"])
+        });
+      });
       // myPosts.addAll({
       //   doc.id: MedecineModel(
       //       id: doc.id,
@@ -28,7 +48,7 @@ class MyPostsController extends GetxController {
       //       postDate: MainFunctions.dateFormat.format(
       //           DateTime.parse(doc["medecineDateAdded"].toDate().toString())),
       //       phone: doc["medecinePhoneNumber"])
-   
+
       // });
     }
     update();
