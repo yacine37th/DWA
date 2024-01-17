@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dwa/controller/home_screen_controller.dart';
+import 'package:dwa/controller/my_posts_controller.dart';
 import 'package:dwa/model/medecine_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -123,6 +125,7 @@ class HomeController extends GetxController {
     await FirebaseAuth.instance.signOut().then((value) {
       currentUser = null;
       currentUserInfos = UserModel(uID: "", email: "", name: "", posts: []);
+     HomeScreenController.myPostsController.myPosts={};
       update();
       // Get.offAllNamed("/SignIn");
     });

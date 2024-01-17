@@ -17,39 +17,18 @@ class MyPostsController extends GetxController {
           .doc(element)
           .get()
           .then((value) {
-        print(value.data()?["medecineName"]);
         myPosts.addAll({
           value.id: MedecineModel(
               id: value.id,
               name: value.data()?["medecineName"],
               description: value.data()?["medecineDescription"],
               image: value.data()?["medecinePic"],
-              expiredDate: ""
-              //  MainFunctions.dateFormat.format(DateTime.parse(
-              //     value.data()["medecineDateExpir"].toDate().toString()))
-              ,
+              expiredDate: "",
               category: value.data()?["medecineCategory"],
-              postDate: ""
-              // MainFunctions.dateFormat.format(DateTime.parse(
-              //     value.data()["medecineDateAdded"].toDate().toString()))
-              ,
+              postDate: "",
               phone: value.data()?["medecinePhoneNumber"])
         });
       });
-      // myPosts.addAll({
-      //   doc.id: MedecineModel(
-      //       id: doc.id,
-      //       name: doc["medecineName"],
-      //       description: doc["medecineDescription"],
-      //       image: doc["medecinePic"],
-      //       expiredDate: MainFunctions.dateFormat.format(
-      //           DateTime.parse(doc["medecineDateExpir"].toDate().toString())),
-      //       category: doc["medecineCategory"],
-      //       postDate: MainFunctions.dateFormat.format(
-      //           DateTime.parse(doc["medecineDateAdded"].toDate().toString())),
-      //       phone: doc["medecinePhoneNumber"])
-
-      // });
     }
     update();
   }

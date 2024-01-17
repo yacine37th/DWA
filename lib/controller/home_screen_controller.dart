@@ -11,6 +11,7 @@ import 'home_controller.dart';
 
 class HomeScreenController extends GetxController {
   int _currentBottomBarIndex = 0;
+ static MyPostsController myPostsController =Get.find();
 
   int currentBottomBarIndex() {
     return _currentBottomBarIndex;

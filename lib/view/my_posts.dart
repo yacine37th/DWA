@@ -170,11 +170,9 @@ class MyPosts extends StatelessWidget {
                                 // ),
 
                                 DropDownMenuFb1(
-                                    // color: Colors.white,
-                                    posts: myPostsController.myPosts.values
-                                        .elementAt(index),
-                                        
-                                        ),
+                                  post: myPostsController.myPosts.values
+                                      .elementAt(index),
+                                ),
                               ],
                             ),
                           ),
@@ -193,8 +191,8 @@ class MyPosts extends StatelessWidget {
 class DropDownMenuFb1 extends StatelessWidget {
   // final Color color;
   // final Widget icon;
-  late MedecineModel? posts;
-  DropDownMenuFb1({super.key, required this.posts});
+  late MedecineModel? post;
+  DropDownMenuFb1({super.key, required this.post});
 
   @override
   Widget build(BuildContext context) {
@@ -212,8 +210,8 @@ class DropDownMenuFb1 extends StatelessWidget {
         // const PopupMenuDivider(),
         PopupMenuItem(
           onTap: () {
-            print("${posts!.name}");
-            myPostsController.deleteFromMyPosts(posts!.id ,posts! );
+            print("${post!.name}");
+            myPostsController.deleteFromMyPosts(post!.id, post!);
           },
           child: Text("Supprimer"),
         ),
