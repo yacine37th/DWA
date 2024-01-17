@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -71,39 +72,40 @@ class MedecinePicture extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    return Column(
-      children: [
-        Container(
-          alignment: Alignment.topCenter,
-          height: 250,
-
-          width: double.infinity,
-          decoration: BoxDecoration(
-            // color: AppColors.kBackground,
-            borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(30.0),
-                bottomRight: Radius.circular(30.0)),
-            image: DecorationImage(
-                image: NetworkImage(foodPicUrl), fit: BoxFit.cover),
-          ),
-          child: const SafeArea(
-            child: Padding(
-              padding: EdgeInsets.all(20),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ArrowBack(),
-                ],
-              ),
+    return Container(
+      alignment: Alignment.topCenter,
+      height: 300,
+      width: double.infinity,
+      child: CachedNetworkImage(
+        imageUrl: foodPicUrl,
+        fit: BoxFit.cover,
+        progressIndicatorBuilder: (context, child, loadingProgress) {
+          return Center(
+            child: CircularProgressIndicator(
+              value: loadingProgress.progress,
+              color: AppColors.kPrimary2,
             ),
-          ),
-          //   Image.network(
-          //   "$foodPicUrl"
-          // ),
-          //
-        ),
-      ],
+          );
+        },
+      ),
+      // Image.network(foodPicUrl),
+
+      // const SafeArea(
+      //   child: Padding(
+      //     padding: EdgeInsets.all(20),
+      //     child: Row(
+      //       crossAxisAlignment: CrossAxisAlignment.start,
+      //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //       children: [
+      //         ArrowBack(),
+      //       ],
+      //     ),
+      //   ),
+      // ),
+      //   Image.network(
+      //   "$foodPicUrl"
+      // ),
+      //
     );
   }
 }

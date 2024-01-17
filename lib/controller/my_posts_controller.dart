@@ -56,7 +56,7 @@ class MyPostsController extends GetxController {
 
   @override
   void onInit() {
-    getPosts();
+    // getPosts();
     super.onInit();
   }
 }

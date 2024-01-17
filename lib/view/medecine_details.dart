@@ -14,20 +14,50 @@ class MedecineDetails extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     MedecineDetailsController medecineDetailsController = Get.find();
     return Scaffold(
+       appBar: AppBar(
+        //   bottom: PreferredSize(
+        // preferredSize: Size(0, 0),
+        // child: Container(
+        //   color: AppColors.kPrimary2,
+        //   height: 1,
+        // )),
+        title: Text("${medecineDetailsController.medecine.name}" , style:const TextStyle(color: AppColors.kPrimary2),),
+        backgroundColor: AppColors.transparentColor,
+        elevation: 0,
+        leading: IconButton(
+            onPressed: () {
+              navigator!.pop();
+            },
+            icon:const Icon(
+              Icons.arrow_back_ios_outlined,
+              color: AppColors.kPrimary2,
+            )),
+              bottom: PreferredSize(
+            preferredSize: Size(0, 0),
+            child: Container(
+              color: AppColors.kPrimary2,
+              height: 1,
+            )),
+
+      ),
+     
         backgroundColor: AppColors.whiteColor,
         body: SafeArea(
           child: ListView(physics: BouncingScrollPhysics(), children: [
             SingleChildScrollView(
-              child: Stack(
+              child: Column(
                 children: [
                   MedecinePicture(
                       foodPicUrl:
                           "${medecineDetailsController.medecine.image}"), //url
-                  Container(
-                    margin: EdgeInsets.only(top: screenHeight * 0.32),
+                  Container(  
+                    // margin: EdgeInsets.only(top: screenHeight * 0.32),
                     width: double.infinity,
                     decoration: const BoxDecoration(
                       color: Colors.white,
+                      // border: Border(
+                      //   top: BorderSide(color: AppColors.kPrimary2)
+                      // ),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30.0),
                           topRight: Radius.circular(30.0)),

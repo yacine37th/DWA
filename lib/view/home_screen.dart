@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         builder: (contx) => currentUser != null
                             ? Text(
                                 "${currentUserInfos.name!.length > 25 ? currentUserInfos.name!.substring(0, 23) + "..." : currentUserInfos.name} ",
-                                style:const TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                               )
                             : const Text(""),
                       )
@@ -242,49 +242,54 @@ class _HomeScreenState extends State<HomeScreen> {
               )
             ],
           ),
-          child: SafeArea(
-            child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
-              child: GNav(
-                rippleColor: AppColors.kPrimary2,
-                hoverColor: AppColors.kPrimary2,
-                gap: 10,
-                activeColor: AppColors.whiteColor,
-                iconSize: 24,
+          child: Container(
+            decoration:const BoxDecoration(
+              color: Color.fromARGB(255, 240, 236, 236),
+            ),
+            child: SafeArea(
+              child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                duration: Duration(milliseconds: 400),
-                tabBackgroundColor: const Color.fromRGBO(132, 189, 147, 1),
-                color: AppColors.kSecondary,
-                tabs: [
-                  GButton(
-                    icon: LineIcons.home,
-                    iconActiveColor: Colors.white,
-                    // iconColor: Colors.red,
-                    active: true,
-                    text: 'Home'.tr,
-                  ),
-                  // GButton(
-                  //   icon: LineIcons.heart,
-                  //   text: 'Likes',
-                  // ),
-                  GButton(
-                    icon: LineIcons.penFancy,
-                    text: 'Posts',
-                  ),
-                  GButton(
-                    icon: LineIcons.user,
-                    text: 'Profil',
-                  ),
-                ],
-                selectedIndex: homeScreenController.currentBottomBarIndex(),
-                onTabChange: (index) {
-                  homeScreenController.switchBetweenScreens(index);
-                  // setState(() {
-                  //   _selectedIndex = index;
-                  // });
-                },
+                    const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+                child: GNav(
+                  rippleColor: AppColors.kPrimary2,
+                  hoverColor: AppColors.kPrimary2,
+                  gap: 10,
+                  activeColor: AppColors.whiteColor,
+                  iconSize: 24,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  duration: Duration(milliseconds: 400),
+                  tabBackgroundColor: const Color.fromRGBO(132, 189, 147, 1),
+                  color: AppColors.kSecondary,
+                  tabs: [
+                    GButton(
+                      icon: LineIcons.home,
+                      iconActiveColor: Colors.white,
+                      // iconColor: Colors.red,
+                      active: true,
+                      text: 'Home'.tr,
+                    ),
+                    // GButton(
+                    //   icon: LineIcons.heart,
+                    //   text: 'Likes',
+                    // ),
+                    GButton(
+                      icon: LineIcons.penFancy,
+                      text: 'Posts',
+                    ),
+                    GButton(
+                      icon: LineIcons.user,
+                      text: 'Profil',
+                    ),
+                  ],
+                  selectedIndex: homeScreenController.currentBottomBarIndex(),
+                  onTabChange: (index) {
+                    homeScreenController.switchBetweenScreens(index);
+                    // setState(() {
+                    //   _selectedIndex = index;
+                    // });
+                  },
+                ),
               ),
             ),
           ),
