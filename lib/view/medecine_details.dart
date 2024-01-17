@@ -14,33 +14,34 @@ class MedecineDetails extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     MedecineDetailsController medecineDetailsController = Get.find();
     return Scaffold(
-       appBar: AppBar(
-        //   bottom: PreferredSize(
-        // preferredSize: Size(0, 0),
-        // child: Container(
-        //   color: AppColors.kPrimary2,
-        //   height: 1,
-        // )),
-        title: Text("${medecineDetailsController.medecine.name}" , style:const TextStyle(color: AppColors.kPrimary2),),
-        backgroundColor: AppColors.transparentColor,
-        elevation: 0,
-        leading: IconButton(
-            onPressed: () {
-              navigator!.pop();
-            },
-            icon:const Icon(
-              Icons.arrow_back_ios_outlined,
-              color: AppColors.kPrimary2,
-            )),
-              bottom: PreferredSize(
-            preferredSize: Size(0, 0),
-            child: Container(
-              color: AppColors.kPrimary2,
-              height: 1,
-            )),
-
-      ),
-     
+        appBar: AppBar(
+          //   bottom: PreferredSize(
+          // preferredSize: Size(0, 0),
+          // child: Container(
+          //   color: AppColors.kPrimary2,
+          //   height: 1,
+          // )),
+          title: Text(
+            "${medecineDetailsController.medecine.name}",
+            style: const TextStyle(color: AppColors.kPrimary2),
+          ),
+          backgroundColor: AppColors.transparentColor,
+          elevation: 0,
+          leading: IconButton(
+              onPressed: () {
+                navigator!.pop();
+              },
+              icon: const Icon(
+                Icons.arrow_back_ios_outlined,
+                color: AppColors.kPrimary2,
+              )),
+          bottom: PreferredSize(
+              preferredSize: Size(0, 0),
+              child: Container(
+                color: AppColors.kPrimary2,
+                height: 1,
+              )),
+        ),
         backgroundColor: AppColors.whiteColor,
         body: SafeArea(
           child: ListView(physics: BouncingScrollPhysics(), children: [
@@ -50,14 +51,15 @@ class MedecineDetails extends StatelessWidget {
                   MedecinePicture(
                       foodPicUrl:
                           "${medecineDetailsController.medecine.image}"), //url
-                  Container(  
+                  Container(
                     // margin: EdgeInsets.only(top: screenHeight * 0.32),
                     width: double.infinity,
                     decoration: const BoxDecoration(
-                      color: Colors.white,
-                      // border: Border(
-                      //   top: BorderSide(color: AppColors.kPrimary2)
-                      // ),
+                      // color: Colors.red,
+
+                      // border: Border.symmetric(
+                      //     vertical: BorderSide(color: Colors.red)),
+
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30.0),
                           topRight: Radius.circular(30.0)),
@@ -287,9 +289,9 @@ class MedecineDetails extends StatelessWidget {
         ),
         bottomNavigationBar: GetBuilder<MedecineDetailsController>(
           builder: (contx) => Container(
-            padding: EdgeInsets.symmetric(
-              vertical: screenHeight / 15.0,
-              horizontal: screenHeight / 30.0,
+            padding: const EdgeInsets.symmetric(
+              vertical: 15.0,
+              horizontal: 30.0,
             ),
             decoration: const BoxDecoration(
               color: Colors.white,
@@ -343,11 +345,11 @@ class MedecineDetails extends StatelessWidget {
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.phone,
                           color: AppColors.kPrimary2,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 15,
                         ),
                         Text(

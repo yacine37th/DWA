@@ -15,7 +15,6 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-
 import 'functions/functions.dart';
 import 'middleware/auth_middleware.dart';
 import 'model/user_model.dart';
@@ -31,7 +30,7 @@ import 'view/verify_email.dart';
 
 User? currentUser = FirebaseAuth.instance.currentUser;
 UserModel currentUserInfos = UserModel(uID: "", email: "", name: "", posts: []);
-
+bool prevVerfiy = false;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -60,7 +59,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.cupertino,
       translations: Languages(),
-      supportedLocales: const [Locale('en'), Locale('fr') , Locale('ar')],
+      supportedLocales: const [Locale('en'), Locale('fr'), Locale('ar')],
       locale: Languages.initLang(),
 
       // theme: Themes.customLightTheme,
@@ -72,11 +71,10 @@ class MyApp extends StatelessWidget {
           binding: SignUpBinding(),
         ),
         GetPage(
-          name: "/SignIn",
-          page: () => const SignIn(),
-          binding: SignInBinding(),
-          middlewares: [AuthMiddleware()]
-        ),
+            name: "/SignIn",
+            page: () => const SignIn(),
+            binding: SignInBinding(),
+            middlewares: [AuthMiddleware()]),
         GetPage(
             name: "/EmailVerification",
             page: () => const EmailVerification(),

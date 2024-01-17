@@ -54,7 +54,11 @@ class SignUp extends StatelessWidget {
                 child: Column(
                   children: [
                     // const SizedBox(height: 10),
-                    Center(child: Image.asset(AppAssets.kAppLogo)),
+                   Container(
+                    width: double.infinity,
+                    height: 250,
+                    child : Image.asset(AppAssets.kAppLogo),
+                   ),
                     // const SizedBox(height: 30),
                     Text("createAccount".tr,
                         style: const TextStyle(

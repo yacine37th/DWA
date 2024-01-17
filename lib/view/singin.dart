@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../animation/fade_animation.dart';
 import '../controller/singin_controller.dart';
+import '../main.dart';
 import '../theme/assets.dart';
 import '../theme/main_colors.dart';
 
@@ -14,7 +15,7 @@ class SignIn extends StatelessWidget {
   Widget build(BuildContext context) {
     SignInController signInController = Get.find();
     return Scaffold(
-    appBar: AppBar(
+      appBar: AppBar(
         //   bottom: PreferredSize(
         // preferredSize: Size(0, 0),
         // child: Container(
@@ -25,7 +26,13 @@ class SignIn extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
             onPressed: () {
-              navigator!.pop();
+              if (prevVerfiy) {
+                Get.offAllNamed("/");
+                prevVerfiy = false;
+              } else {
+                navigator!.pop();
+              }
+              // navigator!.pop();
             },
             icon: Icon(
               Icons.arrow_back_ios_outlined,
@@ -53,10 +60,14 @@ class SignIn extends StatelessWidget {
                 key: signInController.formKey,
                 child: Column(
                   children: [
-                    const SizedBox(height: 60),
-                    Center(child: Image.asset(AppAssets.kAppLogo)),
+                    // const SizedBox(height: 60),
+                    Container(
+                      width: double.infinity,
+                      height: 250,
+                      child: Image.asset(AppAssets.kAppLogo),
+                    ),
                     // const SizedBox(height: 30),
-                     Text('login'.tr,
+                    Text('login'.tr,
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
@@ -100,8 +111,7 @@ class SignIn extends StatelessWidget {
                         contentPadding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 16),
                         enabledBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: AppColors.kLine),
+                          borderSide: const BorderSide(color: AppColors.kLine),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         focusedBorder: OutlineInputBorder(
@@ -110,13 +120,11 @@ class SignIn extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         border: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: AppColors.kLine),
+                          borderSide: const BorderSide(color: AppColors.kLine),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         errorBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: AppColors.KError),
+                          borderSide: const BorderSide(color: AppColors.KError),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         hintStyle: const TextStyle(
@@ -153,8 +161,7 @@ class SignIn extends StatelessWidget {
                         decoration: InputDecoration(
                           hintText: 'password'.tr,
                           errorMaxLines: 2,
-                          prefixIcon:
-                              Icon(Icons.lock, color: AppColors.kLine),
+                          prefixIcon: Icon(Icons.lock, color: AppColors.kLine),
                           suffixIcon: IconButton(
                               onPressed: () {
                                 contx.invertShowPassword();
@@ -216,8 +223,7 @@ class SignIn extends StatelessWidget {
                     const SizedBox(height: 5),
                     TextButton(
                       onPressed: () {
-                        if (signInController.formKey.currentState!
-                            .validate()) {
+                        if (signInController.formKey.currentState!.validate()) {
                           signInController.formKey.currentState!.save();
                           signInController.signInAUser();
                         }
@@ -230,10 +236,10 @@ class SignIn extends StatelessWidget {
                             AppColors.kPrimary2,
                           ),
                           overlayColor: MaterialStateColor.resolveWith(
-                              (states) => AppColors.kPrimary2Onpress
-                                  .withOpacity(0.2)),
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
+                              (states) =>
+                                  AppColors.kPrimary2Onpress.withOpacity(0.2)),
+                          shape:
+                              MaterialStateProperty.all(RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(100),
                                   side: BorderSide(
                                     color: AppColors.kPrimary2,
@@ -252,7 +258,7 @@ class SignIn extends StatelessWidget {
                             // color: AppColors.kPrimary,
                             borderRadius: BorderRadius.circular(30),
                           ),
-                          child:  Text(
+                          child: Text(
                             "login".tr,
                             style: const TextStyle(
                               color: Colors.white,
@@ -286,10 +292,9 @@ class SignIn extends StatelessWidget {
                             return TextStyle(fontSize: 18, color: textColor);
                           }),
                           overlayColor: MaterialStateColor.resolveWith(
-                              (states) =>
-                                  AppColors.kPrimary2.withOpacity(0.2)),
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
+                              (states) => AppColors.kPrimary2.withOpacity(0.2)),
+                          shape:
+                              MaterialStateProperty.all(RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(100),
                                   side: const BorderSide(
                                     color: AppColors.kPrimary2,
@@ -310,7 +315,7 @@ class SignIn extends StatelessWidget {
                               20,
                             ),
                           ),
-                          child:  Text(
+                          child: Text(
                             "createAccount".tr,
                             style: const TextStyle(
                                 color: AppColors.kPrimary2,

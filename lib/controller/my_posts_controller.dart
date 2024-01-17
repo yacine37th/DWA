@@ -24,15 +24,15 @@ class MyPostsController extends GetxController {
               name: value.data()?["medecineName"],
               description: value.data()?["medecineDescription"],
               image: value.data()?["medecinePic"],
-              expiredDate:""
+              expiredDate: ""
               //  MainFunctions.dateFormat.format(DateTime.parse(
               //     value.data()["medecineDateExpir"].toDate().toString()))
-                  ,
+              ,
               category: value.data()?["medecineCategory"],
               postDate: ""
               // MainFunctions.dateFormat.format(DateTime.parse(
               //     value.data()["medecineDateAdded"].toDate().toString()))
-                  ,
+              ,
               phone: value.data()?["medecinePhoneNumber"])
         });
       });
@@ -54,9 +54,18 @@ class MyPostsController extends GetxController {
     update();
   }
 
+  Future<void> deleteFromMyPosts(var medecine, MedecineModel me) async {
+    await FirebaseFirestore.instance
+        .collection("medecines")
+        .doc(medecine)
+        .delete();
+    myPosts.removeWhere((key, value) => value == me);
+    update();
+  }
+
   @override
   void onInit() {
-    // getPosts();
+    getPosts();
     super.onInit();
   }
 }

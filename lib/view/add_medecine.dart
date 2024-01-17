@@ -1,4 +1,5 @@
 import 'package:dwa/controller/add_medecine_controller.dart';
+import 'package:dwa/controller/singin_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -12,6 +13,7 @@ class AddMedecine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AddMedecineController addMedecineController = Get.find();
+    // SignInController signInController = Get.find();
     //  final double scaledFontSize = MediaQuery.textScalerOf(context).scale(fontSize);
     return Scaffold(
       appBar: AppBar(
@@ -58,8 +60,11 @@ class AddMedecine extends StatelessWidget {
                 child: Column(
                   children: [
                     // const SizedBox(height: 60),
-                    Center(child: Image.asset(AppAssets.kAppLogo)),
-                    // const SizedBox(height: 10),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 250,
+                      child: Image.asset(AppAssets.kAppLogo),
+                    ), // const SizedBox(height: 10),
                     TextFormField(
                       textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.text,
@@ -286,8 +291,7 @@ class AddMedecine extends StatelessWidget {
                     ),
                     //  const SizedBox(width: 15,),
                     GetBuilder<AddMedecineController>(
-                      builder: (contx) => contx.bookImage !=
-                              null
+                      builder: (contx) => contx.bookImage != null
                           ? Row(
                               children: [
                                 Icon(
@@ -310,12 +314,13 @@ class AddMedecine extends StatelessWidget {
                             )
                           : Text(""),
                     ),
-                 
+
                     const SizedBox(height: 20),
                     GetBuilder<AddMedecineController>(
                       builder: (contx) => DropdownButtonFormField(
                           value: addMedecineController.selectedValue,
-                          hint: const Text('Choissir la catégorie du medicament',
+                          hint: const Text(
+                              'Choissir la catégorie du medicament',
                               style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w300,

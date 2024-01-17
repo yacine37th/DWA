@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 import '../functions/functions.dart';
+import '../main.dart';
 
 class EmailVerificationController extends GetxController {
   bool isEmailVerified = false;
@@ -28,6 +29,7 @@ class EmailVerificationController extends GetxController {
           timer.cancel();
           MainFunctions.successSnackBar("AccountConfirmed".tr);
           Get.offAllNamed("/SignIn");
+          prevVerfiy=true;
         }
       },
     );
