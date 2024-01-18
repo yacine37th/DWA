@@ -60,13 +60,13 @@ class HomeController extends GetxController {
       DateTime now = DateTime.now();
       for (int index = 0; index < value.docs.length; index++) {
         ////////get only the medecine which didn't expired his date
-        print("inside");
+        // print("inside");
         if (MainFunctions.dateFormat
                 .format(DateTime.parse(
                     value.docs[index]["medecineDateExpir"].toDate().toString()))
                 .compareTo(now.toString()) ==
             1) {
-          print("inside2");
+          // print("inside2");
           medecines.addAll({
             value.docs[index].id: MedecineModel(
                 id: value.docs[index].id,

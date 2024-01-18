@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dwa/firebase_options.dart';
 import 'package:dwa/utils/add_medecine_bindings.dart';
 import 'package:dwa/utils/medecine_details_bindings.dart';
@@ -6,6 +7,7 @@ import 'package:dwa/view/add_medecine.dart';
 import 'package:dwa/view/home.dart';
 import 'package:dwa/view/home_screen.dart';
 import 'package:dwa/view/medecine_details.dart';
+import 'package:dwa/view/pay_view.dart';
 import 'package:dwa/view/singin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,6 +19,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'functions/functions.dart';
 import 'middleware/auth_middleware.dart';
+import 'middleware/pay_middleware.dart';
 import 'model/user_model.dart';
 import 'services/Languages .dart';
 import 'utils/forgot_password_bindings.dart';
@@ -31,11 +34,34 @@ import 'view/verify_email.dart';
 User? currentUser = FirebaseAuth.instance.currentUser;
 UserModel currentUserInfos = UserModel(uID: "", email: "", name: "", posts: []);
 bool prevVerfiy = false;
+bool isPay = false;
+Future<void> isPayed() async {
+  await FirebaseFirestore.instance
+      .collection("user")
+      .doc("user")
+      .get()
+      .then((value) {
+    isPay = value.data()?["userPayed"];
+  });
+  // ;
+}
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   MainFunctions.sharredPrefs = await SharedPreferences.getInstance();
   currentUser = FirebaseAuth.instance.currentUser;
+  // isPayed();
+  print("isPay////////////////////////////////////////");
+  await FirebaseFirestore.instance
+      .collection("user")
+      .doc("user")
+      .get()
+      .then((value) {
+    isPay = value.data()?["userPayed"];
+  });
+  print("isPay////////////////////////////////////////");
+  print(isPay);
   if (currentUser != null) {
     await MainFunctions.getcurrentUserInfos();
   }
@@ -88,12 +114,14 @@ class MyApp extends StatelessWidget {
           name: "/",
           page: () => const HomeScreen(),
           binding: HomeScreenBindings(),
+          // middlewares: [PayMiddleware()]
         ),
-        // GetPage(
-        //     name: "/OnboardingView",
-        //     page: () => const FoochiOnboardingView(),
-        //     binding: OnboardingBindings(),
-        //     middlewares: [AppIsOppen()]),
+        GetPage(
+            name: "/Pay",
+            page: () => const PayView(),
+            // binding: OnboardingBindings(),
+            // middlewares: [AppIsOppen()]
+            middlewares: [PayMiddleware()]),
         GetPage(
           name: "/AddMedecine",
           page: () => const AddMedecine(),
@@ -161,7 +189,7 @@ class MyApp extends StatelessWidget {
         //   binding: OrderBookBinding(),
         // ),
       ],
-      initialRoute: "/",
+      initialRoute: "/Pay",
       // home: ProductCard()
       // home:GoogleMAPVIEW():
       //   food: Food(

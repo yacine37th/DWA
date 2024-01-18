@@ -3,15 +3,15 @@ import 'package:get/get.dart';
 
 import '../main.dart';
 
-class AuthMiddleware extends GetMiddleware {
+class PayMiddleware extends GetMiddleware {
   @override
-  int? get priority => 1;
+  int? get priority => 0;
   @override
   RouteSettings? redirect(String? route) {
-    if (currentUser != null && currentUser!.emailVerified) {
+    if (isPay) {
       //  MainFunctions.getcurrentUserInfos();
       // MainFunctions.loadTripsDriversData();
-      return const RouteSettings(name: "/AddMedecine");
+      return const RouteSettings(name: "/");
     } else {
       return null;
     }
