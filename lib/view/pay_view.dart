@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:dwa/functions/functions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../theme/assets.dart';
@@ -36,7 +38,9 @@ class PayView extends StatelessWidget {
                 height: 15,
               ),
               TextButton(
-                onPressed:()=> exit(0),
+                onPressed:()=>MainFunctions.pop(),
+                //  SystemNavigator.pop(),
+                // exit(0),
                 style: ButtonStyle(
                     foregroundColor: MaterialStateProperty.all(
                       AppColors.kPrimary2,
