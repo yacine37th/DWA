@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -34,9 +36,7 @@ class PayView extends StatelessWidget {
                 height: 15,
               ),
               TextButton(
-                onPressed: () {
-                  // emailVerificationController.resendVerificationEmail();
-                },
+                onPressed:()=> exit(0),
                 style: ButtonStyle(
                     foregroundColor: MaterialStateProperty.all(
                       AppColors.kPrimary2,
