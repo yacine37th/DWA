@@ -128,7 +128,7 @@ class AddMedecine extends StatelessWidget {
                       builder: (contx) => TextFormField(
                         validator: (val) {
                           if (val!.isEmpty) {
-                            return "enterMedicineName".tr;
+                            return "enterMedicineDate".tr;
                           } else if (val.length < 2) {
                             return "medicineName>2".tr;
                           }
@@ -194,7 +194,7 @@ class AddMedecine extends StatelessWidget {
                       },
                       validator: (val) {
                         if (val!.isEmpty) {
-                          return "enterMedicineName".tr;
+                          return "enterMedicinePhoneNumber".tr;
                         } else if (val.length < 2) {
                           return "medicineName>2".tr;
                         }
@@ -208,7 +208,7 @@ class AddMedecine extends StatelessWidget {
                       // initialValue: signInController.userEmailAddress,
                       maxLength: 10,
                       decoration: InputDecoration(
-                        hintText: 'Numero de telephone'.tr,
+                        hintText: 'MedicinePhoneNumber'.tr,
                         errorMaxLines: 2,
                         prefixIcon: const Icon(Icons.phone_outlined,
                             color: AppColors.kLine),
@@ -279,9 +279,9 @@ class AddMedecine extends StatelessWidget {
                               20,
                             ),
                           ),
-                          child: const Text(
-                            "Pick image",
-                            style: TextStyle(
+                          child:  Text(
+                            "PickImage".tr,
+                            style:const TextStyle(
                                 color: AppColors.kPrimary2,
                                 fontSize: 19,
                                 fontWeight: FontWeight.w500),
@@ -319,9 +319,10 @@ class AddMedecine extends StatelessWidget {
                     GetBuilder<AddMedecineController>(
                       builder: (contx) => DropdownButtonFormField(
                           value: addMedecineController.selectedValue,
-                          hint: const Text(
-                              'Choissir la catégorie du medicament',
-                              style: TextStyle(
+                          hint:  Text(
+                            "CategoryChoose".tr
+                              ,
+                              style:const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w300,
                                   color: Colors.grey)),
@@ -366,7 +367,7 @@ class AddMedecine extends StatelessWidget {
                             addMedecineController.selectedValue = value;
                           },
                           validator: (value) => value == null
-                              ? 'Select the Category of the book'
+                              ? 'SelectCate'.tr
                               : null,
                           items: addMedecineController.categorieList
                               .map((category) {
@@ -393,12 +394,12 @@ class AddMedecine extends StatelessWidget {
                       },
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter the Descrption of the Book';
+                          return 'DescMedicin'.tr;
                         }
                         return null;
                       },
                       decoration: InputDecoration(
-                        hintText: "Description...",
+                        hintText: "Description".tr,
                         errorMaxLines: 2,
                         prefixIcon: const Icon(Icons.description,
                             color: AppColors.kLine),

@@ -70,10 +70,10 @@ class MyPosts extends StatelessWidget {
         ),
         body: GetBuilder<MyPostsController>(builder: (contx) {
           if (contx.myPosts.isEmpty) {
-            return const Center(
+            return  Center(
               child: Text(
-                "List Empty",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                "ListEmpty".tr,
+                style:const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
             );
           } else {
@@ -86,9 +86,9 @@ class MyPosts extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                   onTap: () {
-                    Get.toNamed('/FoodDetails', arguments: {
-                      "0": contx.myPosts.values.elementAt(index)
-                    });
+                    // Get.toNamed('/FoodDetails', arguments: {
+                    //   "0": contx.myPosts.values.elementAt(index)
+                    // });
                   },
                   child: Padding(
                     padding: EdgeInsets.all(5),
@@ -128,7 +128,10 @@ class MyPosts extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "${contx.myPosts.values.elementAt(index).name}",
+                                  "${contx.myPosts.values.elementAt(index).name!.length > 7?
+                                  contx.myPosts.values.elementAt(index).name!.substring(0,10)+"..." :
+                                  contx.myPosts.values.elementAt(index).name
+                                  }",
                                   style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w500,
@@ -213,13 +216,13 @@ class DropDownMenuFb1 extends StatelessWidget {
             print("${post!.name}");
             myPostsController.deleteFromMyPosts(post!.id, post!);
           },
-          child: Text("Supprimer"),
+          child: Text("Supprimer".tr),
         ),
         PopupMenuItem(
           onTap: () {
             // Navigator.pop(context);
           },
-          child: Text("Anuller"),
+          child: Text("Annuler".tr),
         ),
       ],
     );

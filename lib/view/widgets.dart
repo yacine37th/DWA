@@ -155,7 +155,7 @@ class FoodName extends StatelessWidget {
         const SizedBox(
           height: 5,
         ),
-        Text("Date Expiration : ${date}",
+        Text("ExpirationDate".tr+"${date}",
             style: const TextStyle(color: Colors.black45, fontSize: 18)),
       ]),
     );

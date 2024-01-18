@@ -92,8 +92,8 @@ class Profil extends StatelessWidget {
                                       homeScreenController
                                           .switchBetweenScreens(1);
                                     },
-                                    label: const Text("My Posts",
-                                        style: TextStyle(
+                                    label:  Text("Posts".tr,
+                                        style:const TextStyle(
                                           fontSize: 20,
                                         ))),
                               ),
@@ -122,6 +122,9 @@ class Profil extends StatelessWidget {
                               //           ))),
                               // ),
                               // // const SizedBox(height: 10),
+
+                              // const SizedBox(height: 5),
+
                               Container(
                                 width: double.infinity,
                                 child: TextButton.icon(
@@ -142,8 +145,8 @@ class Profil extends StatelessWidget {
                                       //   Get.offAllNamed("/SignIn");
                                       // });
                                     },
-                                    label: const Text("Sign Out",
-                                        style: TextStyle(
+                                    label:  Text("signOut".tr,
+                                        style:const TextStyle(
                                           fontSize: 20,
                                         ))),
                               ),

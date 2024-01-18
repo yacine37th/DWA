@@ -55,7 +55,7 @@ class HomeController extends GetxController {
     await FirebaseFirestore.instance
         .collection("medecines")
         .orderBy("medecineDateAdded", descending: true)
-        .limit(4)
+        .limit(5)
         .get()
         .then((value) async {
       if (value.docs.isEmpty) {

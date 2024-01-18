@@ -275,11 +275,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     // ),
                     GButton(
                       icon: LineIcons.penFancy,
-                      text: 'Posts',
+                      text: 'Posts'.tr,
                     ),
                     GButton(
                       icon: LineIcons.user,
-                      text: 'Profil',
+                      text: 'Profil'.tr,
                     ),
                   ],
                   selectedIndex: homeScreenController.currentBottomBarIndex(),
