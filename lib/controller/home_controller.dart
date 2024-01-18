@@ -12,6 +12,7 @@ import '../model/user_model.dart';
 
 class HomeController extends GetxController {
   late ScrollController hideButtonController;
+  ScrollController? scrollController;
 //  Map<String , MedecineModel> medecines = {
 
 //  };
@@ -49,14 +50,18 @@ class HomeController extends GetxController {
   // ];
 
   Future getMedecines() async {
-    medecines.clear();
+    isFetching = true;
 
     await FirebaseFirestore.instance
         .collection("medecines")
         .orderBy("medecineDateAdded", descending: true)
-        .limit(9)
+        .limit(4)
         .get()
         .then((value) async {
+      if (value.docs.isEmpty) {
+        getMore = false;
+        print("*******dddddd***********");
+      }
       DateTime now = DateTime.now();
       for (int index = 0; index < value.docs.length; index++) {
         ////////get only the medecine which didn't expired his date
@@ -87,11 +92,14 @@ class HomeController extends GetxController {
         }
       }
     });
-    // for (var i = 0; i < medecines.length; i++) {
-    //   print(medecines[i]!.name);
-    // }
+    print(
+        "fetch////////////////////////////////////////////////////////////////////////");
+    print("fetch");
+    isFetching = false;
+
     update();
   }
+
   // late final AnimationController controller = AnimationController(
   //   duration: const Duration(milliseconds: 10),
   //   vsync:  TickerProvider(),
@@ -107,9 +115,25 @@ class HomeController extends GetxController {
   //   parent: controller,
   //   curve: Curves.linear,
   // ));
+  var getMore = true;
+  var isFetching = false;
+  void _scrollListener() async {
+    print("******************");
+    if (getMore) {
+      if (scrollController?.position.pixels ==
+              scrollController?.position.maxScrollExtent &&
+          isFetching == false) {
+        isFetching = true;
+        await getMedecines();
+        isFetching = false;
+      }
+    }
+  }
 
   @override
   void onInit() {
+    scrollController = ScrollController()..addListener(_scrollListener);
+
     getMedecines();
     super.onInit();
   }
@@ -125,7 +149,7 @@ class HomeController extends GetxController {
     await FirebaseAuth.instance.signOut().then((value) {
       currentUser = null;
       currentUserInfos = UserModel(uID: "", email: "", name: "", posts: []);
-     HomeScreenController.myPostsController.myPosts={};
+      HomeScreenController.myPostsController.myPosts = {};
       update();
       // Get.offAllNamed("/SignIn");
     });

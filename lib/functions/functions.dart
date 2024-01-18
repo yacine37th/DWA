@@ -109,7 +109,7 @@ class MainFunctions {
       Get.offAndToNamed("/SignIn");
     });
   }
-
+////////exit from the application
   static Future<void> pop({bool? animated}) async {
     await SystemChannels.platform
         .invokeMethod<void>('SystemNavigator.pop', animated);
