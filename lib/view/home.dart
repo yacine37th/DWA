@@ -75,88 +75,90 @@ class Home extends StatelessWidget {
                   // backgroundColor: AppColors.kBackground,
                   color: AppColors.kPrimary2,
                 ))
-              : ListView.builder(
-                  // scrollDirection: Axis.horizontal,
-                  physics: BouncingScrollPhysics(),
-                  // gridDelegate:
-                  //     SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-                  itemCount: homeController.medecines.length,
-                  controller: homeController.scrollController,
-                  // padding: const EdgeInsets.all(2.0),
-                  itemBuilder: (BuildContext context, int index) {
-                    return GestureDetector(
-                      onTap: () {
-                        Get.toNamed('/MedecineDetails', arguments: {
-                          "0": contx.medecines.values.elementAt(index)
-                        });
-                        print("dede");
-                      },
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                            side: const BorderSide(
-                                color: AppColors.kPrimary2, width: 0.5),
-                            borderRadius: BorderRadius.circular(15.0)),
-
-                        elevation: 5, // Change this
-                        shadowColor: Colors.black12,
-                        margin: const EdgeInsets.all(15.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(),
-                              height: 150,
-                              width: double.infinity,
-                              // alignment: Alignment.center,
-                              child: CachedNetworkImage(
-                                imageUrl:
-                                    "${contx.medecines.values.elementAt(index).image}",
-                                fit: BoxFit.contain,
-                                progressIndicatorBuilder:
-                                    (context, child, loadingProgress) {
-                                  return Center(
-                                    child: CircularProgressIndicator(
-                                      value: loadingProgress.progress,
-                                      color: AppColors.kPrimary2,
+              : GetBuilder<HomeController>(
+                builder:(contxe)=> ListView.builder(
+                    // scrollDirection: Axis.horizontal,
+                    physics: BouncingScrollPhysics(),
+                    // gridDelegate:
+                    //     SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                    itemCount: homeController.medecines.length,
+                    controller: homeController.scrollController,
+                    // padding: const EdgeInsets.all(2.0),
+                    itemBuilder: (BuildContext context, int index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Get.toNamed('/MedecineDetails', arguments: {
+                            "0": contx.medecines.values.elementAt(index)
+                          });
+                          print("dede");
+                        },
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                              side: const BorderSide(
+                                  color: AppColors.kPrimary2, width: 0.5),
+                              borderRadius: BorderRadius.circular(15.0)),
+              
+                          elevation: 5, // Change this
+                          shadowColor: Colors.black12,
+                          margin: const EdgeInsets.all(15.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(),
+                                height: 150,
+                                width: double.infinity,
+                                // alignment: Alignment.center,
+                                child: CachedNetworkImage(
+                                  imageUrl:
+                                      "${homeController.medecines.values.elementAt(index).image}",
+                                  fit: BoxFit.contain,
+                                  progressIndicatorBuilder:
+                                      (context, child, loadingProgress) {
+                                    return Center(
+                                      child: CircularProgressIndicator(
+                                        value: loadingProgress.progress,
+                                        color: AppColors.kPrimary2,
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+              
+                              // Image.network(
+                              //   "${contx.medecines.elementAt(index).image}",
+                              //   fit: BoxFit.cover,
+                              //   height: 150.0,
+                              //   width: double.infinity,
+                              // ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '''${homeController.medecines.values.elementAt(index).name!.length > 15 ? homeController.medecines.values.elementAt(index).name!.substring(0, 15) + "..." : homeController.medecines.values.elementAt(index).name!}''',
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18.0),
                                     ),
-                                  );
-                                },
+                                    const SizedBox(height: 8.0),
+                                    Text(
+                                      "${contx.medecines.values.elementAt(index).category}",
+                                      style: const TextStyle(color: Colors.grey),
+                                    ),
+                                    const SizedBox(height: 8.0),
+                                  ],
+                                ),
                               ),
-                            ),
-
-                            // Image.network(
-                            //   "${contx.medecines.elementAt(index).image}",
-                            //   fit: BoxFit.cover,
-                            //   height: 150.0,
-                            //   width: double.infinity,
-                            // ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    '''
-${contx.medecines.values.elementAt(index).name!.length > 15 ? contx.medecines.values.elementAt(index).name!.substring(0, 15) + "..." : contx.medecines.values.elementAt(index).name!}''',
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18.0),
-                                  ),
-                                  const SizedBox(height: 8.0),
-                                  Text(
-                                    "${contx.medecines.values.elementAt(index).category}",
-                                    style: const TextStyle(color: Colors.grey),
-                                  ),
-                                  const SizedBox(height: 8.0),
-                                ],
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                )
+                      );
+                    },
+                  ),
+              )
           // }
           ),
       floatingActionButton: FloatingActionButton(

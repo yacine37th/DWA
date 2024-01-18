@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dwa/controller/home_controller.dart';
+import 'package:dwa/controller/my_posts_controller.dart';
 import 'package:dwa/functions/functions.dart';
 import 'package:dwa/main.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -18,6 +19,7 @@ class AddMedecineController extends GetxController {
   final formKey = GlobalKey<FormState>();
   TextEditingController dateinput = TextEditingController();
   HomeController homeController = Get.find();
+  MyPostsController myPostsController = Get.find();
   String? medecineName;
   String? medecineAbout;
   String? phoneNumber;
@@ -102,7 +104,17 @@ class AddMedecineController extends GetxController {
               postDate: DateTime.now.toString(),
               phone: phoneNumber)
         });
-
+        myPostsController.myPosts.addAll({
+          doc.id: MedecineModel(
+              id: doc.id,
+              name: medecineName,
+              description: medecineAbout,
+              image: bookThumnail,
+              expiredDate: "",
+              category: selectedValue['name'],
+              postDate: "",
+              phone: phoneNumber)
+        });
         // final path = 'test/${bookImage!.path}';
         // final file = File(bookImage!.path);
 
@@ -200,11 +212,11 @@ class AddMedecineController extends GetxController {
   //                         lastDate: DateTime(2100))
 
   Future<void> pickedDate(BuildContext context) async {
+    DateTime now = DateTime.now().add(const Duration(days: 1));
     pickedDate2 = await showDatePicker(
         context: context, //context of current state
-        initialDate: DateTime.now(),
-        firstDate: DateTime(
-            2000), //DateTime.now() - not to allow to choose before today.
+        initialDate: now,
+        firstDate: now, //DateTime.now() - not to allow to choose before today.
         lastDate: DateTime(2101));
 
     if (pickedDate2 != null) {

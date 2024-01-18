@@ -36,17 +36,19 @@ class Languages implements Translations {
           "DescMedicin": "Please enter the Description of the medicine",
           "Description": "Description of the medicine...",
           "Publier": "Post",
-"Annuler":"Cancel",
-"select" : "Please choose Picture",
-          "ExpirationDate":"Expiry date : ",
-          "Contacter":"Contact",
-          "ListEmpty" : "No posts",
-          "Supprimer":"Delete",
+          "Annuler": "Cancel",
+          "select": "Please choose Picture",
+          "ExpirationDate": "Expiry date : ",
+          "Contacter": "Contact",
+          "ListEmpty": "No posts",
+          "Supprimer": "Delete",
           "english": "English",
           "francais": "French",
           "arab": "Arabic",
           "sendingEmailMessage":
               "An email has been sent to change the password to your account: ",
+          "DtaExp": "Medicine expiration date",
+          "addmed": "Add Medicine",
           "DONE": "DONE",
           "continue": "Continue",
           "email-already-in-use": "Email Already used",
@@ -360,18 +362,19 @@ class Languages implements Translations {
           "DescMedicin": "S'il vous plaît entrer la description du médicament",
           "Description": "Description du médicament...",
           "Publier": "Publier",
-          "ExpirationDate":"Date d'expiration : ",
-          "Contacter":"Contacter",
-          "ListEmpty" : "Pas de publication",
-          "Supprimer":"Supprimer",
-"Annuler":"Annuler",
-"select" : "S'il vous plaît choisir une image",
-
+          "ExpirationDate": "Date d'expiration : ",
+          "Contacter": "Contacter",
+          "ListEmpty": "Pas de publication",
+          "Supprimer": "Supprimer",
+          "Annuler": "Annuler",
+          "select": "S'il vous plaît choisir une image",
+          "addmed": "Ajouter un médicament",
           "english": "Anglais",
           "francais": "Français",
           "arab": "Arabe",
           "sendingEmailMessage":
               "Un email a été envoyé pour changer le mot de passe de votre compte :",
+          "DtaExp": "Date d'expiration du médicament",
 
           "continue": "Continuez",
           "noConnection": "Il n'y a pas de connexion Internet",
@@ -697,13 +700,13 @@ class Languages implements Translations {
           "DescMedicin": "الرجاء إدخال وصف الدواء",
           "Description": "وصف الدواء ...",
           "Publier": "نشر",
-          "ExpirationDate":"تاريخ انتهاء الصلاحية : ",
-          "Contacter":"الاتصال",
-          "ListEmpty" : "لا يوجد منشور",
-          "Supprimer":"حدف المنشور" ,
-"Annuler":"إلغاء",
-"select" : "الرجاء اختيار صورة",
-
+          "ExpirationDate": "تاريخ انتهاء الصلاحية : ",
+          "Contacter": "الاتصال",
+          "ListEmpty": "لا يوجد منشور",
+          "Supprimer": "حدف المنشور",
+          "Annuler": "إلغاء",
+          "select": "الرجاء اختيار صورة",
+          "addmed": "أضف دواءً",
           "language": "اللغة",
 
           "english": "الإنجليزية",
@@ -711,6 +714,7 @@ class Languages implements Translations {
           "arab": "العربية",
           "sendingEmailMessage":
               " تم إرسال بريد إلكتروني لتغيير كلمة مرور حسابك: ",
+          "DtaExp": "تاريخ انتهاء الدواء",
 
           "continue": "متابعة",
           "noConnection": "لا يوجد اتصال بالإنترنت",
@@ -801,7 +805,13 @@ class Languages implements Translations {
 
   static Locale initLang() {
     if (MainFunctions.sharredPrefs!.getString("codeLang") == null) {
-      return Get.deviceLocale!;
+      if (Get.deviceLocale! != Locale('en') &&
+          Get.deviceLocale! != Locale('fr') &&
+          Get.deviceLocale! != Locale('ar')) {
+        return Locale('en');
+      } else {
+        return Get.deviceLocale!;
+      }
     } else {
       return Locale(MainFunctions.sharredPrefs!.getString("codeLang")!);
     }

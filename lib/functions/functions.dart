@@ -28,7 +28,8 @@ class MainFunctions {
         currentUserInfos = UserModel(
           uID: value["userID"],
           email: value["userEmail"],
-          name: value["userName"], posts: value["userPosts"],
+          name: value["userName"],
+          posts: value["userPosts"],
           // foodFavoris: value["userFavorisFood"],
           // latitude: value["userCurrentPositionLatitude"],
           // longitude: value["userCurrentPositionLongitude"],
@@ -109,6 +110,7 @@ class MainFunctions {
       Get.offAndToNamed("/SignIn");
     });
   }
+
 ////////exit from the application
   static Future<void> pop({bool? animated}) async {
     await SystemChannels.platform

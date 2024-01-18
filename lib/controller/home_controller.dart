@@ -50,51 +50,172 @@ class HomeController extends GetxController {
   // ];
 
   Future getMedecines() async {
+    // isFetching = true;
+
+    // if (medecines == {}) {
+      await FirebaseFirestore.instance
+          .collection("medecines")
+          .orderBy("medecineDateAdded", descending: true)
+          .limit(6)
+          .get()
+          .then((value) async {
+        if (value.docs.isEmpty) {
+          getMore = false;
+          print("*******dddddd***********");
+        }
+        DateTime now = DateTime.now();
+        for (int index = 0; index < value.docs.length; index++) {
+          ////////get only the medecine which didn't expired his date
+          // print("inside");
+          if (MainFunctions.dateFormat
+                  .format(DateTime.parse(value.docs[index]["medecineDateExpir"]
+                      .toDate()
+                      .toString()))
+                  .compareTo(now.toString()) ==
+              1) {
+            print("inside2////////////////////////////");
+            medecines.addAll({
+              value.docs[index].id: MedecineModel(
+                  id: value.docs[index].id,
+                  name: value.docs[index]["medecineName"],
+                  description: value.docs[index]["medecineDescription"],
+                  image: value.docs[index]["medecinePic"],
+                  expiredDate: MainFunctions.dateFormat.format(DateTime.parse(
+                      value.docs[index]["medecineDateExpir"]
+                          .toDate()
+                          .toString())),
+                  category: value.docs[index]["medecineCategory"],
+                  postDate: MainFunctions.dateFormat.format(DateTime.parse(value
+                      .docs[index]["medecineDateAdded"]
+                      .toDate()
+                      .toString())),
+                  phone: value.docs[index]["medecinePhoneNumber"])
+            });
+          }
+        }
+      });
+    // } else {
+    //   await FirebaseFirestore.instance
+    //       .collection("medecines")
+    //       .orderBy("medecineDateAdded", descending: true)
+    //       .startAfterDocument(await FirebaseFirestore.instance
+    //           .collection("medecines")
+    //           .doc(medecines.values.last.id)
+    //           .get())
+    //       .limit(3)
+    //       .get()
+    //       .then((value) async {
+    //     if (value.docs.isEmpty) {
+    //       getMore = false;
+    //       print("*******dddddd***********");
+    //     }
+    //     DateTime now = DateTime.now();
+    //     for (int index = 0; index < value.docs.length; index++) {
+    //       ////////get only the medecine which didn't expired his date
+    //       // print("inside");
+    //       if (MainFunctions.dateFormat
+    //               .format(DateTime.parse(value.docs[index]["medecineDateExpir"]
+    //                   .toDate()
+    //                   .toString()))
+    //               .compareTo(now.toString()) ==
+    //           1) {
+    //         print("inside2////////////////////////////");
+    //         medecines.addAll({
+    //           value.docs[index].id: MedecineModel(
+    //               id: value.docs[index].id,
+    //               name: value.docs[index]["medecineName"],
+    //               description: value.docs[index]["medecineDescription"],
+    //               image: value.docs[index]["medecinePic"],
+    //               expiredDate: MainFunctions.dateFormat.format(DateTime.parse(
+    //                   value.docs[index]["medecineDateExpir"]
+    //                       .toDate()
+    //                       .toString())),
+    //               category: value.docs[index]["medecineCategory"],
+    //               postDate: MainFunctions.dateFormat.format(DateTime.parse(value
+    //                   .docs[index]["medecineDateAdded"]
+    //                   .toDate()
+    //                   .toString())),
+    //               phone: value.docs[index]["medecinePhoneNumber"])
+    //         });
+    //       }
+    //     }
+    //   });
+    // }
+    // print(
+    //     "fetch////////////////////////////////////////////////////////////////////////");
+    // print("fetch");
+    medecines.forEach((key, value) {
+      print(value.name);
+    });
+    // isFetching = false;
+
+    update();
+  }
+
+
+
+
+
+
+
+
+
+ Future getMedecines2() async {
     isFetching = true;
 
-    await FirebaseFirestore.instance
-        .collection("medecines")
-        .orderBy("medecineDateAdded", descending: true)
-        .limit(5)
-        .get()
-        .then((value) async {
-      if (value.docs.isEmpty) {
-        getMore = false;
-        print("*******dddddd***********");
-      }
-      DateTime now = DateTime.now();
-      for (int index = 0; index < value.docs.length; index++) {
-        ////////get only the medecine which didn't expired his date
-        // print("inside");
-        if (MainFunctions.dateFormat
-                .format(DateTime.parse(
-                    value.docs[index]["medecineDateExpir"].toDate().toString()))
-                .compareTo(now.toString()) ==
-            1) {
-          // print("inside2");
-          medecines.addAll({
-            value.docs[index].id: MedecineModel(
-                id: value.docs[index].id,
-                name: value.docs[index]["medecineName"],
-                description: value.docs[index]["medecineDescription"],
-                image: value.docs[index]["medecinePic"],
-                expiredDate: MainFunctions.dateFormat.format(DateTime.parse(
-                    value.docs[index]["medecineDateExpir"]
-                        .toDate()
-                        .toString())),
-                category: value.docs[index]["medecineCategory"],
-                postDate: MainFunctions.dateFormat.format(DateTime.parse(value
-                    .docs[index]["medecineDateAdded"]
-                    .toDate()
-                    .toString())),
-                phone: value.docs[index]["medecinePhoneNumber"])
-          });
+   
+      await FirebaseFirestore.instance
+          .collection("medecines")
+          .orderBy("medecineDateAdded", descending: true)
+          .startAfterDocument(await FirebaseFirestore.instance
+              .collection("medecines")
+              .doc(medecines.values.last.id)
+              .get())
+          .limit(6)
+          .get()
+          .then((value) async {
+        if (value.docs.isEmpty) {
+          getMore = false;
+          print("*******dddddd***********");
         }
-      }
-    });
+        DateTime now = DateTime.now();
+        for (int index = 0; index < value.docs.length; index++) {
+          ////////get only the medecine which didn't expired his date
+          // print("inside");
+          if (MainFunctions.dateFormat
+                  .format(DateTime.parse(value.docs[index]["medecineDateExpir"]
+                      .toDate()
+                      .toString()))
+                  .compareTo(now.toString()) ==
+              1) {
+            print("inside2////////////////////////////");
+            medecines.addAll({
+              value.docs[index].id: MedecineModel(
+                  id: value.docs[index].id,
+                  name: value.docs[index]["medecineName"],
+                  description: value.docs[index]["medecineDescription"],
+                  image: value.docs[index]["medecinePic"],
+                  expiredDate: MainFunctions.dateFormat.format(DateTime.parse(
+                      value.docs[index]["medecineDateExpir"]
+                          .toDate()
+                          .toString())),
+                  category: value.docs[index]["medecineCategory"],
+                  postDate: MainFunctions.dateFormat.format(DateTime.parse(value
+                      .docs[index]["medecineDateAdded"]
+                      .toDate()
+                      .toString())),
+                  phone: value.docs[index]["medecinePhoneNumber"])
+            });
+          }
+        }
+      });
+    
     print(
         "fetch////////////////////////////////////////////////////////////////////////");
     print("fetch");
+    medecines.forEach((key, value) {
+      print(value.name);
+    });
     isFetching = false;
 
     update();
@@ -118,13 +239,12 @@ class HomeController extends GetxController {
   var getMore = true;
   var isFetching = false;
   void _scrollListener() async {
-    print("******************");
     if (getMore) {
       if (scrollController?.position.pixels ==
               scrollController?.position.maxScrollExtent &&
           isFetching == false) {
         isFetching = true;
-        await getMedecines();
+        await getMedecines2();
         isFetching = false;
       }
     }

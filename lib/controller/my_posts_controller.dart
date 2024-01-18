@@ -10,7 +10,6 @@ class MyPostsController extends GetxController {
 
   Map<String, MedecineModel> myPosts = {};
   getPosts() async {
-    myPosts.clear();
     for (var element in posts) {
       await FirebaseFirestore.instance
           .collection("medecines")

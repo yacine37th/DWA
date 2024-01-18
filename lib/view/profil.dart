@@ -71,7 +71,7 @@ class Profil extends StatelessWidget {
                               ),
                               const SizedBox(height: 10),
                               Text(
-                                "${currentUser?.email}",
+                                "${currentUserInfos.email!.length > 25 ? currentUserInfos.email!.substring(0, 18) + "..." : currentUserInfos.email!}",
                                 style: const TextStyle(fontSize: 20),
                               ),
                               const SizedBox(height: 20),
@@ -92,8 +92,8 @@ class Profil extends StatelessWidget {
                                       homeScreenController
                                           .switchBetweenScreens(1);
                                     },
-                                    label:  Text("Posts".tr,
-                                        style:const TextStyle(
+                                    label: Text("Posts".tr,
+                                        style: const TextStyle(
                                           fontSize: 20,
                                         ))),
                               ),
@@ -123,7 +123,7 @@ class Profil extends StatelessWidget {
                               // ),
                               // // const SizedBox(height: 10),
 
-                              // const SizedBox(height: 5),
+                              const SizedBox(height: 5),
 
                               Container(
                                 width: double.infinity,
@@ -145,8 +145,8 @@ class Profil extends StatelessWidget {
                                       //   Get.offAllNamed("/SignIn");
                                       // });
                                     },
-                                    label:  Text("signOut".tr,
-                                        style:const TextStyle(
+                                    label: Text("signOut".tr,
+                                        style: const TextStyle(
                                           fontSize: 20,
                                         ))),
                               ),

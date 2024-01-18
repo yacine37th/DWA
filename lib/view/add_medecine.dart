@@ -23,9 +23,9 @@ class AddMedecine extends StatelessWidget {
               color: AppColors.kPrimary2,
               height: 1,
             )),
-        title: const Text(
-          "Ajouter un médicament",
-          style: TextStyle(color: AppColors.kPrimary2),
+        title:  Text(
+          "addmed".tr,
+          style:const TextStyle(color: AppColors.kPrimary2),
         ),
 
         backgroundColor: AppColors.transparentColor,
@@ -142,7 +142,7 @@ class AddMedecine extends StatelessWidget {
                         controller: addMedecineController
                             .dateinput, //editing controller of this TextField
                         decoration: InputDecoration(
-                          hintText: "YYYY-XX-XX",
+                          hintText: "DtaExp".tr,
                           errorMaxLines: 2,
                           prefixIcon: const Icon(Icons.calendar_month,
                               color: AppColors.kLine),
