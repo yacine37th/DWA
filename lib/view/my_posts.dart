@@ -128,9 +128,9 @@ class MyPosts extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "${contx.myPosts.values.elementAt(index).name!.length > 7?
-                                  contx.myPosts.values.elementAt(index).name!.substring(0,10)+"..." :
-                                  contx.myPosts.values.elementAt(index).name
+                                  "${myPostsController.myPosts.values.elementAt(index).name!.length > 7 ?
+                                  "${myPostsController.myPosts.values.elementAt(index).name!.substring(0,5)}..." :
+                                  myPostsController.myPosts.values.elementAt(index).name
                                   }",
                                   style: const TextStyle(
                                       fontSize: 20,
