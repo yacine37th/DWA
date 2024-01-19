@@ -1,8 +1,10 @@
 import 'package:dwa/controller/home_controller.dart';
+import 'package:dwa/functions/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../theme/main_colors.dart';
 import 'widgets.dart';
@@ -76,7 +78,7 @@ class Home extends StatelessWidget {
                   color: AppColors.kPrimary2,
                 ))
               : GetBuilder<HomeController>(
-                builder:(contxe)=> ListView.builder(
+                  builder: (contxe) => ListView.builder(
                     // scrollDirection: Axis.horizontal,
                     physics: BouncingScrollPhysics(),
                     // gridDelegate:
@@ -97,7 +99,7 @@ class Home extends StatelessWidget {
                               side: const BorderSide(
                                   color: AppColors.kPrimary2, width: 0.5),
                               borderRadius: BorderRadius.circular(15.0)),
-              
+
                           elevation: 5, // Change this
                           shadowColor: Colors.black12,
                           margin: const EdgeInsets.all(15.0),
@@ -124,7 +126,7 @@ class Home extends StatelessWidget {
                                   },
                                 ),
                               ),
-              
+
                               // Image.network(
                               //   "${contx.medecines.elementAt(index).image}",
                               //   fit: BoxFit.cover,
@@ -146,7 +148,8 @@ class Home extends StatelessWidget {
                                     const SizedBox(height: 8.0),
                                     Text(
                                       "${contx.medecines.values.elementAt(index).category}",
-                                      style: const TextStyle(color: Colors.grey),
+                                      style:
+                                          const TextStyle(color: Colors.grey),
                                     ),
                                     const SizedBox(height: 8.0),
                                   ],
@@ -158,17 +161,30 @@ class Home extends StatelessWidget {
                       );
                     },
                   ),
-              )
+                )
           // }
           ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.kPrimary2,
-        // foregroundColor: ,
-        // mini: true,
-        onPressed: () {
-          Get.toNamed("/SignIn", arguments: "home");
-        },
-        child: const Icon(Icons.add),
+      floatingActionButton: GetBuilder<HomeController>(
+        builder:(contex)=> FloatingActionButton(
+          backgroundColor: AppColors.kPrimary2,
+          // foregroundColor: ,
+          // mini: true,
+          onPressed: () async{
+            final SharedPreferences prefs = await contex.sahredPrefs;
+      
+            if (prefs.getString("appIsOppen") != null) {
+              Get.toNamed("/SignIn", arguments: "home");
+              print(prefs.getString("appIsOppen"));
+            } else {
+              Get.toNamed("/AddMedecine");
+              prefs.setString("appIsOppen", "true");
+              // print("Last page ");
+            }
+      
+            // Get.toNamed("/SignIn", arguments: "home");
+          },
+          child: const Icon(Icons.add),
+        ),
       ),
     );
   }

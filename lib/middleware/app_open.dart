@@ -3,15 +3,16 @@ import 'package:get/get.dart';
 
 import '../main.dart';
 
-class AuthMiddleware extends GetMiddleware {
+
+class AppIsOppen extends GetMiddleware {
   @override
-  int? get priority => 2;
+  int? get priority => 1;
   @override
   RouteSettings? redirect(String? route) {
-    if (currentUser != null && currentUser!.emailVerified) {
+    if (sharedPreferences!.getString("appIsOppen")!=null) {
       //  MainFunctions.getcurrentUserInfos();
       // MainFunctions.loadTripsDriversData();
-      return const RouteSettings(name: "/AddMedecine");
+      return const RouteSettings(name: "/SignIn" , arguments: "home");
     } else {
       return null;
     }

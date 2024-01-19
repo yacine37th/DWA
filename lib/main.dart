@@ -18,6 +18,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'functions/functions.dart';
+import 'middleware/app_open.dart';
 import 'middleware/auth_middleware.dart';
 import 'middleware/pay_middleware.dart';
 import 'model/user_model.dart';
@@ -33,6 +34,7 @@ import 'view/verify_email.dart';
 
 User? currentUser = FirebaseAuth.instance.currentUser;
 UserModel currentUserInfos = UserModel(uID: "", email: "", name: "", posts: []);
+SharedPreferences? sharedPreferences;
 bool prevVerfiy = false;
 bool isPay = false;
 Future<void> isPayed() async {
@@ -51,6 +53,8 @@ Future<void> main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   MainFunctions.sharredPrefs = await SharedPreferences.getInstance();
   currentUser = FirebaseAuth.instance.currentUser;
+  sharedPreferences = await SharedPreferences.getInstance();
+
   // isPayed();
   print("isPay////////////////////////////////////////");
   await FirebaseFirestore.instance
@@ -126,6 +130,7 @@ class MyApp extends StatelessWidget {
           name: "/AddMedecine",
           page: () => const AddMedecine(),
           binding: AddMedecineBindings(),
+          middlewares: [AppIsOppen()]
         ),
         // GetPage(
         //   name: "/PhoneSignup",

@@ -805,13 +805,13 @@ class Languages implements Translations {
 
   static Locale initLang() {
     if (MainFunctions.sharredPrefs!.getString("codeLang") == null) {
-      if (Get.deviceLocale! != Locale('en') &&
-          Get.deviceLocale! != Locale('fr') &&
-          Get.deviceLocale! != Locale('ar')) {
-        return Locale('en');
-      } else {
+      // if (Get.deviceLocale! != Locale('en') &&
+      //     Get.deviceLocale! != Locale('fr') &&
+      //     Get.deviceLocale! != Locale('ar')) {
+      //   return Locale('en');
+      // } else {
         return Get.deviceLocale!;
-      }
+      // }
     } else {
       return Locale(MainFunctions.sharredPrefs!.getString("codeLang")!);
     }

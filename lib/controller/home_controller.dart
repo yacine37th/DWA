@@ -5,12 +5,15 @@ import 'package:dwa/model/medecine_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../functions/functions.dart';
 import '../main.dart';
 import '../model/user_model.dart';
 
 class HomeController extends GetxController {
+  final Future<SharedPreferences> sahredPrefs = SharedPreferences.getInstance();
+
   late ScrollController hideButtonController;
   ScrollController? scrollController;
 //  Map<String , MedecineModel> medecines = {
