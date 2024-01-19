@@ -130,7 +130,7 @@ class MyApp extends StatelessWidget {
           name: "/AddMedecine",
           page: () => const AddMedecine(),
           binding: AddMedecineBindings(),
-          middlewares: [AppIsOppen()]
+          // middlewares: [AppIsOppen()]
         ),
         // GetPage(
         //   name: "/PhoneSignup",

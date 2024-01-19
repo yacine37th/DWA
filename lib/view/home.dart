@@ -172,16 +172,16 @@ class Home extends StatelessWidget {
           onPressed: () async{
             final SharedPreferences prefs = await contex.sahredPrefs;
       
-            if (prefs.getString("appIsOppen") != null) {
-              Get.toNamed("/SignIn", arguments: "home");
-              print(prefs.getString("appIsOppen"));
-            } else {
-              Get.toNamed("/AddMedecine");
-              prefs.setString("appIsOppen", "true");
-              // print("Last page ");
-            }
+            // if (prefs.getString("appIsOppen") != null) {
+            //   Get.toNamed("/SignIn", arguments: "home");
+            //   print(prefs.getString("appIsOppen"));
+            // } else {
+            //   Get.toNamed("/AddMedecine");
+            //   prefs.setString("appIsOppen", "true");
+            //   // print("Last page ");
+            // }
       
-            // Get.toNamed("/SignIn", arguments: "home");
+            Get.toNamed("/SignIn", arguments: "home");
           },
           child: const Icon(Icons.add),
         ),

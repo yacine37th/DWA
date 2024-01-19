@@ -47,7 +47,7 @@ class AddMedecineController extends GetxController {
 
   Future submit() async {
     if (bookImage != null) {
-      if (currentUser == null) {
+      // if (currentUser == null) {
         Get.defaultDialog(
             onWillPop: () {
               return Future.value();
@@ -135,78 +135,78 @@ class AddMedecineController extends GetxController {
         } on PlatformException catch (e) {
           print(e);
         }
-      } else {
-        Get.defaultDialog(
-            onWillPop: () {
-              return Future.value();
-            },
-            barrierDismissible: false,
-            title: "pleaseWait".tr,
-            content: const CircularProgressIndicator(
-              color: AppColors.kPrimary2,
-            ));
-        try {
-          var doc = FirebaseFirestore.instance.collection("medecines").doc();
+      // } else {
+      //   Get.defaultDialog(
+      //       onWillPop: () {
+      //         return Future.value();
+      //       },
+      //       barrierDismissible: false,
+      //       title: "pleaseWait".tr,
+      //       content: const CircularProgressIndicator(
+      //         color: AppColors.kPrimary2,
+      //       ));
+      //   try {
+      //     var doc = FirebaseFirestore.instance.collection("medecines").doc();
 
-          final path2 = 'medecines/${doc.id}';
-          final file2 = File(bookImage!.path);
+      //     final path2 = 'medecines/${doc.id}';
+      //     final file2 = File(bookImage!.path);
 
-          final ref2 = FirebaseStorage.instance.ref().child(path2);
-          uploadTask = ref2.putFile(file2);
+      //     final ref2 = FirebaseStorage.instance.ref().child(path2);
+      //     uploadTask = ref2.putFile(file2);
 
-          final snapshot2 = await uploadTask!.whenComplete(() => {});
+      //     final snapshot2 = await uploadTask!.whenComplete(() => {});
 
-          final bookThumnail = await snapshot2.ref.getDownloadURL();
-          print(
-              "bookThumnail /////////////////////////////////////////////////////////////////////");
-          print(bookThumnail);
-          doc.set({
-            "medecineID": doc.id,
-            "medecinePic": bookThumnail,
-            "medecineType": "Post",
-            "medecineDateExpir": pickedDate2,
-            "medecineDateAdded": FieldValue.serverTimestamp(),
-            "medecineCategoryID": selectedValue['id'],
-            "medecineUserID": "gest",
-            "medecineCategory": selectedValue['name'],
-            "medecineKeyWords": keyWordsMaker(medecineName!),
-            "medecineName": medecineName,
-            "medecinePhoneNumber": phoneNumber,
-            "medecineDescription": medecineAbout,
-          }).onError((e, _) => print(
-              "Error writing document /////////////////////////////////////////////: $e"));
+      //     final bookThumnail = await snapshot2.ref.getDownloadURL();
+      //     print(
+      //         "bookThumnail /////////////////////////////////////////////////////////////////////");
+      //     print(bookThumnail);
+      //     doc.set({
+      //       "medecineID": doc.id,
+      //       "medecinePic": bookThumnail,
+      //       "medecineType": "Post",
+      //       "medecineDateExpir": pickedDate2,
+      //       "medecineDateAdded": FieldValue.serverTimestamp(),
+      //       "medecineCategoryID": selectedValue['id'],
+      //       "medecineUserID": "gest",
+      //       "medecineCategory": selectedValue['name'],
+      //       "medecineKeyWords": keyWordsMaker(medecineName!),
+      //       "medecineName": medecineName,
+      //       "medecinePhoneNumber": phoneNumber,
+      //       "medecineDescription": medecineAbout,
+      //     }).onError((e, _) => print(
+      //         "Error writing document /////////////////////////////////////////////: $e"));
 
-          homeController.medecines.addAll({
-            doc.id: MedecineModel(
-                id: doc.id,
-                name: medecineName,
-                description: medecineAbout,
-                image: bookThumnail,
-                expiredDate: MainFunctions.dateFormat
-                    .format(DateTime.parse(pickedDate2.toString())),
-                category: selectedValue['name'],
-                postDate: DateTime.now.toString(),
-                phone: phoneNumber)
-          });
-          // final path = 'test/${bookImage!.path}';
-          // final file = File(bookImage!.path);
+      //     homeController.medecines.addAll({
+      //       doc.id: MedecineModel(
+      //           id: doc.id,
+      //           name: medecineName,
+      //           description: medecineAbout,
+      //           image: bookThumnail,
+      //           expiredDate: MainFunctions.dateFormat
+      //               .format(DateTime.parse(pickedDate2.toString())),
+      //           category: selectedValue['name'],
+      //           postDate: DateTime.now.toString(),
+      //           phone: phoneNumber)
+      //     });
+      //     // final path = 'test/${bookImage!.path}';
+      //     // final file = File(bookImage!.path);
 
-          // final ref = FirebaseStorage.instance.ref().child(path);
-          // uploadTask = ref.putFile(file);
+      //     // final ref = FirebaseStorage.instance.ref().child(path);
+      //     // uploadTask = ref.putFile(file);
 
-          // final snapshot = await uploadTask!.whenComplete(() => {});
+      //     // final snapshot = await uploadTask!.whenComplete(() => {});
 
-          // final bookThumnail = await snapshot.ref.getDownloadURL();
-          // print(
-          //     "bookThumnail /////////////////////////////////////////////////////////////////////");
-          // print(bookThumnail);
-          Get.back();
-          Get.offAndToNamed("/");
-          MainFunctions.successSnackBar("Your post has been ");
-        } on PlatformException catch (e) {
-          print(e);
-        }
-      }
+      //     // final bookThumnail = await snapshot.ref.getDownloadURL();
+      //     // print(
+      //     //     "bookThumnail /////////////////////////////////////////////////////////////////////");
+      //     // print(bookThumnail);
+      //     Get.back();
+      //     Get.offAndToNamed("/");
+      //     MainFunctions.successSnackBar("Your post has been ");
+      //   } on PlatformException catch (e) {
+      //     print(e);
+      //   }
+      // }
     } else {
       MainFunctions.somethingWentWrongSnackBar("select".tr);
     }
@@ -288,6 +288,7 @@ class AddMedecineController extends GetxController {
   Future<void> pickedDate(BuildContext context) async {
     DateTime now = DateTime.now().add(const Duration(days: 1));
     pickedDate2 = await showDatePicker(
+      
         context: context, //context of current state
         initialDate: now,
         firstDate: now, //DateTime.now() - not to allow to choose before today.
