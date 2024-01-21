@@ -2,6 +2,7 @@ import 'package:dwa/controller/my_posts_controller.dart';
 import 'package:dwa/view/my_posts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../functions/functions.dart';
 import '../theme/main_colors.dart';
@@ -264,6 +265,16 @@ class HomeScreenController extends GetxController {
     // MyAccount(),
     // MaxSubscription()
   ];
+
+  //https://sites.google.com/view/dwa-privacy-policy/accueil
+    Future<void> privatePolicy() async {
+    String privacyPolicyURL =
+        "https://sites.google.com/view/dwa-privacy-policy/accueil";
+    if (!await launchUrl(Uri.parse(privacyPolicyURL),
+        mode: LaunchMode.externalApplication)) {
+      MainFunctions.somethingWentWrongSnackBar();
+    }
+  }
   @override
   onInit() async {
     update();

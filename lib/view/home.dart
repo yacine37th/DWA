@@ -97,7 +97,7 @@ class Home extends StatelessWidget {
                         child: Card(
                           shape: RoundedRectangleBorder(
                               side: const BorderSide(
-                                  color: AppColors.kPrimary2, width: 0.5),
+                                  color: AppColors.kPrimary3, width: 0.5),
                               borderRadius: BorderRadius.circular(15.0)),
 
                           elevation: 5, // Change this

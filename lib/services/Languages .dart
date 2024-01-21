@@ -11,6 +11,8 @@ class Languages implements Translations {
         "en": {
 ////Theme
 
+   "Privacy":"Privacy Policy"
+,
           "theme": "Theme",
           "plzTheme": "Please choose a theme",
           "lightTheme": "Light Theme",
@@ -337,6 +339,8 @@ class Languages implements Translations {
         },
         "fr": {
           ////Theme
+           "Privacy":"Politique de Confidentialité"
+,
           "theme": "Thème",
           "plzTheme": "Veuillez choisir un thème",
           "lightTheme": "Thème clair",
@@ -680,6 +684,9 @@ class Languages implements Translations {
         },
         "ar": {
           ////Theme
+          
+ "Privacy":"سياسة الخصوصية"
+,
           "theme": "السمة",
           "plzTheme": "يرجى اختيار سمة",
           "lightTheme": "سمة فاتحة",

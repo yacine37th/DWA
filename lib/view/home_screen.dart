@@ -198,6 +198,51 @@ class _HomeScreenState extends State<HomeScreen> {
                 : const Text(""),
           ),
           const Spacer(),
+
+          /////
+          const Spacer(),
+          // ListTile(
+          //   tileColor: transparentColor,
+          //   textColor: whiteColor,
+          //   iconColor: whiteColor,
+          //   visualDensity: VisualDensity(horizontal: -4, vertical: -4),
+          //   contentPadding:
+          //       const EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
+          //   horizontalTitleGap: 1,
+          //   dense: true,
+          //   title: const Text(
+          //     "تعرف على ورق",
+          //     style: TextStyle(
+          //         fontSize: 19,
+          //         fontWeight: FontWeight.w300,
+          //         fontFamily: 'Cairo'),
+          //   ),
+          //   leading: const ImageIcon(Svg("assets/icons/info_circle_icon.svg")),
+          //   onTap: () {
+          //     homeScreenController.knowWarak();
+          //   },
+          // ),
+          ListTile(
+            tileColor: transparentColor,
+            textColor: whiteColor,
+            iconColor: whiteColor,
+            visualDensity: VisualDensity(horizontal: -4, vertical: -4),
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
+            horizontalTitleGap: 1,
+            dense: true,
+            title: Text(
+              "Privacy".tr,
+              style: const TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.w300,),
+            ),
+            leading: const Icon(Icons.lock),
+            onTap: () {
+              homeScreenController.privatePolicy();
+            },
+          ),
+          const SizedBox(height: 20),
         ]),
       ),
 
@@ -243,7 +288,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           child: Container(
-            decoration:const BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color.fromARGB(255, 240, 236, 236),
             ),
             child: SafeArea(
