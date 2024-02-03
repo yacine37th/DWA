@@ -129,12 +129,12 @@ class MyApp extends StatelessWidget {
           transitionDuration: const Duration(milliseconds: 250),
           binding: SearchBinding(),
         ),
-        GetPage(
-            name: "/Pay",
-            page: () => const PayView(),
-            // binding: OnboardingBindings(),
-            // middlewares: [AppIsOppen()]
-            middlewares: [PayMiddleware()]),
+        // GetPage(
+        //     name: "/Pay",
+        //     page: () => const PayView(),
+        //     // binding: OnboardingBindings(),
+        //     // middlewares: [AppIsOppen()]
+        //     middlewares: [PayMiddleware()]),
         GetPage(
           name: "/AddMedecine",
           page: () => const AddMedecine(),
@@ -203,7 +203,7 @@ class MyApp extends StatelessWidget {
         //   binding: OrderBookBinding(),
         // ),
       ],
-      initialRoute: "/Pay",
+      initialRoute: "/",
       // home: ProductCard()
       // home:GoogleMAPVIEW():
       //   food: Food(

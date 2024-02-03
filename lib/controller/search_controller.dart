@@ -8,6 +8,7 @@ class SearchControllerr extends GetxController
     with GetSingleTickerProviderStateMixin {
   Map<String, MedecineModel> searchMedecine = {};
   String? inputSearch = "";
+  String? inputSearch2 = "";
   getInputSearch(input) {
     inputSearch = input;
     // update();
@@ -16,30 +17,35 @@ class SearchControllerr extends GetxController
   var getMore = true;
   var isFetching = false;
   getSearched(String? inputSearch) async {
+    searchMedecine.clear();
     inputSearch = inputSearch!.toLowerCase();
-    // isFetching = true;
-    // getMore = true;
+    inputSearch2 = inputSearch[0].toUpperCase();
+    isFetching = true;
+    getMore = true;
+    final List<dynamic> targetValues = [inputSearch, inputSearch2];
+
     await FirebaseFirestore.instance
         .collection("medecines")
-        .where('medecineKeyWords', arrayContains: inputSearch)
-        .limit(9)
+        .where('medecineKeyWords', arrayContainsAny: targetValues)
+        // .where('medecineKeyWords', arrayContains: inputSearch2)
+        .limit(12)
         .get()
         .then((value) {
       DateTime now = DateTime.now();
       for (int index = 0; index < value.docs.length; index++) {
         print(value.docs[index]["medecineName"]);
-        print(MainFunctions.dateFormat
-                .format(DateTime.parse(
-                    value.docs[index]["medecineDateExpir"].toDate().toString()))
-                .compareTo(now.toString()) ==
-            1);
+        // print(MainFunctions.dateFormat
+        //         .format(DateTime.parse(
+        //             value.docs[index]["medecineDateExpir"].toDate().toString()))
+        //         .compareTo(now.toString()) ==
+        //     1);
         if (MainFunctions.dateFormat
                 .format(DateTime.parse(
                     value.docs[index]["medecineDateExpir"].toDate().toString()))
                 .compareTo(now.toString()) ==
             1) {
-          print("////////////////////");
-          print(value.docs[index]["medecineName"]);
+          // print("////////////////////");
+          // print(value.docs[index]["medecineName"]);
           searchMedecine.addAll({
             value.docs[index].id: MedecineModel(
                 id: value.docs[index].id,
@@ -59,10 +65,7 @@ class SearchControllerr extends GetxController
           });
         }
       }
-    });
-    // for (var i = 0; i < searchMedecine.length; i++) {
-    //   print(searchMedecine[i]);
-    // }
+    }).whenComplete(() => isFetching = false);
     update();
   }
 

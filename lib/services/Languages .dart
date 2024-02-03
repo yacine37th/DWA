@@ -11,8 +11,7 @@ class Languages implements Translations {
         "en": {
 ////Theme
 
-   "Privacy":"Privacy Policy"
-,
+          "Privacy": "Privacy Policy",
           "theme": "Theme",
           "plzTheme": "Please choose a theme",
           "lightTheme": "Light Theme",
@@ -22,6 +21,8 @@ class Languages implements Translations {
           "enterMedicineName": "Please enter Medicine name",
           "medicineName>2":
               "The name of the medicine must have more than two letters",
+          "SearchMed": "Search a medicine",
+          "NoResultForSearch": "There are no results for your search",
 
 ////////////
           "Home": "Home",
@@ -339,8 +340,7 @@ class Languages implements Translations {
         },
         "fr": {
           ////Theme
-           "Privacy":"Politique de Confidentialité"
-,
+          "Privacy": "Politique de Confidentialité",
           "theme": "Thème",
           "plzTheme": "Veuillez choisir un thème",
           "lightTheme": "Thème clair",
@@ -350,6 +350,8 @@ class Languages implements Translations {
           "enterMedicineName": "Veuillez entrer le nom du médicament",
           "medicineName>2":
               "Le nom du médicament doit comporter plus de deux lettres",
+          "SearchMed": "Rechercher un médicament",
+          "NoResultForSearch": "Il n'y a aucun résultat pour votre recherche",
 
 ////////////
           "language": "Langue",
@@ -684,9 +686,8 @@ class Languages implements Translations {
         },
         "ar": {
           ////Theme
-          
- "Privacy":"سياسة الخصوصية"
-,
+
+          "Privacy": "سياسة الخصوصية",
           "theme": "السمة",
           "plzTheme": "يرجى اختيار سمة",
           "lightTheme": "سمة فاتحة",
@@ -715,7 +716,8 @@ class Languages implements Translations {
           "select": "الرجاء اختيار صورة",
           "addmed": "أضف دواءً",
           "language": "اللغة",
-
+          "SearchMed": "ابحث عن دواء",
+          "NoResultForSearch": "لا توجد نتيجة للبحث",
           "english": "الإنجليزية",
           "francais": "الفرنسية",
           "arab": "العربية",
@@ -817,7 +819,7 @@ class Languages implements Translations {
       //     Get.deviceLocale! != Locale('ar')) {
       //   return Locale('en');
       // } else {
-        return Get.deviceLocale!;
+      return Get.deviceLocale!;
       // }
     } else {
       return Locale(MainFunctions.sharredPrefs!.getString("codeLang")!);

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dwa/controller/search_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -87,9 +88,239 @@ class SearchScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(
-        child: Text("deed"),
-      ),
+      body: GetBuilder<SearchControllerr>(builder: (context) {
+        if (searchController.inputSearch!.isEmpty) {
+          return Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "SearchMed".tr,
+                style:const TextStyle(fontFamily: 'Cairo'),
+              ),
+            ],
+          ));
+        } else if (searchController.searchMedecine.isEmpty &&
+            searchController.inputSearch!.isNotEmpty) {
+          if (!searchController.isFetching) {
+            return Stack(children: [
+               Center(
+                child: Text(
+                  "NoResultForSearch".tr,
+                  style: const TextStyle(fontFamily: 'Cairo'),
+                ),
+              ),
+            ]);
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        } else {
+          return ListView(
+            // controller: searchController.scrollController,
+            physics: const BouncingScrollPhysics(),
+            padding: EdgeInsets.fromLTRB(0, 10, 0, 40),
+            children: [
+              ListView.separated(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: searchController.searchMedecine.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Get.toNamed('/MedecineDetails', arguments: {
+                        "0": searchController.searchMedecine.values
+                            .elementAt(index)
+                      });
+                      print("dede");
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          side: const BorderSide(
+                              color: AppColors.kPrimary3, width: 0.5),
+                          borderRadius: BorderRadius.circular(15.0)),
+
+                      elevation: 5, // Change this
+                      shadowColor: Colors.black12,
+                      margin: const EdgeInsets.all(15.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(),
+                            height: 150,
+                            width: double.infinity,
+                            // alignment: Alignment.center,
+                            child: CachedNetworkImage(
+                              imageUrl:
+                                  "${searchController.searchMedecine.values.elementAt(index).image}",
+                              fit: BoxFit.contain,
+                              progressIndicatorBuilder:
+                                  (context, child, loadingProgress) {
+                                return Center(
+                                  child: CircularProgressIndicator(
+                                    value: loadingProgress.progress,
+                                    color: AppColors.kPrimary2,
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+
+                          // Image.network(
+                          //   "${contx.medecines.elementAt(index).image}",
+                          //   fit: BoxFit.cover,
+                          //   height: 150.0,
+                          //   width: double.infinity,
+                          // ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '''${searchController.searchMedecine.values.elementAt(index).name!.length > 15 ? searchController.searchMedecine.values.elementAt(index).name!.substring(0, 15) + "..." : searchController.searchMedecine.values.elementAt(index).name!}''',
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18.0),
+                                ),
+                                const SizedBox(height: 8.0),
+                                Text(
+                                  "${searchController.searchMedecine.values.elementAt(index).category}",
+                                  style: const TextStyle(color: Colors.grey),
+                                ),
+                                const SizedBox(height: 8.0),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return SizedBox(height: 10);
+                },
+              ),
+              GetBuilder<SearchControllerr>(
+                builder: (context) {
+                  if (searchController.isFetching) {
+                    return Column(
+                      children: const [
+                        SizedBox(height: 60),
+                        Center(child: CircularProgressIndicator()),
+                        SizedBox(height: 60)
+                      ],
+                    );
+                  } else {
+                    return const SizedBox();
+                  }
+                },
+              )
+            ],
+          );
+        }
+      }),
+
+      // GetBuilder<SearchControllerr>(
+      //     builder: (contx) => contx.searchMedecine.isEmpty
+      //         ? const Center(
+      //             child: CircularProgressIndicator(
+      //             // backgroundColor: AppColors.kBackground,
+      //             color: AppColors.kPrimary2,
+      //           ))
+      //         : GetBuilder<SearchControllerr>(
+      //             builder: (contxe) => ListView.builder(
+      //               // scrollDirection: Axis.horizontal,
+      //               physics: BouncingScrollPhysics(),
+      //               // gridDelegate:
+      //               //     SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+      //               itemCount: searchController.searchMedecine.length,
+      //               // controller: searchController.scrollController,
+      //               // padding: const EdgeInsets.all(2.0),
+      //               itemBuilder: (BuildContext context, int index) {
+      //                 return GestureDetector(
+      //                   onTap: () {
+      //                     Get.toNamed('/MedecineDetails', arguments: {
+      //                       "0": contx.searchMedecine.values.elementAt(index)
+      //                     });
+      //                     print("dede");
+      //                   },
+      //                   child: Card(
+      //                     shape: RoundedRectangleBorder(
+      //                         side: const BorderSide(
+      //                             color: AppColors.kPrimary3, width: 0.5),
+      //                         borderRadius: BorderRadius.circular(15.0)),
+
+      //                     elevation: 5, // Change this
+      //                     shadowColor: Colors.black12,
+      //                     margin: const EdgeInsets.all(15.0),
+      //                     child: Column(
+      //                       crossAxisAlignment: CrossAxisAlignment.start,
+      //                       children: [
+      //                         Container(
+      //                           decoration: BoxDecoration(),
+      //                           height: 150,
+      //                           width: double.infinity,
+      //                           // alignment: Alignment.center,
+      //                           child: CachedNetworkImage(
+      //                             imageUrl:
+      //                                 "${searchController.searchMedecine.values.elementAt(index).image}",
+      //                             fit: BoxFit.contain,
+      //                             progressIndicatorBuilder:
+      //                                 (context, child, loadingProgress) {
+      //                               return Center(
+      //                                 child: CircularProgressIndicator(
+      //                                   value: loadingProgress.progress,
+      //                                   color: AppColors.kPrimary2,
+      //                                 ),
+      //                               );
+      //                             },
+      //                           ),
+      //                         ),
+
+      //                         // Image.network(
+      //                         //   "${contx.searchMedecine.elementAt(index).image}",
+      //                         //   fit: BoxFit.cover,
+      //                         //   height: 150.0,
+      //                         //   width: double.infinity,
+      //                         // ),
+      //                         Padding(
+      //                           padding: const EdgeInsets.all(8.0),
+      //                           child: Column(
+      //                             crossAxisAlignment:
+      //                                 CrossAxisAlignment.start,
+      //                             mainAxisAlignment:
+      //                                 MainAxisAlignment.start,
+      //                             children: [
+      //                               Text(
+      //                                 '''${searchController.searchMedecine.values.elementAt(index).name!.length > 15 ? searchController.searchMedecine.values.elementAt(index).name!.substring(0, 15) + "..." : searchController.searchMedecine.values.elementAt(index).name!}''',
+      //                                 style: const TextStyle(
+      //                                     fontWeight: FontWeight.bold,
+      //                                     fontSize: 18.0),
+      //                               ),
+      //                               const SizedBox(height: 8.0),
+      //                               Text(
+      //                                 "${contx.searchMedecine.values.elementAt(index).category}",
+      //                                 style: const TextStyle(
+      //                                     color: Colors.grey),
+      //                               ),
+      //                               const SizedBox(height: 8.0),
+      //                             ],
+      //                           ),
+      //                         ),
+      //                       ],
+      //                     ),
+      //                   ),
+      //                 );
+      //               },
+      //             ),
+      //           )
+      //     // }
+      //     ),
     );
   }
 }
