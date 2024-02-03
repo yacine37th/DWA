@@ -25,10 +25,12 @@ import 'model/user_model.dart';
 import 'services/Languages .dart';
 import 'utils/forgot_password_bindings.dart';
 import 'utils/home_screen_bindings.dart';
+import 'utils/search_bindigns.dart';
 import 'utils/signup_bindings.dart';
 import 'utils/singin_bindings.dart';
 import 'utils/verify_email_bindings.dart';
 import 'view/forgot_password.dart';
+import 'view/search_screen.dart';
 import 'view/signup.dart';
 import 'view/verify_email.dart';
 
@@ -119,6 +121,13 @@ class MyApp extends StatelessWidget {
           page: () => const HomeScreen(),
           binding: HomeScreenBindings(),
           // middlewares: [PayMiddleware()]
+        ),
+        GetPage(
+          name: "/SearchScreen",
+          page: () => const SearchScreen(),
+          transition: Transition.fadeIn,
+          transitionDuration: const Duration(milliseconds: 250),
+          binding: SearchBinding(),
         ),
         GetPage(
             name: "/Pay",
