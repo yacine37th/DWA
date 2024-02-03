@@ -271,7 +271,7 @@ class HomeController extends GetxController {
   signOutOfAnExistingAccount() async {
     await FirebaseAuth.instance.signOut().then((value) {
       currentUser = null;
-      currentUserInfos = UserModel(uID: "", email: "", name: "", posts: []);
+      currentUserInfos = UserModel(uID: "", email: "", name: "", posts: [], phone: '', type: '');
       HomeScreenController.myPostsController.myPosts = {};
       update();
       // Get.offAllNamed("/SignIn");

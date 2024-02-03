@@ -74,7 +74,7 @@ class Home extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15 , vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             child: InkWell(
               onTap: () {
                 Get.toNamed(
@@ -85,15 +85,16 @@ class Home extends StatelessWidget {
               //         Svg("assets/icons/search_icon.svg"),
               //         size: 20,
               //       ),
-              child: Stack(
-                children:[ TextField(
+              child: Stack(children: [
+                TextField(
                   style: const TextStyle(color: Colors.black),
                   decoration: InputDecoration(
-                    hintText: 'email'.tr,
+                    hintText: 'SearchMed'.tr,
                     errorMaxLines: 2,
-                    prefixIcon: Icon(Icons.search, color: AppColors.kLine),
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                    prefixIcon: Icon(Icons.search,
+                        color: AppColors.kPrimary2, size: 30),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 16),
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: AppColors.kLine),
                       borderRadius: BorderRadius.circular(10),
@@ -116,7 +117,8 @@ class Home extends StatelessWidget {
                         color: Colors.grey),
                   ),
                   enabled: false,
-                ),]              ),
+                ),
+              ]),
             ),
           ),
           Expanded(

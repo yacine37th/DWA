@@ -3,7 +3,9 @@ class UserModel {
   late String? email;
   late String? name;
   late List<dynamic> posts;
-
+  late String? phone;
+  late String? type;
+  
   // late List<dynamic> foodFavoris;
   // late var latitude;
   // late var longitude;
@@ -12,7 +14,7 @@ class UserModel {
     required this.email,
     required this.name,
     required this.posts,
-    // required this.latitude,
-    // required this.longitude,
+    required this.phone,
+    required this.type,
   });
 }

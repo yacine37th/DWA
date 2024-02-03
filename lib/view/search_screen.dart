@@ -45,11 +45,15 @@ class SearchScreen extends StatelessWidget {
             textInputAction: TextInputAction.go,
             cursorColor: blackColor,
             decoration: InputDecoration(
-              hintText: 'email'.tr,
+              hintText: 'SearchMed'.tr,
               errorMaxLines: 2,
-              prefixIcon: Icon(Icons.search, color: AppColors.kLine),
+              prefixIcon: Icon(
+                Icons.search,
+                color: AppColors.kPrimary2,
+                size: 30,
+              ),
               contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               enabledBorder: OutlineInputBorder(
                 borderSide: const BorderSide(color: AppColors.kLine),
                 borderRadius: BorderRadius.circular(10),
@@ -97,7 +101,7 @@ class SearchScreen extends StatelessWidget {
             children: [
               Text(
                 "SearchMed".tr,
-                style:const TextStyle(fontFamily: 'Cairo'),
+                style: const TextStyle(fontFamily: 'Cairo', fontSize: 19 ,  fontWeight: FontWeight.bold),
               ),
             ],
           ));
@@ -105,10 +109,10 @@ class SearchScreen extends StatelessWidget {
             searchController.inputSearch!.isNotEmpty) {
           if (!searchController.isFetching) {
             return Stack(children: [
-               Center(
+              Center(
                 child: Text(
                   "NoResultForSearch".tr,
-                  style: const TextStyle(fontFamily: 'Cairo'),
+                  style: const TextStyle(fontFamily: 'Cairo', fontSize: 19 , fontWeight: FontWeight.bold),
                 ),
               ),
             ]);

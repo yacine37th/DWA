@@ -21,7 +21,7 @@ class Languages implements Translations {
           "enterMedicineName": "Please enter Medicine name",
           "medicineName>2":
               "The name of the medicine must have more than two letters",
-          "SearchMed": "Search a medicine",
+          "SearchMed": "Search a medicine...",
           "NoResultForSearch": "There are no results for your search",
 
 ////////////
@@ -350,7 +350,7 @@ class Languages implements Translations {
           "enterMedicineName": "Veuillez entrer le nom du médicament",
           "medicineName>2":
               "Le nom du médicament doit comporter plus de deux lettres",
-          "SearchMed": "Rechercher un médicament",
+          "SearchMed": "Rechercher un médicament...",
           "NoResultForSearch": "Il n'y a aucun résultat pour votre recherche",
 
 ////////////
@@ -716,7 +716,7 @@ class Languages implements Translations {
           "select": "الرجاء اختيار صورة",
           "addmed": "أضف دواءً",
           "language": "اللغة",
-          "SearchMed": "ابحث عن دواء",
+          "SearchMed": "ابحث عن دواء...",
           "NoResultForSearch": "لا توجد نتيجة للبحث",
           "english": "الإنجليزية",
           "francais": "الفرنسية",

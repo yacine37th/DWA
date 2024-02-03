@@ -35,20 +35,21 @@ import 'view/signup.dart';
 import 'view/verify_email.dart';
 
 User? currentUser = FirebaseAuth.instance.currentUser;
-UserModel currentUserInfos = UserModel(uID: "", email: "", name: "", posts: []);
+UserModel currentUserInfos =
+    UserModel(uID: "", email: "", name: "", posts: [], phone: '', type: '');
 SharedPreferences? sharedPreferences;
 bool prevVerfiy = false;
-bool isPay = false;
-Future<void> isPayed() async {
-  await FirebaseFirestore.instance
-      .collection("user")
-      .doc("user")
-      .get()
-      .then((value) {
-    isPay = value.data()?["userPayed"];
-  });
-  // ;
-}
+// bool isPay = false;
+// Future<void> isPayed() async {
+//   await FirebaseFirestore.instance
+//       .collection("user")
+//       .doc("user")
+//       .get()
+//       .then((value) {
+//     isPay = value.data()?["userPayed"];
+//   });
+//   // ;
+// }
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,16 +59,16 @@ Future<void> main() async {
   sharedPreferences = await SharedPreferences.getInstance();
 
   // isPayed();
-  print("isPay////////////////////////////////////////");
-  await FirebaseFirestore.instance
-      .collection("user")
-      .doc("user")
-      .get()
-      .then((value) {
-    isPay = value.data()?["userPayed"];
-  });
-  print("isPay////////////////////////////////////////");
-  print(isPay);
+  // print("isPay////////////////////////////////////////");
+  // await FirebaseFirestore.instance
+  //     .collection("user")
+  //     .doc("user")
+  //     .get()
+  //     .then((value) {
+  //   isPay = value.data()?["userPayed"];
+  // });
+  // print("isPay////////////////////////////////////////");
+  // print(isPay);
   if (currentUser != null) {
     await MainFunctions.getcurrentUserInfos();
   }
