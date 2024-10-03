@@ -13,6 +13,7 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SearchControllerr searchController = Get.find();
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         //   bottom: PreferredSize(
         // preferredSize: Size(0, 0),

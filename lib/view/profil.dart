@@ -16,7 +16,7 @@ class Profil extends StatelessWidget {
     HomeScreenController homeScreenController = Get.find();
     HomeController homeController = Get.find();
     return Scaffold(
-      // backgroundColor: AppColors.kBackground,
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           // const BackgroundImage(),

@@ -21,6 +21,7 @@ class Home extends StatelessWidget {
 
     HomeController homeController = Get.find();
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {

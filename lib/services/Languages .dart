@@ -11,7 +11,7 @@ class Languages implements Translations {
         "en": {
 ////Theme
 
-          "Privacy": "Privacy Policy",
+          "Privacy": "  Privacy Policy",
           "theme": "Theme",
           "plzTheme": "Please choose a theme",
           "lightTheme": "Light Theme",
@@ -26,7 +26,7 @@ class Languages implements Translations {
 
 ////////////
           "Home": "Home",
-          "language": "Language",
+          "language": "  Language",
           "Posts": "My Posts",
           "Profil": "Profil",
           "enterMedicineDate":
@@ -126,7 +126,7 @@ class Languages implements Translations {
           "newPassword": "New password",
           "pleaseWait": "Please wait",
           "PersonalInformation": "Personal informations",
-          "Language": "Language",
+          "Language": "  Language",
           "DarkMode": "Dark Mode",
           "signOut": "Sign out",
           "aboutUs": "About us",
@@ -340,7 +340,7 @@ class Languages implements Translations {
         },
         "fr": {
           ////Theme
-          "Privacy": "Politique de Confidentialité",
+          "Privacy": "  Politique de Confidentialité",
           "theme": "Thème",
           "plzTheme": "Veuillez choisir un thème",
           "lightTheme": "Thème clair",
@@ -354,7 +354,7 @@ class Languages implements Translations {
           "NoResultForSearch": "Il n'y a aucun résultat pour votre recherche",
 
 ////////////
-          "language": "Langue",
+          "language": "  Langue",
           "Posts": "Mes Postes",
           "Profil": "Profil",
           "enterMedicineDate":
@@ -460,7 +460,7 @@ class Languages implements Translations {
           "oldPassword": "Ancien mot de passe",
           "newPassword": "Nouveau mot de passe",
           "pleaseWait": "Veuillez patienter",
-          "Language": "Langue",
+          "Language": "  Langue",
           "DarkMode": "Mode sombre",
           "signOut": "Se déconnecter",
           "aboutUs": "À propos de nous",
@@ -687,7 +687,7 @@ class Languages implements Translations {
         "ar": {
           ////Theme
 
-          "Privacy": "سياسة الخصوصية",
+          "Privacy": "  سياسة الخصوصية",
           "theme": "السمة",
           "plzTheme": "يرجى اختيار سمة",
           "lightTheme": "سمة فاتحة",
@@ -715,7 +715,7 @@ class Languages implements Translations {
           "Annuler": "إلغاء",
           "select": "الرجاء اختيار صورة",
           "addmed": "أضف دواءً",
-          "language": "اللغة",
+          "language": "  اللغة",
           "SearchMed": "ابحث عن دواء...",
           "NoResultForSearch": "لا توجد نتيجة للبحث",
           "english": "الإنجليزية",
@@ -801,7 +801,7 @@ class Languages implements Translations {
           "newPassword": "كلمة المرور الجديدة",
           "pleaseWait": "يرجى الانتظار",
           "PersonalInformation": "المعلومات الشخصية",
-          "Language": "اللغة",
+          "Language": "  اللغة",
           "DarkMode": "الوضع الداكن",
           "signOut": "تسجيل الخروج",
           "aboutUs": "من نحن",

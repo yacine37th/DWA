@@ -18,6 +18,7 @@ class MyPosts extends StatelessWidget {
 
     MyPostsController myPostsController = Get.find();
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           leading: IconButton(
               onPressed: () {
@@ -70,10 +71,11 @@ class MyPosts extends StatelessWidget {
         ),
         body: GetBuilder<MyPostsController>(builder: (contx) {
           if (contx.myPosts.isEmpty) {
-            return  Center(
+            return Center(
               child: Text(
                 "ListEmpty".tr,
-                style:const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
             );
           } else {
@@ -128,10 +130,7 @@ class MyPosts extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "${myPostsController.myPosts.values.elementAt(index).name!.length > 7 ?
-                                  "${myPostsController.myPosts.values.elementAt(index).name!.substring(0,5)}..." :
-                                  myPostsController.myPosts.values.elementAt(index).name
-                                  }",
+                                  "${myPostsController.myPosts.values.elementAt(index).name!.length > 7 ? "${myPostsController.myPosts.values.elementAt(index).name!.substring(0, 5)}..." : myPostsController.myPosts.values.elementAt(index).name}",
                                   style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w500,
