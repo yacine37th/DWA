@@ -12,6 +12,8 @@ class ForgotPassword extends StatelessWidget {
     final ForgotPasswordController forgotPasswordController = Get.find();
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: AppColors.whiteColor,
+
       appBar: AppBar(
         backgroundColor: AppColors.transparentColor,
         elevation: 0,

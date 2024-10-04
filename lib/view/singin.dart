@@ -15,6 +15,7 @@ class SignIn extends StatelessWidget {
   Widget build(BuildContext context) {
     SignInController signInController = Get.find();
     return Scaffold(
+      backgroundColor: AppColors.whiteColor,
       appBar: AppBar(
         //   bottom: PreferredSize(
         // preferredSize: Size(0, 0),

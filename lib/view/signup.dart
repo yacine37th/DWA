@@ -14,6 +14,7 @@ class SignUp extends StatelessWidget {
     SignUpController signUpController = Get.find();
 
     return Scaffold(
+      backgroundColor: AppColors.whiteColor,
       appBar: AppBar(
         //   bottom: PreferredSize(
         // preferredSize: Size(0, 0),
@@ -54,11 +55,11 @@ class SignUp extends StatelessWidget {
                 child: Column(
                   children: [
                     // const SizedBox(height: 10),
-                   Container(
-                    width: double.infinity,
-                    height: 250,
-                    child : Image.asset(AppAssets.kAppLogo),
-                   ),
+                    Container(
+                      width: double.infinity,
+                      height: 250,
+                      child: Image.asset(AppAssets.kAppLogo),
+                    ),
                     // const SizedBox(height: 30),
                     Text("createAccount".tr,
                         style: const TextStyle(
@@ -91,13 +92,11 @@ class SignUp extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: 'userName'.tr,
                         errorMaxLines: 2,
-                        prefixIcon:
-                            Icon(Icons.person, color: AppColors.kLine),
+                        prefixIcon: Icon(Icons.person, color: AppColors.kLine),
                         contentPadding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 16),
                         enabledBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: AppColors.kLine),
+                          borderSide: const BorderSide(color: AppColors.kLine),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         focusedBorder: OutlineInputBorder(
@@ -106,13 +105,11 @@ class SignUp extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         border: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: AppColors.kLine),
+                          borderSide: const BorderSide(color: AppColors.kLine),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         errorBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: AppColors.KError),
+                          borderSide: const BorderSide(color: AppColors.KError),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         hintStyle: const TextStyle(
@@ -151,8 +148,7 @@ class SignUp extends StatelessWidget {
                         contentPadding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 16),
                         enabledBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: AppColors.kLine),
+                          borderSide: const BorderSide(color: AppColors.kLine),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         focusedBorder: OutlineInputBorder(
@@ -161,13 +157,11 @@ class SignUp extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         border: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: AppColors.kLine),
+                          borderSide: const BorderSide(color: AppColors.kLine),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         errorBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: AppColors.KError),
+                          borderSide: const BorderSide(color: AppColors.KError),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         hintStyle: const TextStyle(
@@ -204,8 +198,7 @@ class SignUp extends StatelessWidget {
                         decoration: InputDecoration(
                           hintText: 'password'.tr,
                           errorMaxLines: 2,
-                          prefixIcon:
-                              Icon(Icons.lock, color: AppColors.kLine),
+                          prefixIcon: Icon(Icons.lock, color: AppColors.kLine),
                           suffixIcon: IconButton(
                               onPressed: () {
                                 contx.invertShowPassword();
@@ -246,8 +239,7 @@ class SignUp extends StatelessWidget {
                     const SizedBox(height: 30),
                     TextButton(
                       onPressed: () {
-                        if (signUpController.formKey.currentState!
-                            .validate()) {
+                        if (signUpController.formKey.currentState!.validate()) {
                           signUpController.formKey.currentState!.save();
                           signUpController.createNewUser();
                         }
@@ -260,10 +252,10 @@ class SignUp extends StatelessWidget {
                             AppColors.kPrimary2,
                           ),
                           overlayColor: MaterialStateColor.resolveWith(
-                              (states) => AppColors.kPrimary2Onpress
-                                  .withOpacity(0.2)),
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
+                              (states) =>
+                                  AppColors.kPrimary2Onpress.withOpacity(0.2)),
+                          shape:
+                              MaterialStateProperty.all(RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(100),
                                   side: BorderSide(
                                     color: AppColors.kPrimary2,

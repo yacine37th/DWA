@@ -13,6 +13,7 @@ class EmailVerification extends StatelessWidget {
     EmailVerificationController emailVerificationController = Get.find();
     return Scaffold(
       // backgroundColor: AppColors.kpr,
+      backgroundColor: AppColors.whiteColor,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
@@ -24,7 +25,7 @@ class EmailVerification extends StatelessWidget {
               Icons.arrow_back_ios_outlined,
               color: AppColors.kPrimary2,
             )),
-        title:  Text(
+        title: Text(
           "EmailVerification".tr,
           style: const TextStyle(color: AppColors.kPrimary2),
         ),
@@ -42,9 +43,8 @@ class EmailVerification extends StatelessWidget {
               ),
               //  ),
               // const SizedBox(height: 20),
-               Text(
-                  "EmailVerificationMessage".tr,
-                  style:const TextStyle(
+              Text("EmailVerificationMessage".tr,
+                  style: const TextStyle(
                     fontSize: 20,
                   ),
                   textAlign: TextAlign.center),
@@ -66,7 +66,7 @@ class EmailVerification extends StatelessWidget {
                         AppColors.kPrimary2Onpress.withOpacity(0.2)),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(100),
-                        side:const BorderSide(
+                        side: const BorderSide(
                           color: AppColors.kPrimary2,
                         )))),
                 child: Card(
@@ -85,7 +85,7 @@ class EmailVerification extends StatelessWidget {
                     ),
                     child: Text(
                       "ResendEmail".tr,
-                      style:const TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 19,
                       ),

@@ -286,7 +286,7 @@ class AddMedecineController extends GetxController {
   //                         lastDate: DateTime(2100))
 
   Future<void> pickedDate(BuildContext context) async {
-    DateTime now = DateTime.now().add(const Duration(days: 1));
+    DateTime now = DateTime.now().add(const Duration(days: 2));
     pickedDate2 = await showDatePicker(
       
         context: context, //context of current state

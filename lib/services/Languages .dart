@@ -803,7 +803,7 @@ class Languages implements Translations {
           "PersonalInformation": "المعلومات الشخصية",
           "Language": "  اللغة",
           "DarkMode": "الوضع الداكن",
-          "signOut": "تسجيل الخروج",
+          "signOut": "تسجيل الخروج  ",
           "aboutUs": "من نحن",
           "onlyAdmin": "فقط للمشرفين الرئيسيين",
           "openAppSettings": "فتح إعدادات التطبيق",

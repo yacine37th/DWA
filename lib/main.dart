@@ -36,7 +36,7 @@ import 'view/verify_email.dart';
 
 User? currentUser = FirebaseAuth.instance.currentUser;
 UserModel currentUserInfos =
-    UserModel(uID: "", email: "", name: "", posts: [], phone: '', type: '');
+    UserModel(uID: "", email: "", name: "", posts: [], type: '');
 SharedPreferences? sharedPreferences;
 bool prevVerfiy = false;
 // bool isPay = false;

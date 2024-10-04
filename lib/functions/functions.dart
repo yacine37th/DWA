@@ -30,7 +30,6 @@ class MainFunctions {
           email: value["userEmail"],
           name: value["userName"],
           posts: value["userPosts"],
-          phone: value["userPhoneNumber"],
           type: value["userType"],
           // foodFavoris: value["userFavorisFood"],
           // latitude: value["userCurrentPositionLatitude"],
